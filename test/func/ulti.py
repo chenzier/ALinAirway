@@ -5,21 +5,12 @@ import skimage.io as io
 import SimpleITK as sitk
 import os
 
-def save_obj(obj, name ):
-    if name[-3:] != 'pkl':
-        temp=name+'.pkl'
-    else:
-        temp=name
-    with open(temp , 'wb') as f:
+def save_obj(obj, name):
+    with open(name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
-def load_obj(name ):
-    if name[-3:] != 'pkl':
-        temp=name+'.pkl'
-    else:
-        temp=name
-    # print(temp)
-    with open(temp, 'rb') as f:
+def load_obj(name):
+    with open(name + '.pkl', 'rb') as f:
         return pickle.load(f)
 
 def crop_one_3d_img(input_img, crop_cube_size, stride):
@@ -91,36 +82,40 @@ def crop_one_3d_img(input_img, crop_cube_size, stride):
 def load_one_CT_img(img_path):
     return io.imread(img_path, plugin='simpleitk')
 
-def load_many_CT_img(exact09_path,lidc_path,filenames,filetype):
-    assert filetype == "image" or "label", "Filetype must be image or label!"
+def load_many_CT_img(img_path):
     img_dict = {}
-    for filename in filenames:
-        if filename[:3] == 'LID':#这个if的设计是根据test_names来的
-            if filetype == 'image':
-                img_dict[filename]=load_one_CT_img(os.path.join(lidc_path, filename))
-            elif filetype == 'label':
-                img_dict[filename]=load_one_CT_img(os.path.join(lidc_path, filename[:14] + "_label" + filename[14:]))
-        if filename[:3] == 'EXA':
-                img_dict[filename]=load_one_CT_img(os.path.join(exact09_path, filename[8:]))
+    for filename in os.listdir(img_path):
+        img_dict[filename[:6]]=load_one_CT_img(os.path.join(img_path, filename))
     return img_dict
 
 def loadFile(filename):
-    ds = sitk.ReadImage(filename)
-    #pydicom.dcmread(filename)
-    img_array = sitk.GetArrayFromImage(ds)
-    frame_num, width, height = img_array.shape
+    # 函数loadFile(filename)用于读取指定路径下的单张DICOM格式的图像，
+    ds = sitk.ReadImage(filename)#读取图像
+    #pydicom.dcmread(filename)# 需要注意的是，函数中也出现了注释掉的另一种读取DICOM格式图像的方式（使用pydicom库），但这种方式并没有被使用。
+    img_array = sitk.GetArrayFromImage(ds)#将读取的图像转换成像素数组。
+    frame_num, width, height = img_array.shape#获得该图像的高、宽、帧数信息(frame_num, width, height)
     #print("frame_num, width, height: "+str((frame_num, width, height)))
-    return img_array, frame_num, width, height
+    return img_array, frame_num, width, height# 返回该图像的像素数组img_array，以及该图像的高、宽、帧数信息(frame_num, width, height)。
+# frame_num是指DICOM图像中的帧数，也就是指图像中有多少张图片。
+# DICOM图像可以包含多帧，每一帧都是一张图片。因此，frame_num表示的是DICOM图像中有多少个这样的帧。
+# 在函数loadFile(filename)中，通过读取DICOM图像中的像素数组，然后查看该数组的形状，就可以得到帧数信息(frame_num)。
+# 如果帧数等于1，表示该DICOM图像只包含一帧，否则就是多帧。
+# 需要注意的是，函数loadFile(filename)只会读取DICOM图像的第一帧，因为它只返回了一张图片的像素数组。
+
+
 
 def get_3d_img_for_one_case(img_path_list, img_format="dcm"):
+    # 用于将指定路径下的 所有图像 按照顺序 合成 为一个三维图像，
+    # 需要注意的是，函数中的img_format参数同样没有被使用，因此该参数可以忽略。
     img_3d=[]
     for idx, img_path in enumerate(img_path_list):
         print("progress: "+str(idx/len(img_path_list))+"; "+str(img_path), end="\r")
-        img_slice, frame_num, _, _ = loadFile(img_path)
+        img_slice, frame_num, _, _ = loadFile(img_path)#
         assert frame_num==1
         img_3d.append(img_slice)
-    img_3d=np.array(img_3d)
+    img_3d=np.array(img_3d)#将img_3d转换为numpy数组，然后使用reshape()函数将其重新排列成三维图像的形状。返回合成的三维图像。
     return img_3d.reshape(img_3d.shape[0], img_3d.shape[2], img_3d.shape[3])
+
 
 def get_and_save_3d_img_for_one_case(img_path, output_file_path, img_format="dcm"):
     case_names=os.listdir(img_path)
@@ -129,7 +124,7 @@ def get_and_save_3d_img_for_one_case(img_path, output_file_path, img_format="dcm
     for case_name in case_names:
         img_path_list.append(img_path+"/"+case_name)
     img_3d = get_3d_img_for_one_case(img_path_list)
-    sitk.WriteImage(sitk.GetImageFromArray(img_3d),output_file_path)
+    sitk.WriteImage(sitk.GetImageFromArray(img_3d),output_file_path)#将img_3d保存到指定的文件路径(output_file_path)中。
     
 class Normalization_np(object):
     def __init__(self, windowMin, windowMax):
@@ -187,7 +182,8 @@ def get_df_of_line_of_centerline(connection_dict):
         while (idx in d.keys()):
             idx+=1
         
-        d[idx]={}
+        d[idx]={}#新建一个字典
+        #将坐标、世代数存储到相应的列表中
         if "x" not in d[idx].keys():
             d[idx]["x"]=[]
         if "y" not in d[idx].keys():
@@ -217,4 +213,11 @@ def get_df_of_line_of_centerline(connection_dict):
                 get_next_point(connection_dict, next_label, d, idx+1)
     
     get_next_point(connection_dict, start_label, d,0)
+#     生成的字典d包含了整个空气道中心线的坐标和对应的值信息。其中每个键值对的键为整数，代表了空气道中心线上的每一个点；
+# 每个键值对的值为一个字典，包含了该点的三维坐标和对应的值。具体来说，键值对的值包括以下四个键：
+                        # "x": 该点在x轴上的坐标值，类型为列表；
+                        # "y": 该点在y轴上的坐标值，类型为列表；
+                        # "z": 该点在z轴上的坐标值，类型为列表；
+                        # "val": 该点的值，类型为列表。
+# 其中，x、y、z分别是该点的三维坐标值，val则是该点对应的代数距离值，即在构建空气道中心线时被赋予的label值，代表该点与空气道根节点的距离。
     return d

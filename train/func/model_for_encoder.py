@@ -347,8 +347,13 @@ class SegAirwayModel(nn.Module):
     def forward(self, x):
         # encoder part
         encoders_features = []
+        out_ec=[]
+        i=0
         for encoder in self.encoders:
+            i+=1
             x = encoder(x)
+            if i== 1 or i==4:
+                out_ec.append(x)
             # reverse the encoder outputs to be aligned with the decoder
             encoders_features.insert(0, x)
 
@@ -366,4 +371,4 @@ class SegAirwayModel(nn.Module):
 
         x = self.final_activation(x)
 
-        return x
+        return x,ec1,ec4

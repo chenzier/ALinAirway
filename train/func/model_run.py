@@ -83,7 +83,7 @@ def semantic_segment_crop_and_cat(raw_img, model, device, crop_cube_size=256, st
     for i in np.arange(0, img_shape[0], stride[0]):
         for j in np.arange(0, img_shape[1], stride[1]):
             for k in np.arange(0, img_shape[2], stride[2]):
-                print('Progress of segment_3d_img: '+str(np.int32(count/total*100))+'%', end='\r') #这里报错，之前是np.int，我改成np.int32了
+                print('Progress of segment_3d_img: '+str(np.int(count/total*100))+'%', end='\r')
                 if i+crop_cube_size[0]<=img_shape[0]:
                     x_start_input=i
                     x_end_input=i+crop_cube_size[0]

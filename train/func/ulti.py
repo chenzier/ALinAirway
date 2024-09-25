@@ -5,21 +5,12 @@ import skimage.io as io
 import SimpleITK as sitk
 import os
 
-def save_obj(obj, name ):
-    if name[-3:] != 'pkl':
-        temp=name+'.pkl'
-    else:
-        temp=name
-    with open(temp , 'wb') as f:
+def save_obj(obj, name):
+    with open(name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
-def load_obj(name ):
-    if name[-3:] != 'pkl':
-        temp=name+'.pkl'
-    else:
-        temp=name
-    # print(temp)
-    with open(temp, 'rb') as f:
+def load_obj(name):
+    with open(name + '.pkl', 'rb') as f:
         return pickle.load(f)
 
 def crop_one_3d_img(input_img, crop_cube_size, stride):
@@ -90,19 +81,6 @@ def crop_one_3d_img(input_img, crop_cube_size, stride):
 
 def load_one_CT_img(img_path):
     return io.imread(img_path, plugin='simpleitk')
-
-def load_many_CT_img(exact09_path,lidc_path,filenames,filetype):
-    assert filetype == "image" or "label", "Filetype must be image or label!"
-    img_dict = {}
-    for filename in filenames:
-        if filename[:3] == 'LID':#这个if的设计是根据test_names来的
-            if filetype == 'image':
-                img_dict[filename]=load_one_CT_img(os.path.join(lidc_path, filename))
-            elif filetype == 'label':
-                img_dict[filename]=load_one_CT_img(os.path.join(lidc_path, filename[:14] + "_label" + filename[14:]))
-        if filename[:3] == 'EXA':
-                img_dict[filename]=load_one_CT_img(os.path.join(exact09_path, filename[8:]))
-    return img_dict
 
 def loadFile(filename):
     ds = sitk.ReadImage(filename)

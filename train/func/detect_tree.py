@@ -34,7 +34,7 @@ def get_crop(input_3d_img, search_center, search_range=1):
 # step 1 get the skeleton
 def get_the_skeleton_and_center_nearby_dict(seg_input, search_range = 10, need_skeletonize_3d=True):
     if need_skeletonize_3d:
-        center_map = np.array(skeletonize_3d(seg_input)>0, dtype=np.int8)
+        center_map = np.array(skeletonize_3d(seg_input)>0, dtype=np.int)
     else:
         center_map = seg_input
     
@@ -49,7 +49,7 @@ def get_the_skeleton_and_center_nearby_dict(seg_input, search_range = 10, need_s
     
     for i in center_dict.keys():
         center_map_crop = get_crop(center_map, center_dict[i], search_range)
-        crop_img_vals = np.unique(center_map_crop).astype(np.int8)
+        crop_img_vals = np.unique(center_map_crop).astype(np.int)
         crop_img_vals = crop_img_vals[crop_img_vals!=0]
         crop_img_vals = crop_img_vals[crop_img_vals!=i]
         nearby_dict[i] = crop_img_vals

@@ -54,7 +54,7 @@ def img_3d_erosion_or_expansion(img_3d, kernel_size=3, device = torch.device('cu
     return img_3d
     
 def fill_inner_hole(seg_onehot_final, need_erosion_or_expansion = False, kernel_size=3, device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')):
-    seg_onehot_background = np.array(seg_onehot_final==0, dtype=np.int8)
+    seg_onehot_background = np.array(seg_onehot_final==0, dtype=np.int)
     labels_bg = label_regions(seg_onehot_background)
     
     unique_vals, unique_val_counts = np.unique(labels_bg, return_counts = True)
@@ -62,7 +62,7 @@ def fill_inner_hole(seg_onehot_final, need_erosion_or_expansion = False, kernel_
     unique_vals = unique_vals[unique_vals>0]
     sort_locs = np.argsort(unique_val_counts)[::-1]
     
-    bg = np.array(labels_bg==unique_vals[sort_locs][0], dtype=np.int8)
+    bg = np.array(labels_bg==unique_vals[sort_locs][0], dtype=np.int)
     
     if need_erosion_or_expansion:
         bg = -img_3d_erosion_or_expansion(-bg, kernel_size=kernel_size, device = device)
@@ -321,16 +321,16 @@ def add_broken_parts_to_the_result(connection_dict, model_output_prob_map, seg_p
 
         model_output_crop_delete_current_seg = model_output_prob_map_crop-seg_processed_onehot_crop
         current_threshold = threshold
-        model_output_crop_revised = np.array(model_output_crop_delete_current_seg>current_threshold, dtype=np.int8)
+        model_output_crop_revised = np.array(model_output_crop_delete_current_seg>current_threshold, dtype=np.int)
 
         while np.sum(model_output_crop_revised)<=size_of_seg_crop and current_threshold>=min_threshold:
             current_threshold-=delta_threshold
-            model_output_crop_revised = np.array(model_output_crop_delete_current_seg>current_threshold, dtype=np.int8)
+            model_output_crop_revised = np.array(model_output_crop_delete_current_seg>current_threshold, dtype=np.int)
 
         seg_processed_onehot_II[crop_coord[0]:crop_coord[1],
                          crop_coord[2]:crop_coord[3],
                          crop_coord[4]:crop_coord[5]]+=model_output_crop_revised
-    seg_processed_onehot_II = np.array(seg_processed_onehot_II>0, dtype = np.int8)
+    seg_processed_onehot_II = np.array(seg_processed_onehot_II>0, dtype = np.int)
     
     return seg_processed_onehot_II
 
