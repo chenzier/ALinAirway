@@ -48,8 +48,6 @@ def parse_arguments():
     )
 
     return parser.parse_args()
-
-
 args = parse_arguments()
 
 # Configure logging
@@ -76,6 +74,7 @@ if save_addr == "" or load_addr == "":
 save_path = save_addr
 path_dataset_info_org = load_addr
 
+## 默认为空，如果希望从上次权重继续训练，填写该路径，否则不需要填写
 load_path = ""
 
 # Configuration
