@@ -1,4 +1,5 @@
 ## 整个项目的目录结构
+``` bash
 ├── aaa_me
     - 存放一些自己写的备忘录，无意义
 ├── ab_get
@@ -11,8 +12,10 @@
     - 分割网络的代码
 ├── test
 └── train
+```
 
 ## al_method文件夹的目录结构
+``` bash
 ALinAirway/al_method
 ├── active_learning_utils.py
     - 现已废弃,使用active_utils文件夹中的函数
@@ -28,6 +31,7 @@ ALinAirway/al_method
 ├── get_similarity.py
 ├── get_training_info.ipynb
 └── select_pro.ipynb
+```
 
 ## 使用方法
 1. 初次使用时，通过get_emb.py获取数据集的embedding，供后续步骤使用(也可以实时进行，但是很慢)
