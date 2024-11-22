@@ -11,25 +11,22 @@ import matplotlib.patches as mpatches
 
 import sys
 sys.path.append('../')  # 将上一层目录添加到模块搜索路径中
-from al_method.active_learning_utils import process_images,visualize_and_return_indices,show_all_2d_img_with_labels,kmeans,save_obj,load_obj,load_partial_embeddings
+
+from al_method.active_utils.visualize_tools import (
+    visualize_and_return_indices,
+    show_all_2d_img_with_labels,
+)
+from al_method.active_utils.embedding_tools import (
+    get_embeddings,
+    load_partial_embeddings,
+)
+from al_method.active_utils.cluster_tools import kmeans
+from al_method.active_utils.file_tools import save_obj, load_obj
 import pickle
-from func.model_arch2 import SegAirwayModel
-
-import torch.utils.data as data_utils
-
-
-import edt
-
-
-import torch
-import torch.distributed as dist
-from torch.nn.parallel import DistributedDataParallel
-from torch.utils.data.distributed import DistributedSampler
 
 
 # 设置分布式环境
 # local_rank = int(os.environ.get("LOCAL_RANK", 0))
-
 
 
 crop_size=['128','256']
@@ -59,34 +56,27 @@ test_names = ['LIDC_IDRI_0066', 'LIDC_IDRI_0328', 'LIDC_IDRI_0376',
 exact_lidc_concatenated_array , merged_dict, merged_list = load_partial_embeddings(file_path1, file_path2, test_names=test_names)
 
 
-
-
 data_shape = exact_lidc_concatenated_array.shape
 
 X_t = exact_lidc_concatenated_array.reshape(data_shape[0], -1)
-device2 = torch.device('cuda:7' if torch.cuda.is_available() else 'cpu')
-# device3 = torch.device('cuda:2' if torch.cuda.is_available() else 'cpu')
+device2 = torch.device("cuda:7" if torch.cuda.is_available() else "cpu")
 
 
 print(X_t.shape)
 
-#需要把数据放到GPU上
+# 需要把数据放到GPU上
 cluster_dict={}
 
 
-
-# X_t=X_t[200:]
 X_t=from_numpy(X_t).float().to(device2)
 # from sklearn.cluster import KMeans
 num_cluster=2
-
 
 
 cluster_labels, cluster_centers = kmeans(
     X=X_t, num_clusters=num_cluster, init=None,distance='euclidean', device=device2
 )
 print('kmeans is done'+str(num_cluster))
-
 
 
 # Assuming X_t and cluster_centers are already on the CPU
@@ -120,8 +110,6 @@ for i in range(0, N, batch_size):
 print(len(uncertainy_dict))
 
 
-
-
 file_path = '/home/wangc/now/NaviAirway/saved_var/ae1_uncertainy.pkl'
 # 确保文件夹存在，如果不存在则创建它
 os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -130,4 +118,3 @@ os.makedirs(os.path.dirname(file_path), exist_ok=True)
 with open(file_path, 'wb') as file:
     data_to_save = {'uncertainy_dict': uncertainy_dict}
     pickle.dump(data_to_save, file)
-

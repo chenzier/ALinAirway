@@ -1,7 +1,6 @@
 import numpy as np
 import torch
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "4,5"
 import skimage.io as io
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
@@ -9,29 +8,25 @@ from torch import from_numpy as from_numpy
 from matplotlib.colors import ListedColormap
 import matplotlib.patches as mpatches
 
-from active_learning_utils import process_images,visualize_and_return_indices,show_all_2d_img_with_labels,kmeans,save_obj,load_obj,load_partial_embeddings
+
 import pickle
-
 import sys
-sys.path.append('../')  # 将上一层目录添加到模块搜索路径中
-from func.model_arch2 import SegAirwayModel
+sys.path.append("../")  # 将上一层目录添加到模块搜索路径中
 
-import torch.utils.data as data_utils
+from active_utils.dataset_process_tools import DatasetInfo
+from active_utils.embedding_tools import get_embeddings, load_partial_embeddings
+from active_utils.visualize_tools import (
+    visualize_and_return_indices,
+    show_all_2d_img_with_labels,
+)
+from active_utils.cluster_tools import kmeans
+from active_utils.file_tools import load_obj, save_obj
 
+LidcInfo = DatasetInfo("/mnt/wangc/LIDC/Precrop_dataset_for_LIDC-IDRI_128")
+LidcInfo.get_case_names("/mnt/wangc/LIDC", "lidc")
 
-import edt
-
-
-import torch
-import torch.distributed as dist
-from torch.nn.parallel import DistributedDataParallel
-from torch.utils.data.distributed import DistributedSampler
-
-
-# 设置分布式环境
-# local_rank = int(os.environ.get("LOCAL_RANK", 0))
-
-
+Exact09Info = DatasetInfo("/mnt/wangc/EXACT09/Precrop_dataset_for_EXACT09_128")
+Exact09Info.get_case_names("/mnt/wangc/EXACT09/EXACT09_3D", "exact09")
 
 crop_size=['128','256']
 file_insert=crop_size[0]
@@ -47,7 +42,6 @@ lidc_dataset_for_train_raw_path =lidc_dataset_for_train_path+"/image"
 lidc_dataset_for_train_label_path = lidc_dataset_for_train_path+"/label"
 lidc_raw_case_name_list = os.listdir(lidc_dataset_for_train_raw_path)
 # print(len(lidc_raw_case_name_list))
-
 
 
 # file_path1=f'/home/wangc/now/NaviAirway/saved_var/exact09_{file_insert}_op_embeddings_data.pkl'
@@ -99,11 +93,9 @@ lidc_raw_case_name_list = os.listdir(lidc_dataset_for_train_raw_path)
 # print(exact_stacked_embeddings_numpy.shape,lidc_stacked_embeddings_numpy.shape,exact_lidc_concatenated_array.shape)
 
 
-
 # exact_lidc_concatenated_array = np.concatenate((exact_stacked_embeddings_numpy, lidc_stacked_embeddings_numpy), axis=0)
 # merged_dict={**exact_embeddings_dict,**lidc_embeddings_dict}
 # merged_list=raw_case_name_list+lidc_raw_case_name_list
-
 
 
 file_path1=f'/home/wangc/now/NaviAirway/saved_var/exact09_{file_insert}_op_embeddings_data.pkl'
@@ -122,36 +114,32 @@ device2 = torch.device('cuda:2' if torch.cuda.is_available() else 'cpu')
 
 print(X_t.shape)
 
-#需要把数据放到GPU上
+# 需要把数据放到GPU上
 cluster_dict={}
-
-
 
 
 # xi=[('e', 3, 166),
 #  ('e', 2, 530),
-#  ('e', 7, 162), 
+#  ('e', 7, 162),
 #  ('e', 4, 282),
-#  ('e', 9, 106), 
-#  ('l', 403, 93), 
-#  ('l', 140,295), 
-#  ('l', 438, 362), 
-#  ('l', 438, 477), 
+#  ('e', 9, 106),
+#  ('l', 403, 93),
+#  ('l', 140,295),
+#  ('l', 438, 362),
+#  ('l', 438, 477),
 #  ('l', 529, 283)]
 
 
-
-# cu=[('e', 3,418 ), 
+# cu=[('e', 3,418 ),
 #  ('e', 2, 467),
 #  ('e', 2, 603),
 #  ('e', 7, 347),
 #  ('l', 438, 547),
 #  ('l', 529, 475),
 #  ('l', 140, 418),
-#  ('l', 403, 98), 
+#  ('l', 403, 98),
 #  ('l', 403, 228),
 #  ('l', 438, 612)]
-
 
 
 # def query_embedding(embeddings_dict, prefix,case_number, patch_number):
@@ -174,7 +162,7 @@ cluster_dict={}
 # query_list3 = []
 
 
-# three_tuple1=xi[0]    
+# three_tuple1=xi[0]
 
 # emb_vector,_=query_embedding(merged_dict,query_index[three_tuple1[0]],three_tuple1[1],three_tuple1[2])
 
@@ -208,7 +196,6 @@ X_t=from_numpy(X_t).float().to(device2)
 num_cluster=2
 
 
-
 # cluster_labels, cluster_centers = kmeans(
 #     X=X_t, num_clusters=num_cluster, init=initial_centers,distance='euclidean', device=device2
 # )
@@ -216,7 +203,6 @@ cluster_labels, cluster_centers = kmeans(
     X=X_t, num_clusters=num_cluster, init=None,distance='euclidean', device=device2
 )
 print('kmeans is done'+str(num_cluster))
-
 
 
 # Assuming X_t and cluster_centers are already on the CPU
@@ -250,9 +236,6 @@ for i in range(0, N, batch_size):
 print('dict',len(uncertainy_dict))
 
 
-
-
-
 file_path = '/home/wangc/now/NaviAirway/saved_var/ae1_uncertainy_128_data.pkl'
 # 确保文件夹存在，如果不存在则创建它
 os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -261,4 +244,3 @@ os.makedirs(os.path.dirname(file_path), exist_ok=True)
 with open(file_path, 'wb') as file:
     data_to_save = {'uncertainy_dict': uncertainy_dict}
     pickle.dump(data_to_save, file)
-

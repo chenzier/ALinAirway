@@ -18,7 +18,7 @@ from func.ulti import load_obj
 import argparse
 
 
-# python train_with_args.py --use_gpu cuda:7 --save_addr /home/wangc/now/NaviAirway/checkpoint/check_point_0119/ae120_test_checkpoint.pth --load_addr /home/wangc/now/NaviAirway/saved_objs/for_128_objs/training_info_0119/ae1_info_20.pkl --log_name training_test_0811.log
+# python train_with_args.py --use_gpu cuda:7 --checkpoint_path /home/wangc/now/NaviAirway/checkpoint/check_point_0119/ae120_test_checkpoint.pth --data_info_path /home/wangc/now/NaviAirway/saved_objs/for_128_objs/training_info_0119/ae1_info_20.pkl --log_name training_test_0811.log
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Argument Parser for your script")
 
@@ -29,16 +29,16 @@ def parse_arguments():
         help='Specify GPU usage (e.g., "--use_gpu cuda:0")',
     )
     parser.add_argument(
-        "--save_addr",
+        "--checkpoint_path",
         type=str,
         default="",
-        help='Specify save address (e.g., "--save_addr /path/to/save")',
+        help='Specify checkpoint save address (e.g., "--checkpoint_path /path/to/save")',
     )
     parser.add_argument(
-        "--load_addr",
+        "--data_info_path",
         type=str,
         default="",
-        help='Specify load address (e.g., "--load_addr /path/to/load")',
+        help='Specify dataset info load address (e.g., "--data_info_path /path/to/load")',
     )
     parser.add_argument(
         "--log_name",
@@ -63,19 +63,15 @@ logging.info("Script Arguments:")
 for arg, value in vars(args).items():
     logging.info(f"{arg}: {value}")
 
-use_gpu = str(args.use_gpu)
-save_addr = str(args.save_addr)
-load_addr = str(args.load_addr)
+use_gpu = str(args.use_ggpu)
+checkpoint_path = str(args.checkpoint_path)
+data_info_path = str(args.data_info_path)
 
-if save_addr == "" or load_addr == "":
-    logging.error("Save address or load address cannot be empty.")
+if checkpoint_path == "" or data_info_path == "":
+    logging.error(
+        "Checkpoint save address or dataset info load address cannot be empty."
+    )
     assert False
-
-save_path = save_addr
-path_dataset_info_org = load_addr
-
-## 默认为空，如果希望从上次权重继续训练，填写该路径，否则不需要填写
-load_path = ""
 
 # Configuration
 need_resume = True
@@ -99,16 +95,16 @@ logging.info(f"Device: {device}")
 model.to(device)
 
 # Load checkpoint if necessary
-if need_resume and os.path.exists(load_path):
-    logging.info(f"Resuming model from {load_path}")
-    checkpoint = torch.load(load_path)
+if need_resume and os.path.exists(checkpoint_path):
+    logging.info(f"Resuming model from {checkpoint_path}")
+    checkpoint = torch.load(checkpoint_path)
     model.load_state_dict(checkpoint["model_state_dict"], strict=False)
 
 # Optimizer
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 # Load dataset
-dataset_info_org = load_obj(path_dataset_info_org)
+dataset_info_org = load_obj(data_info_path)
 train_dataset_org = airway_dataset(dataset_info_org)
 train_dataset_org.set_para(
     file_format=train_file_format,
@@ -191,8 +187,8 @@ for ith_epoch in range(max_epoch):
     if (ith_epoch + 1) % model_save_freq == 0:
         logging.info(f"Epoch {ith_epoch + 1}: Saving model")
         model.to(torch.device("cpu"))
-        torch.save({"model_state_dict": model.state_dict()}, save_path)
+        torch.save({"model_state_dict": model.state_dict()}, checkpoint_path)
         model.to(device)
 
-logging.info(f"Model saved at {save_path}")
+logging.info(f"Model saved at {checkpoint_path}")
 logging.info("Training completed.")

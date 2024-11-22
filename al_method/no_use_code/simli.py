@@ -8,29 +8,25 @@ from torch import from_numpy as from_numpy
 from matplotlib.colors import ListedColormap
 import matplotlib.patches as mpatches
 
-from active_learning_utils import process_images,visualize_and_return_indices,show_all_2d_img_with_labels,kmeans,save_obj,load_obj
+
 import pickle
 import sys
-sys.path.append('../')  # 将上一层目录添加到模块搜索路径中
-from func.model_arch2 import SegAirwayModel
-import torch.utils.data as data_utils
-import edt
+sys.path.append("../")  # 将上一层目录添加到模块搜索路径中
 
-##导入数据集路径——————————————————————————
+from active_utils.dataset_process_tools import DatasetInfo
+from active_utils.embedding_tools import get_embeddings
+from active_utils.visualize_tools import (
+    visualize_and_return_indices,
+    show_all_2d_img_with_labels,
+)
+from active_utils.cluster_tools import kmeans
+from active_utils.file_tools import load_obj, save_obj
 
-Precrop_dataset_for_train_path = "/mnt/wangc/EXACT09/Precrop_dataset_for_EXACT09_128"
-Precrop_dataset_for_train_raw_path = Precrop_dataset_for_train_path+"/image"
-Precrop_dataset_for_train_label_path = Precrop_dataset_for_train_path+"/label"
+LidcInfo = DatasetInfo("/mnt/wangc/LIDC/Precrop_dataset_for_LIDC-IDRI_128")
+LidcInfo.get_case_names("/mnt/wangc/LIDC", "lidc")
 
-raw_case_name_list = os.listdir(Precrop_dataset_for_train_raw_path)
-print(len(raw_case_name_list))
-
-lidc_dataset_for_train_path='/mnt/wangc/LIDC/Precrop_dataset_for_LIDC-IDRI_128'
-lidc_dataset_for_train_raw_path =lidc_dataset_for_train_path+"/image"
-lidc_dataset_for_train_label_path = lidc_dataset_for_train_path+"/label"
-lidc_raw_case_name_list = os.listdir(lidc_dataset_for_train_raw_path)
-print(len(lidc_raw_case_name_list))
-
+Exact09Info = DatasetInfo("/mnt/wangc/EXACT09/Precrop_dataset_for_EXACT09_128")
+Exact09Info.get_case_names("/mnt/wangc/EXACT09/EXACT09_3D", "exact09")
 
 
 # 从文件加载样本的特征表示——————————————————————————
@@ -51,7 +47,6 @@ with open(file_path2, 'rb') as file:
     lidc_embeddings_list = loaded_data['embeddings_list']
     lidc_embeddings_dict = loaded_data['embeddings_dict']
 lidc_stacked_embeddings_numpy = np.stack(lidc_embeddings_list, axis=0)
-
 
 
 ##剔除验证集样本——————————————————————————
@@ -92,16 +87,11 @@ merged_list=list(exact_embeddings_dict.keys())+list(lidc_embeddings_dict.keys())
 print(exact_stacked_embeddings_numpy.shape,lidc_stacked_embeddings_numpy.shape,exact_lidc_concatenated_array.shape)
 
 
-
-
-
 data_shape = exact_lidc_concatenated_array.shape
 
 X_t = exact_lidc_concatenated_array.reshape(data_shape[0], -1)
 
 device2 = torch.device('cuda:7' if torch.cuda.is_available() else 'cpu')
-
-
 
 
 ##聚类中心生成——————————————————————————
@@ -115,7 +105,6 @@ xi=[('e', 3, 166),
  ('l', 438, 362), 
  ('l', 438, 477), 
  ('l', 529, 283)]
-
 
 
 cu=[('e', 3, 418), 
@@ -178,16 +167,11 @@ center_samples = np.concatenate([emb_vectors1_mean, emb_vectors2_mean], axis=0)
 initial_centers = center_samples.reshape(2, -1)
 
 
-
 X_t=from_numpy(X_t).float().to(device2)
 initial_centers =from_numpy(initial_centers).float().to(device2)
 
 
-
-
-
 ##进行聚类——————————————————————————
-from sklearn.cluster import KMeans
 num_clusters=[2]
 cluster_dict={}
 for num_cluster in num_clusters:
