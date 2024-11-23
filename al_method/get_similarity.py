@@ -47,10 +47,10 @@ Exact09Info.get_case_names("/mnt/wangc/EXACT09/EXACT09_3D", "exact09")
 crop_size = ["128", "256"]
 file_insert = crop_size[0]
 exact_embedding_path = (
-    f"/home/wangc/now/NaviAirway/saved_var/exact09_{file_insert}_op_embeddings_data.pkl"
+    f"/mnt/wangc/NaviAirway/saved_var/exact09_{file_insert}_op_embeddings_data.pkl"
 )
 lidc_embedding_path = (
-    f"/home/wangc/now/NaviAirway/saved_var/lidc_{file_insert}_op_embeddings_data.pkl"
+    f"/mnt/wangc/NaviAirway/saved_var/lidc_{file_insert}_op_embeddings_data.pkl"
 )
 
 exact_lidc_concatenated_array, merged_dict, merged_list = load_partial_embeddings(
@@ -94,11 +94,11 @@ for i in range(0, N, batch_size):
             uncertainy_dict[merged_list[index]] = uncertainy_batch[j].cpu().numpy()
 
 
-res_path = "/home/wangc/now/NaviAirway/saved_var/ae1_uncertainy_128_data.pkl"
+res_path = "/home/wangc/now/pure/saved_var/test_1122/kmeans_no_init_cluster_2.pkl"
 # 确保文件夹存在，如果不存在则创建它
 os.makedirs(os.path.dirname(res_path), exist_ok=True)
 
 # 保存到文件
-with open(file_path, "wb") as file:
+with open(res_path, "wb") as file:
     data_to_save = {"uncertainy_dict": uncertainy_dict}
     pickle.dump(data_to_save, file)

@@ -2,6 +2,7 @@ import numpy as np
 import skimage.io as io
 from torch import from_numpy as from_numpy
 import pickle
+from tqdm import tqdm
 
 
 """
@@ -34,11 +35,13 @@ def get_embeddings(
     embeddings_list = []  # 用于存储每个图像的 embeddings[3]
     embeddings_dict = {}
 
+    # 使用tqdm创建进度条
+    pbar = tqdm(total=N, desc="Processing images")
+
     for name in raw_case_name_list:
         if i < N:
             i += 1
             img_addr = Precrop_dataset_path + "/image" + "/" + name
-            print(f"this is {i}")  # todo:换成log
             img = io.imread(img_addr, plugin="simpleitk")
 
             start_points = random3dcrop.random_crop_start_point(img.shape)  # 起点
@@ -72,8 +75,11 @@ def get_embeddings(
                 embeddings_dict[name] = emb
                 del img_tensor
 
-    return embeddings_list, embeddings_dict
+            pbar.update(1)
 
+    pbar.close()
+
+    return embeddings_list, embeddings_dict
 
 def load_partial_embeddings(file_path1, file_path2, train_names=None, test_names=None):
     with open(file_path1, "rb") as file:
