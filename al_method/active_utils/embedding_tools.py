@@ -81,19 +81,15 @@ def get_embeddings(
 
     return embeddings_list, embeddings_dict
 
-def load_partial_embeddings(file_path1, file_path2, train_names=None, test_names=None):
-    with open(file_path1, "rb") as file:
-        loaded_data = pickle.load(file)
-        exact_embeddings_list = loaded_data["embeddings_list"]
-        exact_embeddings_dict = loaded_data["embeddings_dict"]
 
+def load_partial_embeddings2(
+    exact_embeddings_dict, lidc_embeddings_dict, train_names=None, test_names=None
+):
+
+    exact_embeddings_list = [value for value in exact_embeddings_dict.values()]
     exact_stacked_embeddings_numpy = np.stack(exact_embeddings_list, axis=0)
 
-    with open(file_path2, "rb") as file:
-        loaded_data = pickle.load(file)
-        lidc_embeddings_list = loaded_data["embeddings_list"]
-        lidc_embeddings_dict = loaded_data["embeddings_dict"]
-    # print('exact',len(exact_embeddings_dict),'lidc',len(lidc_embeddings_dict))
+    lidc_embeddings_list = [value for value in lidc_embeddings_dict.values()]
     lidc_stacked_embeddings_numpy = np.stack(lidc_embeddings_list, axis=0)
     names = [
         "EXACT09_CASE01",
@@ -194,3 +190,118 @@ def load_partial_embeddings(file_path1, file_path2, train_names=None, test_names
     merged_list = list(exact_embeddings_dict.keys()) + list(lidc_embeddings_dict.keys())
 
     return exact_lidc_concatenated_array, merged_dict, merged_list
+
+
+# def load_partial_embeddings(file_path1, file_path2, train_names=None, test_names=None):
+#     with open(file_path1, "rb") as file:
+#         loaded_data = pickle.load(file)
+#         exact_embeddings_list = loaded_data["embeddings_list"]
+#         exact_embeddings_dict = loaded_data["embeddings_dict"]
+
+#     exact_stacked_embeddings_numpy = np.stack(exact_embeddings_list, axis=0)
+
+#     with open(file_path2, "rb") as file:
+#         loaded_data = pickle.load(file)
+#         lidc_embeddings_list = loaded_data["embeddings_list"]
+#         lidc_embeddings_dict = loaded_data["embeddings_dict"]
+#     # print('exact',len(exact_embeddings_dict),'lidc',len(lidc_embeddings_dict))
+#     lidc_stacked_embeddings_numpy = np.stack(lidc_embeddings_list, axis=0)
+#     names = [
+#         "EXACT09_CASE01",
+#         "EXACT09_CASE02",
+#         "EXACT09_CASE03",
+#         "EXACT09_CASE04",
+#         "EXACT09_CASE05",
+#         "EXACT09_CASE06",
+#         "EXACT09_CASE07",
+#         "EXACT09_CASE08",
+#         "EXACT09_CASE09",
+#         "EXACT09_CASE10",
+#         "EXACT09_CASE11",
+#         "EXACT09_CASE12",
+#         "EXACT09_CASE13",
+#         "EXACT09_CASE14",
+#         "EXACT09_CASE15",
+#         "EXACT09_CASE16",
+#         "EXACT09_CASE17",
+#         "EXACT09_CASE18",
+#         "EXACT09_CASE19",
+#         "EXACT09_CASE20",
+#         "LIDC_IDRI_0066",
+#         "LIDC_IDRI_0140",
+#         "LIDC_IDRI_0328",
+#         "LIDC_IDRI_0376",
+#         "LIDC_IDRI_0403",
+#         "LIDC_IDRI_0430",
+#         "LIDC_IDRI_0438",
+#         "LIDC_IDRI_0441",
+#         "LIDC_IDRI_0490",
+#         "LIDC_IDRI_0529",
+#         "LIDC_IDRI_0606",
+#         "LIDC_IDRI_0621",
+#         "LIDC_IDRI_0648",
+#         "LIDC_IDRI_0651",
+#         "LIDC_IDRI_0657",
+#         "LIDC_IDRI_0663",
+#         "LIDC_IDRI_0673",
+#         "LIDC_IDRI_0676",
+#         "LIDC_IDRI_0684",
+#         "LIDC_IDRI_0696",
+#         "LIDC_IDRI_0698",
+#         "LIDC_IDRI_0710",
+#         "LIDC_IDRI_0722",
+#         "LIDC_IDRI_0744",
+#         "LIDC_IDRI_0757",
+#         "LIDC_IDRI_0778",
+#         "LIDC_IDRI_0784",
+#         "LIDC_IDRI_0810",
+#         "LIDC_IDRI_0813",
+#         "LIDC_IDRI_0819",
+#         "LIDC_IDRI_0831",
+#         "LIDC_IDRI_0837",
+#         "LIDC_IDRI_0856",
+#         "LIDC_IDRI_0874",
+#         "LIDC_IDRI_0876",
+#         "LIDC_IDRI_0909",
+#         "LIDC_IDRI_0920",
+#         "LIDC_IDRI_0981",
+#         "LIDC_IDRI_1001",
+#         "LIDC_IDRI_1004",
+#     ]
+#     if train_names is None and test_names is None:
+#         assert False
+#     if train_names is None:
+#         train_names = [name for name in names if name not in test_names]
+#     i = 0
+#     new_list = []
+#     new_dict = {}
+#     for key, v in exact_embeddings_dict.items():
+#         # print(key,key[:14])
+#         if key[:14] in train_names or key in train_names:
+#             new_list.append(exact_embeddings_list[i])
+#             new_dict[key] = exact_embeddings_dict[key]
+#         i += 1
+#     exact_embeddings_list = new_list
+#     exact_embeddings_dict = new_dict
+
+#     i = 0
+#     new_list = []
+#     new_dict = {}
+#     for key, v in lidc_embeddings_dict.items():
+#         if key[:14] in train_names or key in train_names:
+#             new_list.append(lidc_embeddings_list[i])
+#             new_dict[key] = lidc_embeddings_dict[key]
+#         i += 1
+#     lidc_embeddings_list = new_list
+#     lidc_embeddings_dict = new_dict
+
+#     exact_stacked_embeddings_numpy = np.stack(exact_embeddings_list, axis=0)
+#     lidc_stacked_embeddings_numpy = np.stack(lidc_embeddings_list, axis=0)
+
+#     exact_lidc_concatenated_array = np.concatenate(
+#         (exact_stacked_embeddings_numpy, lidc_stacked_embeddings_numpy), axis=0
+#     )
+#     merged_dict = {**exact_embeddings_dict, **lidc_embeddings_dict}
+#     merged_list = list(exact_embeddings_dict.keys()) + list(lidc_embeddings_dict.keys())
+
+#     return exact_lidc_concatenated_array, merged_dict, merged_list
