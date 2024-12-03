@@ -3,7 +3,8 @@ import numpy as np
 
 
 class DatasetInfo:
-    def __init__(self, precrop_dataset):
+
+    def __init__(self, precrop_dataset, dataset_name, crop_size):
         """
         初始化函数，接收预裁剪数据集的路径作为参数
 
@@ -14,6 +15,8 @@ class DatasetInfo:
         self.label_path = precrop_dataset + "/label"
         self.raw_case_name_list = os.listdir(self.raw_path)
         self.label_case_name_list = os.listdir(self.label_path)
+        self.dataset_name = dataset_name
+        self.crop_size = crop_size
 
     def get_case_names(self, niigz_path, tag=None):
         """

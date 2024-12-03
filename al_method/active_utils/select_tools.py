@@ -1,10 +1,64 @@
 import torch
 from torch import from_numpy as from_numpy
+import pickle
+import random
+from .file_tools import save_obj, load_obj
 
 
-def select_from_candidates(
-    select_num, candidates_array, candidates_dict, candidates_list, device
+def extract_random_num_percent_by_key(num, dictionary):  # 随机抽取字典中num个样本
+    keys = list(dictionary.keys())
+    random.shuffle(keys)
+    randon_dict = {key: dictionary[key] for key in keys}
+
+    num_elements = len(keys)
+    num_to_extract = int(num_elements * num)
+    top_num_percent_keys = keys[:num_to_extract]
+    return {key: randon_dict[key] for key in top_num_percent_keys}
+
+
+def select_from_uncertainy(
+    uncertainy_path, data_dict1, data_dict2, num, save_path=None
 ):
+    # 对于negtive,抽取m%的样本
+    def extract_random_num_percent_by_key(num, dictionary):  # 随机抽取字典中num个样本
+        keys = list(dictionary.keys())
+        random.shuffle(keys)
+        randon_dict = {key: dictionary[key] for key in keys}
+
+        num_elements = len(keys)
+        num_to_extract = int(num_elements * num)
+        top_num_percent_keys = keys[:num_to_extract]
+        return {key: randon_dict[key] for key in top_num_percent_keys}
+
+    result_dict = extract_random_num_percent_by_key(num, data_dict2)
+    # 计算从uncertainy抽取的样本数num3
+    num1 = int(num * len(data_dict1))
+    num2 = len(result_dict)
+    num3 = num1 - num2
+
+    # 读取uncertainy_dict
+
+    loaded_data = load_obj(uncertainy_path)
+    uncertainy_dict = loaded_data["uncertainy_dict"]
+    print(len(uncertainy_dict))
+    # 将uncertainy升序排序
+    sorted_dict = dict(sorted(uncertainy_dict.items(), key=lambda item: item[1]))
+    sorted_list = list(sorted_dict.keys())
+
+    # 抽取前sample_number个样本并放入result_dict
+    al_list = sorted_list[:num3]
+    for i in al_list:
+        print(i)
+        temp = i[:-7]
+        result_dict[temp] = data_dict1[temp]
+
+    # 使用save_obj函数保存
+    if save_path is not None:
+        save_obj(result_dict, save_path)
+    return num1, num2, num3
+
+
+def select_from_candidates(select_num, candidates_array, candidates_list, device):
     def sim(a, b):
         # 调整输入张量的维度
         a = a.view(a.size(0), -1)

@@ -1,7 +1,17 @@
+import psutil
 import pickle
 import time
 import subprocess
 import os
+
+
+def print_memory_usage(msg=""):
+    process = psutil.Process(os.getpid())
+    memory_info = process.memory_info()
+    print(
+        f"{msg} | Memory Usage: {memory_info.rss / 1024 / 1024:.2f} MB"
+    )  # 输出当前进程的内存占用
+
 
 """
     加载/读取 pkl文件
