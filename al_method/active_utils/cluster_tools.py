@@ -175,3 +175,89 @@ def analysis_cluster(label_path, raw_case_name_list=None, slice_index=None):
     std_deviation = np.std(pixels_num_list)
     num_sample = len(label_img_list)
     return mean_value, std_deviation, num_sample  # 均值和标准差
+
+
+def mini_batch_kmeans(
+    X,
+    num_clusters,
+    distance="euclidean",
+    tol=1e-4,
+    init=None,
+    max_iter=3000,
+    batch_size=64,
+    device=torch.device("cpu"),
+    random_state=None,
+):
+    """
+    perform mini-batch kmeans
+    :param X: (torch.tensor) matrix
+    :param num_clusters: (int) number of clusters
+    :param distance: (str) Dienstance [options: 'euclidean', 'cosine'] [default: 'euclidean']
+    :param tol: (float) threshold [default: 0.0001]
+    :param init: (str or torch.tensor) initialization method [options: 'k-means++', 'random', or custom tensor]
+                 [default: 'k-means++']
+    :param max_iter: (int) maximum number of iterations [default: 300]
+    :param batch_size: (int) size of each mini-batch [default: 64]
+    :param device: (torch.device) device [default: cpu]
+    :param random_state: (int or RandomState) seed or RandomState for reproducibility [default: None]
+    :return: (torch.tensor, torch.tensor) cluster ids, cluster centers
+    """
+    print(f"running mini-batch k-means on {device}..")
+
+    if distance == "euclidean":
+        pairwise_distance_function = pairwise_distance
+    elif distance == "cosine":
+        pairwise_distance_function = pairwise_cosine
+    else:
+        raise NotImplementedError
+
+    # convert to float
+    X = X.float()
+
+    # initialize
+    initial_state = initialize(X, num_clusters, init=init, random_state=random_state)
+
+    iteration = 0
+    tqdm_meter = tqdm(desc="[running mini-batch kmeans]")
+    while True:
+        # 分批处理数据
+        for start_idx in range(0, X.shape[0], batch_size):
+            end_idx = min(start_idx + batch_size, X.shape[0])
+
+            # 将当前小批量数据加载到设备
+            X_batch = X[start_idx:end_idx].to(device)
+
+            dis = pairwise_distance_function(X_batch, initial_state)
+
+            choice_cluster = torch.argmin(dis, dim=1)
+
+            initial_state_pre = initial_state.clone()
+
+            for index in range(num_clusters):
+                selected = torch.nonzero(choice_cluster == index).squeeze().to(device)
+
+                selected = torch.index_select(X_batch, 0, selected)
+                initial_state[index] = selected.mean(dim=0)
+
+            center_shift = torch.sum(
+                torch.sqrt(torch.sum((initial_state - initial_state_pre) ** 2, dim=1))
+            )
+
+            # increment iteration
+            iteration += 1
+
+            # update tqdm meter
+            tqdm_meter.set_postfix(
+                iteration=f"{iteration}",
+                center_shift=f"{center_shift ** 2:0.6f}",
+                tol=f"{tol:0.6f}",
+            )
+            tqdm_meter.update()
+
+            if center_shift**2 < tol or iteration >= max_iter:
+                break
+
+        if center_shift**2 < tol or iteration >= max_iter:
+            break
+
+    return choice_cluster.cpu(), initial_state.cpu()
