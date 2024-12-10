@@ -63,7 +63,7 @@ logging.info("Script Arguments:")
 for arg, value in vars(args).items():
     logging.info(f"{arg}: {value}")
 
-use_gpu = str(args.use_ggpu)
+use_gpu = str(args.use_gpu)
 checkpoint_path = str(args.checkpoint_path)
 data_info_path = str(args.data_info_path)
 
