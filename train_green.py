@@ -7,6 +7,7 @@ import sys
 import logging
 
 sys.path.append("..")
+sys.path.append("/home/wangc/now/pure/ALinAirway/func")  # 根据实际情况调整路径
 from func.load_dataset import airway_dataset
 from func.model_arch import SegAirwayModel
 from func.loss_func import (
@@ -16,7 +17,6 @@ from func.loss_func import (
 )
 from func.ulti import load_obj
 import argparse
-
 
 # python train_with_args.py --use_gpu cuda:7 --checkpoint_path /home/wangc/now/NaviAirway/checkpoint/check_point_0119/ae120_test_checkpoint.pth --data_info_path /home/wangc/now/NaviAirway/saved_objs/for_128_objs/training_info_0119/ae1_info_20.pkl --log_name training_test_0811.log
 def parse_arguments():
@@ -29,10 +29,10 @@ def parse_arguments():
         help='Specify GPU usage (e.g., "--use_gpu cuda:0")',
     )
     parser.add_argument(
-        "--checkpoint_path",
+        "--save_name",
         type=str,
-        default="",
-        help='Specify checkpoint save address (e.g., "--checkpoint_path /path/to/save")',
+        required=True,
+        help='Specify a base name for saving the checkpoint and log (e.g., "random20_dsc_1214_1513")',
     )
     parser.add_argument(
         "--data_info_path",
@@ -40,22 +40,24 @@ def parse_arguments():
         default="",
         help='Specify dataset info load address (e.g., "--data_info_path /path/to/load")',
     )
-    parser.add_argument(
-        "--log_name",
-        type=str,
-        default="training_log.log",
-        help='Specify log file name (e.g., "--log_name training.log")',
-    )
 
     return parser.parse_args()
+
+
 args = parse_arguments()
 
 # Configure logging
-log_filename = args.log_name
+
+ck_dir = "/home/wangc/now/pure/save_checkpoint"  # 模型存储路径
+log_dir = "/home/wangc/now/pure/save_log"  # 日志存储路径
+
+checkpoint_path = os.path.join(ck_dir, args.save_name + ".pth")
+log_name = os.path.join(log_dir, args.save_name + ".log")
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler(log_filename), logging.StreamHandler(sys.stdout)],
+    handlers=[logging.FileHandler(log_name), logging.StreamHandler(sys.stdout)],
 )
 
 # Log all arguments
@@ -64,7 +66,7 @@ for arg, value in vars(args).items():
     logging.info(f"{arg}: {value}")
 
 use_gpu = str(args.use_gpu)
-checkpoint_path = str(args.checkpoint_path)
+checkpoint_path = str(checkpoint_path)
 data_info_path = str(args.data_info_path)
 
 if checkpoint_path == "" or data_info_path == "":
@@ -79,7 +81,7 @@ learning_rate = 1e-5
 max_epoch = 50
 freq_switch_of_train_mode_high_low_generation = 1
 num_samples_of_each_epoch = 20000
-batch_size = 8
+batch_size = 4
 train_file_format = ".nii.gz"
 crop_size = (32, 128, 128)
 windowMin_CT_img_HU = -1000
@@ -136,7 +138,6 @@ for ith_epoch in range(max_epoch):
     )
 
     len_dataset_loader = len(dataset_loader)
-
     for ith_batch, batch in enumerate(dataset_loader):
         img_input = batch["image"].float().to(device)
         groundtruth_foreground = batch["label"].float().to(device)
@@ -171,6 +172,7 @@ for ith_epoch in range(max_epoch):
         time_consumption = time.time() - start_time
 
         if ith_batch in [1, 100, len_dataset_loader]:
+            # if ith_batch != -1:
             logging.info(
                 f"epoch [{ith_epoch + 1}/{max_epoch}]\t"
                 f"batch [{ith_batch}/{len_dataset_loader}]\t"

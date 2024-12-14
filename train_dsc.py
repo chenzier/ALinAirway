@@ -17,16 +17,6 @@ from func.loss_func import (
 )
 from func.ulti import load_obj
 import argparse
-import psutil
-
-
-def print_memory_usage(msg=""):
-    process = psutil.Process(os.getpid())
-    memory_info = process.memory_info()
-    print(
-        f"{msg} | Memory Usage: {memory_info.rss / 1024 / 1024:.2f} MB"
-    )  # 输出当前进程的内存占用
-
 
 # python train_with_args.py --use_gpu cuda:7 --checkpoint_path /home/wangc/now/NaviAirway/checkpoint/check_point_0119/ae120_test_checkpoint.pth --data_info_path /home/wangc/now/NaviAirway/saved_objs/for_128_objs/training_info_0119/ae1_info_20.pkl --log_name training_test_0811.log
 def parse_arguments():
@@ -39,22 +29,16 @@ def parse_arguments():
         help='Specify GPU usage (e.g., "--use_gpu cuda:0")',
     )
     parser.add_argument(
-        "--checkpoint_path",
+        "--save_name",
         type=str,
-        default="",
-        help='Specify checkpoint save address (e.g., "--checkpoint_path /path/to/save")',
+        required=True,
+        help='Specify a base name for saving the checkpoint and log (e.g., "random20_dsc_1214_1513")',
     )
     parser.add_argument(
         "--data_info_path",
         type=str,
         default="",
         help='Specify dataset info load address (e.g., "--data_info_path /path/to/load")',
-    )
-    parser.add_argument(
-        "--log_name",
-        type=str,
-        default="training_log.log",
-        help='Specify log file name (e.g., "--log_name training.log")',
     )
 
     return parser.parse_args()
@@ -63,11 +47,17 @@ def parse_arguments():
 args = parse_arguments()
 
 # Configure logging
-log_filename = args.log_name
+
+ck_dir = "/home/wangc/now/pure/save_checkpoint"  # 模型存储路径
+log_dir = "/home/wangc/now/pure/save_log"  # 日志存储路径
+
+checkpoint_path = os.path.join(ck_dir, args.save_name + ".pth")
+log_name = os.path.join(log_dir, args.save_name + ".log")
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler(log_filename), logging.StreamHandler(sys.stdout)],
+    handlers=[logging.FileHandler(log_name), logging.StreamHandler(sys.stdout)],
 )
 
 # Log all arguments
@@ -76,7 +66,7 @@ for arg, value in vars(args).items():
     logging.info(f"{arg}: {value}")
 
 use_gpu = str(args.use_gpu)
-checkpoint_path = str(args.checkpoint_path)
+checkpoint_path = str(checkpoint_path)
 data_info_path = str(args.data_info_path)
 
 if checkpoint_path == "" or data_info_path == "":
@@ -192,7 +182,6 @@ for ith_epoch in range(max_epoch):
                 f"fore pix {fore_pix_per * 100:.2f}%\t"
                 f"back pix {back_pix_per * 100:.2f}%\t"
             )
-            print_memory_usage(f"{ith_batch}")
 
     del dataset_loader
     gc.collect()
