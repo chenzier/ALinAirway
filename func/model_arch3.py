@@ -490,61 +490,44 @@ class Decoder(nn.Module):
 
 
 class SegAirwayModel(nn.Module):
-    """
-    Args:
-        in_channels (int): number of input channels
-        out_channels (int): number of output segmentation masks;
-            Note that that the of out_channels might correspond to either
-            different semantic classes or to different binary segmentation mask.
-            It's up to the user of the class to interpret the out_channels and
-            use the proper loss criterion during training (i.e. CrossEntropyLoss (multi-class)
-            or BCEWithLogitsLoss (two-class) respectively)
-        layer_order (string): determines the order of layers
-            in `SingleConv` module. e.g. 'crg' stands for Conv3d+ReLU+GroupNorm3d.
-            See `SingleConv` for more info
-    """
-
-    # model=SegAirwayModel(in_channels=1, out_channels=2)
-
     def __init__(self, in_channels, out_channels, layer_order="gcr", **kwargs):
         super(SegAirwayModel, self).__init__()
-        # We simply adapted the down-sampling and up-sampling operations by introducing a new feature extraction module which consists of one dilated convolution, one self-attention block, and two typical convolutional kernels .
-        # Compared with the conventional convolution kernels, the proposed feature extraction module helps to extract features from a larger surrounding area to avoid the interference from
-        # other tubular shapes
-        # create encoder
+
+        # Adjusted encoder layers with reduced channels
         encoder_1 = Encoder(
             in_channels=in_channels,
-            middle_channels=16,
-            out_channels=32,
+            middle_channels=8,  # Reduced
+            out_channels=16,  # Reduced
             apply_pooling=False,
             conv_kernel_size=3,
             pool_kernel_size=2,
             pool_type="max",
             conv_layer_order=layer_order,
-            num_groups=8,
+            num_groups=4,  # Adjusted for fewer channels
             padding=1,
             stride=1,
             use_dsc=True,
         )
 
         encoder_2 = Encoder(
-            in_channels=32,
-            middle_channels=32,
-            out_channels=64,
+            in_channels=16,  # Adjusted
+            middle_channels=16,  # Reduced
+            out_channels=32,  # Reduced
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
             pool_type="max",
             conv_layer_order=layer_order,
-            num_groups=8,
+            num_groups=4,
             padding=1,
             stride=1,
+            use_dsc=False,
         )
 
         encoder_3 = Encoder(
-            in_channels=64,
-            middle_channels=64,
-            out_channels=128,
+            in_channels=32,  # Adjusted
+            middle_channels=32,  # Reduced
+            out_channels=64,  # Reduced
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -553,12 +536,13 @@ class SegAirwayModel(nn.Module):
             num_groups=8,
             padding=1,
             stride=1,
+            use_dsc=False,
         )
 
         encoder_4 = Encoder(
-            in_channels=128,
-            middle_channels=128,
-            out_channels=256,
+            in_channels=64,  # Adjusted
+            middle_channels=64,  # Reduced
+            out_channels=128,  # Reduced
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -567,49 +551,18 @@ class SegAirwayModel(nn.Module):
             num_groups=8,
             padding=1,
             stride=1,
+            use_dsc=False,
         )
 
         self.encoders = nn.ModuleList([encoder_1, encoder_2, encoder_3, encoder_4])
 
-        # create decoder 除了通道维都相同
+        # Adjusted decoder layers with reduced channels
         decoder_1 = Decoder(
-            in_channels=256,
-            upsample_out_channels=256,
-            conv_in_channels=384,
-            conv_middle_channels=128,
-            out_channels=128,
-            conv_kernel_size=3,
-            conv_layer_order=layer_order,
-            num_groups=8,
-            conv_padding=1,
-            conv_stride=1,
-            deconv_kernel_size=4,
-            deconv_stride=(2, 2, 2),
-            deconv_padding=1,
-        )
-
-        decoder_2 = Decoder(
-            in_channels=128,
-            upsample_out_channels=128,
-            conv_in_channels=192,
-            conv_middle_channels=64,
-            out_channels=64,
-            conv_kernel_size=3,
-            conv_layer_order=layer_order,
-            num_groups=8,
-            conv_padding=1,
-            conv_stride=1,
-            deconv_kernel_size=4,
-            deconv_stride=(2, 2, 2),
-            deconv_padding=1,
-        )
-
-        decoder_3 = Decoder(
-            in_channels=64,
-            upsample_out_channels=64,
-            conv_in_channels=96,
-            conv_middle_channels=32,
-            out_channels=32,
+            in_channels=128,  # Adjusted
+            upsample_out_channels=128,  # Adjusted
+            conv_in_channels=192,  # Reduced
+            conv_middle_channels=64,  # Reduced
+            out_channels=64,  # Reduced
             conv_kernel_size=3,
             conv_layer_order=layer_order,
             num_groups=8,
@@ -621,13 +574,45 @@ class SegAirwayModel(nn.Module):
             use_dsc=False,
         )
 
+        decoder_2 = Decoder(
+            in_channels=64,  # Adjusted
+            upsample_out_channels=64,  # Adjusted
+            conv_in_channels=96,  # Reduced
+            conv_middle_channels=32,  # Reduced
+            out_channels=32,  # Reduced
+            conv_kernel_size=3,
+            conv_layer_order=layer_order,
+            num_groups=4,
+            conv_padding=1,
+            conv_stride=1,
+            deconv_kernel_size=4,
+            deconv_stride=(2, 2, 2),
+            deconv_padding=1,
+            use_dsc=False,
+        )
+
+        decoder_3 = Decoder(
+            in_channels=32,  # Adjusted
+            upsample_out_channels=32,  # Adjusted
+            conv_in_channels=48,  # Reduced
+            conv_middle_channels=16,  # Reduced
+            out_channels=16,  # Reduced
+            conv_kernel_size=3,
+            conv_layer_order=layer_order,
+            num_groups=4,
+            conv_padding=1,
+            conv_stride=1,
+            deconv_kernel_size=4,
+            deconv_stride=(2, 2, 2),
+            deconv_padding=1,
+            use_dsc=True,
+        )
+
         self.decoders = nn.ModuleList([decoder_1, decoder_2, decoder_3])
 
-        # in the last layer a 1×1 convolution reduces the number of output
-        # channels to the number of labels
-        # 最后还有一个1x1卷积层，用于改变channle数量
+        # Final 1x1 convolution to match the number of output channels
         self.final_conv = nn.Conv3d(
-            in_channels=32,
+            in_channels=16,  # Adjusted
             out_channels=out_channels,
             kernel_size=3,
             padding=1,
@@ -635,17 +620,6 @@ class SegAirwayModel(nn.Module):
         )
 
         self.final_activation = nn.Softmax(dim=1)
-
-    def get_embedding(self, x):
-        encoders_features = []
-        # print('intial shape', x.shape)
-        for encoder in self.encoders:
-            x = encoder(x)
-            encoders_features.append(x)
-
-            # reverse the encoder outputs to be aligned with the decoder
-
-        return encoders_features
 
     def forward(self, x):
         # encoder part
@@ -670,10 +644,10 @@ class SegAirwayModel(nn.Module):
             # of the previous decoder
             x = decoder(encoder_features, x)
 
-            print(f"the {j} decoder shape is {x.shape}")
+            # print(f"the {j} decoder shape is {x.shape}")
             j += 1
         x = self.final_conv(x)
-        print("final conv ", x.shape)
+        # print("final conv ", x.shape)
         x = self.final_activation(x)
-        print("**************************************************")
+        # print("**************************************************")
         return x
