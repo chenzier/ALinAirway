@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import torch
 import numpy as np
 from functools import partial
+from Dsc_conv import DCN_Conv
 
 
 # for name, module in create_conv(in_channels, out_channels, kernel_size, order, num_groups, padding=padding, stride=stride, dilation=dilation):
@@ -36,23 +37,25 @@ def create_conv(
     Return:
         list of tuple (name, module)
     """
-    assert 'c' in order, "Conv layer MUST be present"
-    assert order[0] not in 'rle', 'Non-linearity cannot be the first operation in the layer'
+    assert "c" in order, "Conv layer MUST be present"
+    assert (
+        order[0] not in "rle"
+    ), "Non-linearity cannot be the first operation in the layer"
 
     modules = []
     # order=gcr,看看是不是全是gcr
     for i, char in enumerate(order):
-        if char == 'r':
-            modules.append(('ReLU', nn.ReLU(inplace=True)))
-        elif char == 'l':
+        if char == "r":
+            modules.append(("ReLU", nn.ReLU(inplace=True)))
+        elif char == "l":
             modules.append(
                 ("LeakyReLU", nn.LeakyReLU(negative_slope=0.1, inplace=True))
             )
-        elif char == 'e':
-            modules.append(('ELU', nn.ELU(inplace=True)))
-        elif char == 'c':
+        elif char == "e":
+            modules.append(("ELU", nn.ELU(inplace=True)))
+        elif char == "c":
             # add learnable bias only in the absence of batchnorm/groupnorm
-            bias = not ('g' in order or 'b' in order)
+            bias = not ("g" in order or "b" in order)
             modules.append(
                 (
                     "conv",
@@ -67,7 +70,7 @@ def create_conv(
                     ),
                 )
             )
-        elif char == 'g':
+        elif char == "g":
             is_before_conv = i < order.index("c")  # 在conv之前用g还是之后用
             if is_before_conv:
                 num_channels = in_channels
@@ -79,19 +82,21 @@ def create_conv(
             if num_channels < num_groups:  # num_groups=8
                 num_groups = 1
 
-            assert num_channels % num_groups == 0, f'Expected number of channels in input to be divisible by num_groups. num_channels={num_channels}, num_groups={num_groups}'
+            assert (
+                num_channels % num_groups == 0
+            ), f"Expected number of channels in input to be divisible by num_groups. num_channels={num_channels}, num_groups={num_groups}"
             modules.append(
                 (
                     "groupnorm",
                     nn.GroupNorm(num_groups=num_groups, num_channels=num_channels),
                 )
             )
-        elif char == 'b':
-            is_before_conv = i < order.index('c')
+        elif char == "b":
+            is_before_conv = i < order.index("c")
             if is_before_conv:
-                modules.append(('batchnorm', nn.BatchNorm3d(in_channels)))
+                modules.append(("batchnorm", nn.BatchNorm3d(in_channels)))
             else:
-                modules.append(('batchnorm', nn.BatchNorm3d(out_channels)))
+                modules.append(("batchnorm", nn.BatchNorm3d(out_channels)))
         else:
             raise ValueError(
                 f"Unsupported layer type '{char}'. MUST be one of ['b', 'g', 'r', 'l', 'e', 'c']"
@@ -114,12 +119,23 @@ class SingleConv(nn.Sequential):
             'crg' -> conv + ReLU + groupnorm
             'cl' -> conv + LeakyReLU
             'ce' -> conv + ELU
-        num_groups (int): number of groups for the GroupNorm 
+        num_groups (int): number of groups for the GroupNorm
         padding (int or tuple):
     """
+
     # self.conv1 = SingleConv(in_channels, middle_channels, conv_kernel_size, conv_layer_order, num_groups, padding=padding, stride=stride)
 
-    def __init__(self, in_channels, out_channels, kernel_size=3, order='gcr', num_groups=8, padding=1, stride=1, dilation=1):
+    def __init__(
+        self,
+        in_channels,
+        out_channels,
+        kernel_size=3,
+        order="gcr",
+        num_groups=8,
+        padding=1,
+        stride=1,
+        dilation=1,
+    ):
         super(SingleConv, self).__init__()
         # creat_conv的output是一个字典
         for name, module in create_conv(
@@ -144,7 +160,8 @@ class AttModule(nn.Module):  # SE_Net
             nn.Linear(channel, mid_channel, bias=False),
             nn.ReLU(inplace=True),
             nn.Linear(mid_channel, channel, bias=False),
-            nn.Sigmoid())
+            nn.Sigmoid(),
+        )
 
     def forward(self, x):
         b, c, _, _, _ = x.size()
@@ -165,7 +182,7 @@ class AttModule(nn.Module):  # SE_Net
 
 class Encoder(nn.Module):
     """
-    A single encoder module consisting of 
+    A single encoder module consisting of
     单个encoder的组成:
     (1)连续的两个卷积层(例如 BN3d+ReLU+Conv3d)
     参数order可改变encoder的结构
@@ -187,6 +204,7 @@ class Encoder(nn.Module):
         num_groups (int): number of groups for the GroupNorm
         padding (int or tuple): add zero-padding added to all three sides of the input
     """
+
     # encoder_1 = Encoder(in_channels=in_channels, middle_channels=16, out_channels=32, apply_pooling=False, conv_kernel_size=3, pool_kernel_size=2, pool_type='max', conv_layer_order=layer_order, num_groups=8, padding=1, stride=1)
 
     def __init__(
@@ -205,9 +223,9 @@ class Encoder(nn.Module):
         stride=1,
     ):
         super(Encoder, self).__init__()
-        assert pool_type in ['max', 'avg']
+        assert pool_type in ["max", "avg"]
         if apply_pooling:
-            if pool_type == 'max':
+            if pool_type == "max":
                 self.pooling = nn.MaxPool3d(kernel_size=pool_kernel_size)
             else:
                 self.pooling = nn.AvgPool3d(kernel_size=pool_kernel_size)
@@ -224,8 +242,42 @@ class Encoder(nn.Module):
             padding=padding,
             stride=stride,
         )
-        # conv2
+
+        self.conv2x = DCN_Conv(
+            in_ch=middle_channels,
+            out_ch=middle_channels,
+            kernel_size=conv_kernel_size,
+            extend_scope=1.0,
+            morph=0,
+            if_offset=True,
+        )
+        self.conv2y = DCN_Conv(
+            in_ch=middle_channels,
+            out_ch=middle_channels,
+            kernel_size=conv_kernel_size,
+            extend_scope=1.0,
+            morph=1,
+            if_offset=True,
+        )
+        self.conv2z = DCN_Conv(
+            in_ch=middle_channels,
+            out_ch=middle_channels,
+            kernel_size=conv_kernel_size,
+            extend_scope=1.0,
+            morph=2,
+            if_offset=True,
+        )
+        # conv3
         self.conv2 = SingleConv(
+            middle_channels * 3,
+            middle_channels,
+            conv_kernel_size,
+            conv_layer_order,
+            num_groups,
+            padding=padding,
+            stride=stride,
+        )
+        self.conv3 = SingleConv(
             middle_channels,
             out_channels,
             conv_kernel_size,
@@ -234,30 +286,24 @@ class Encoder(nn.Module):
             padding=padding,
             stride=stride,
         )
+        # # 相比前两层padding=(4,4,4)且dilation=4
+        # # We adopted dilated convolutions as they enlarged the feature extraction area without increasing the size of the model.
+        # self.dilation_conv = SingleConv(middle_channels, middle_channels, (3, 3, 3), conv_layer_order,
+        #                                 num_groups, padding=(4, 4, 4), stride=stride, dilation=4)
 
-        # 相比前两层padding=(4,4,4)且dilation=4
-        # We adopted dilated convolutions as they enlarged the feature extraction area without increasing the size of the model.
-        self.dilation_conv = SingleConv(
-            middle_channels,
-            middle_channels,
-            (3, 3, 3),
-            conv_layer_order,
-            num_groups,
-            padding=(4, 4, 4),
-            stride=stride,
-            dilation=4,
-        )
-
-        self.att = AttModule(channel=middle_channels)  # SEnet
+        self.att = AttModule(channel=3 * middle_channels)  # SEnet
+        # 3代表cat了三个特征图
 
     def forward(self, x):
         if self.pooling is not None:
             x = self.pooling(x)
         x = self.conv1(x)
-        x = x + self.att(
-            self.dilation_conv(x)
-        )  # 注意看原文的模型图，只有空洞卷积用了注意力
-        x = self.conv2(x)
+        x_2x_0 = self.conv2x(x)
+        x_2y_0 = self.conv2y(x)
+        x_2z_0 = self.conv2z(x)
+        x_2 = torch.cat([x_2x_0, x_2y_0, x_2z_0], dim=1)
+        x = x + self.conv2(self.att(x_2))
+        x = self.conv3(x)
 
         return x
 
@@ -282,7 +328,7 @@ class Decoder(nn.Module):
             in `DoubleConv` module. See `DoubleConv` for more info.
         num_groups (int): number of groups for the GroupNorm
         padding (int or tuple): add zero-padding added to all three sides of the input
-        is_deconv (bool): 
+        is_deconv (bool):
     """
 
     # decoder_1 = Decoder(in_channels=256, upsample_out_channels=256, conv_in_channels=384,
@@ -331,8 +377,42 @@ class Decoder(nn.Module):
             padding=conv_padding,
             stride=conv_stride,
         )
-        # conv2
+        self.conv2x = DCN_Conv(
+            in_ch=conv_middle_channels,
+            out_ch=conv_middle_channels,
+            kernel_size=conv_kernel_size,
+            extend_scope=1.0,
+            morph=0,
+            if_offset=True,
+        )
+        self.conv2y = DCN_Conv(
+            in_ch=conv_middle_channels,
+            out_ch=conv_middle_channels,
+            kernel_size=conv_kernel_size,
+            extend_scope=1.0,
+            morph=1,
+            if_offset=True,
+        )
+        self.conv2z = DCN_Conv(
+            in_ch=conv_middle_channels,
+            out_ch=conv_middle_channels,
+            kernel_size=conv_kernel_size,
+            extend_scope=1.0,
+            morph=2,
+            if_offset=True,
+        )
+
         self.conv2 = SingleConv(
+            3 * conv_middle_channels,
+            conv_middle_channels,
+            conv_kernel_size,
+            conv_layer_order,
+            num_groups,
+            padding=conv_padding,
+            stride=conv_stride,
+        )
+        # conv2
+        self.conv3 = SingleConv(
             conv_middle_channels,
             out_channels,
             conv_kernel_size,
@@ -343,17 +423,8 @@ class Decoder(nn.Module):
         )
 
         #
-        self.dilation_conv = SingleConv(
-            conv_middle_channels,
-            conv_middle_channels,
-            (3, 3, 3),
-            conv_layer_order,
-            num_groups,
-            padding=(4, 4, 4),
-            stride=conv_stride,
-            dilation=4,
-        )
-        self.att = AttModule(channel=conv_middle_channels)
+
+        self.att = AttModule(channel=3 * conv_middle_channels)
 
     def forward(self, encoder_features, x):
         # print(x.shape)#torch.Size([4, 256, 4, 16, 16])#注意3D图像不再是HxW,而是XYZ，所有这里三个参数都变了
@@ -363,10 +434,15 @@ class Decoder(nn.Module):
 
         x = self.conv1(x)
         # 3dU-Net的concat部分
-        x = x+self.att(self.dilation_conv(x))
-        x = self.conv2(x)
+        x_2x_0 = self.conv2x(x)
+        x_2y_0 = self.conv2y(x)
+        x_2z_0 = self.conv2z(x)
+        x_2 = torch.cat([x_2x_0, x_2y_0, x_2z_0], dim=1)
+        x = x + self.conv2(self.att(x_2))
+        x = self.conv3(x)
 
         return x
+
     # @staticmethod 是一个装饰器，用于将函数转化为静态方法
     # 静态方法在/home/cs22-wangc/now/NaviAirway/aaa_me/a.ipynb中进行了详细的说明
     # 把它看成concat永远为True即可
@@ -395,6 +471,7 @@ class SegAirwayModel(nn.Module):
             in `SingleConv` module. e.g. 'crg' stands for Conv3d+ReLU+GroupNorm3d.
             See `SingleConv` for more info
     """
+
     # model=SegAirwayModel(in_channels=1, out_channels=2)
 
     def __init__(self, in_channels, out_channels, layer_order="gcr", **kwargs):
