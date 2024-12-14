@@ -91,7 +91,7 @@ learning_rate = 1e-5
 max_epoch = 50
 freq_switch_of_train_mode_high_low_generation = 1
 num_samples_of_each_epoch = 20000
-batch_size = 8
+batch_size = 4
 train_file_format = ".nii.gz"
 crop_size = (32, 128, 128)
 windowMin_CT_img_HU = -1000
@@ -181,8 +181,8 @@ for ith_epoch in range(max_epoch):
 
         time_consumption = time.time() - start_time
 
-        # if ith_batch in [1, 100, len_dataset_loader]:
-        if ith_batch != -1:
+        if ith_batch in [1, 100, len_dataset_loader]:
+            # if ith_batch != -1:
             logging.info(
                 f"epoch [{ith_epoch + 1}/{max_epoch}]\t"
                 f"batch [{ith_batch}/{len_dataset_loader}]\t"

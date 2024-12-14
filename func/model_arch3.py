@@ -221,6 +221,7 @@ class Encoder(nn.Module):
         num_groups=8,  # 几个groups
         padding=1,
         stride=1,
+        use_dsc=False,
     ):
         super(Encoder, self).__init__()
         assert pool_type in ["max", "avg"]
@@ -231,7 +232,7 @@ class Encoder(nn.Module):
                 self.pooling = nn.AvgPool3d(kernel_size=pool_kernel_size)
         else:
             self.pooling = None
-
+        self.use_dsc = use_dsc
         # conv1
         self.conv1 = SingleConv(
             in_channels,
@@ -242,41 +243,52 @@ class Encoder(nn.Module):
             padding=padding,
             stride=stride,
         )
-
-        self.conv2x = DCN_Conv(
-            in_ch=middle_channels,
-            out_ch=middle_channels,
-            kernel_size=conv_kernel_size,
-            extend_scope=1.0,
-            morph=0,
-            if_offset=True,
-        )
-        self.conv2y = DCN_Conv(
-            in_ch=middle_channels,
-            out_ch=middle_channels,
-            kernel_size=conv_kernel_size,
-            extend_scope=1.0,
-            morph=1,
-            if_offset=True,
-        )
-        self.conv2z = DCN_Conv(
-            in_ch=middle_channels,
-            out_ch=middle_channels,
-            kernel_size=conv_kernel_size,
-            extend_scope=1.0,
-            morph=2,
-            if_offset=True,
-        )
-        # conv3
-        self.conv2 = SingleConv(
-            middle_channels * 3,
-            middle_channels,
-            conv_kernel_size,
-            conv_layer_order,
-            num_groups,
-            padding=padding,
-            stride=stride,
-        )
+        if use_dsc:
+            self.conv2x = DCN_Conv(
+                in_ch=middle_channels,
+                out_ch=middle_channels,
+                kernel_size=conv_kernel_size,
+                extend_scope=1.0,
+                morph=0,
+                if_offset=True,
+            )
+            self.conv2y = DCN_Conv(
+                in_ch=middle_channels,
+                out_ch=middle_channels,
+                kernel_size=conv_kernel_size,
+                extend_scope=1.0,
+                morph=1,
+                if_offset=True,
+            )
+            # self.conv2z = DCN_Conv(
+            #     in_ch=middle_channels,
+            #     out_ch=middle_channels,
+            #     kernel_size=conv_kernel_size,
+            #     extend_scope=1.0,
+            #     morph=2,
+            #     if_offset=True,
+            # )
+            # conv3
+            self.conv2 = SingleConv(
+                middle_channels * 2,
+                middle_channels,
+                conv_kernel_size,
+                conv_layer_order,
+                num_groups,
+                padding=padding,
+                stride=stride,
+            )
+        else:
+            self.dilation_conv = SingleConv(
+                middle_channels,
+                middle_channels,
+                (3, 3, 3),
+                conv_layer_order,
+                num_groups,
+                padding=(4, 4, 4),
+                stride=stride,
+                dilation=4,
+            )
         self.conv3 = SingleConv(
             middle_channels,
             out_channels,
@@ -291,18 +303,21 @@ class Encoder(nn.Module):
         # self.dilation_conv = SingleConv(middle_channels, middle_channels, (3, 3, 3), conv_layer_order,
         #                                 num_groups, padding=(4, 4, 4), stride=stride, dilation=4)
 
-        self.att = AttModule(channel=3 * middle_channels)  # SEnet
+        self.att = AttModule(channel=middle_channels)  # SEnet
         # 3代表cat了三个特征图
 
     def forward(self, x):
         if self.pooling is not None:
             x = self.pooling(x)
         x = self.conv1(x)
-        x_2x_0 = self.conv2x(x)
-        x_2y_0 = self.conv2y(x)
-        x_2z_0 = self.conv2z(x)
-        x_2 = torch.cat([x_2x_0, x_2y_0, x_2z_0], dim=1)
-        x = x + self.conv2(self.att(x_2))
+        if self.use_dsc:
+            x_2x_0 = self.conv2x(x)
+            x_2y_0 = self.conv2y(x)
+
+            x_2 = torch.cat([x_2x_0, x_2y_0], dim=1)
+            x = x + self.att(self.conv2(x_2))
+        else:
+            x = x + self.att(self.dilation_conv(x))
         x = self.conv3(x)
 
         return x
@@ -351,9 +366,11 @@ class Decoder(nn.Module):
         deconv_kernel_size=4,
         deconv_stride=(2, 2, 2),
         deconv_padding=1,
+        use_dsc=False,
     ):
         super(Decoder, self).__init__()
         # deconv
+        self.use_dsc = use_dsc
         self.upsample = nn.ConvTranspose3d(
             in_channels,
             upsample_out_channels,
@@ -377,40 +394,54 @@ class Decoder(nn.Module):
             padding=conv_padding,
             stride=conv_stride,
         )
-        self.conv2x = DCN_Conv(
-            in_ch=conv_middle_channels,
-            out_ch=conv_middle_channels,
-            kernel_size=conv_kernel_size,
-            extend_scope=1.0,
-            morph=0,
-            if_offset=True,
-        )
-        self.conv2y = DCN_Conv(
-            in_ch=conv_middle_channels,
-            out_ch=conv_middle_channels,
-            kernel_size=conv_kernel_size,
-            extend_scope=1.0,
-            morph=1,
-            if_offset=True,
-        )
-        self.conv2z = DCN_Conv(
-            in_ch=conv_middle_channels,
-            out_ch=conv_middle_channels,
-            kernel_size=conv_kernel_size,
-            extend_scope=1.0,
-            morph=2,
-            if_offset=True,
-        )
+        if self.use_dsc:
+            self.conv2x = DCN_Conv(
+                in_ch=conv_middle_channels,
+                out_ch=conv_middle_channels,
+                kernel_size=conv_kernel_size,
+                extend_scope=1.0,
+                morph=0,
+                if_offset=True,
+            )
+            self.conv2y = DCN_Conv(
+                in_ch=conv_middle_channels,
+                out_ch=conv_middle_channels,
+                kernel_size=conv_kernel_size,
+                extend_scope=1.0,
+                morph=1,
+                if_offset=True,
+            )
+            # self.conv2z = DCN_Conv(
+            #     in_ch=conv_middle_channels,
+            #     out_ch=conv_middle_channels,
+            #     kernel_size=conv_kernel_size,
+            #     extend_scope=1.0,
+            #     morph=2,
+            #     if_offset=True,
+            # )
 
-        self.conv2 = SingleConv(
-            3 * conv_middle_channels,
-            conv_middle_channels,
-            conv_kernel_size,
-            conv_layer_order,
-            num_groups,
-            padding=conv_padding,
-            stride=conv_stride,
-        )
+            self.conv2 = SingleConv(
+                2 * conv_middle_channels,
+                conv_middle_channels,
+                conv_kernel_size,
+                conv_layer_order,
+                num_groups,
+                padding=conv_padding,
+                stride=conv_stride,
+            )
+
+        else:
+            self.dilation_conv = SingleConv(
+                conv_middle_channels,
+                conv_middle_channels,
+                (3, 3, 3),
+                conv_layer_order,
+                num_groups,
+                padding=(4, 4, 4),
+                stride=conv_stride,
+                dilation=4,
+            )
+        self.att = AttModule(channel=conv_middle_channels)
         # conv2
         self.conv3 = SingleConv(
             conv_middle_channels,
@@ -424,8 +455,6 @@ class Decoder(nn.Module):
 
         #
 
-        self.att = AttModule(channel=3 * conv_middle_channels)
-
     def forward(self, encoder_features, x):
         # print(x.shape)#torch.Size([4, 256, 4, 16, 16])#注意3D图像不再是HxW,而是XYZ，所有这里三个参数都变了
         x = self.upsample(x)
@@ -434,11 +463,14 @@ class Decoder(nn.Module):
 
         x = self.conv1(x)
         # 3dU-Net的concat部分
-        x_2x_0 = self.conv2x(x)
-        x_2y_0 = self.conv2y(x)
-        x_2z_0 = self.conv2z(x)
-        x_2 = torch.cat([x_2x_0, x_2y_0, x_2z_0], dim=1)
-        x = x + self.conv2(self.att(x_2))
+        if self.use_dsc:
+            x_2x_0 = self.conv2x(x)
+            x_2y_0 = self.conv2y(x)
+            # x_2z_0 = self.conv2z(x)
+            x_2 = torch.cat([x_2x_0, x_2y_0], dim=1)
+            x = x + self.att(self.conv2(x_2))
+        else:
+            x = x + self.att(self.dilation_conv(x))
         x = self.conv3(x)
 
         return x
@@ -492,6 +524,7 @@ class SegAirwayModel(nn.Module):
             num_groups=8,
             padding=1,
             stride=1,
+            use_dsc=True,
         )
 
         encoder_2 = Encoder(
@@ -585,6 +618,7 @@ class SegAirwayModel(nn.Module):
             deconv_kernel_size=4,
             deconv_stride=(2, 2, 2),
             deconv_padding=1,
+            use_dsc=False,
         )
 
         self.decoders = nn.ModuleList([decoder_1, decoder_2, decoder_3])
