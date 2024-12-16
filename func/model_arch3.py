@@ -605,7 +605,7 @@ class SegAirwayModel(nn.Module):
             deconv_kernel_size=4,
             deconv_stride=(2, 2, 2),
             deconv_padding=1,
-            use_dsc=True,
+            use_dsc=False,
         )
 
         self.decoders = nn.ModuleList([decoder_1, decoder_2, decoder_3])
@@ -624,11 +624,11 @@ class SegAirwayModel(nn.Module):
     def forward(self, x):
         # encoder part
         encoders_features = []
-        print("intial shape", x.shape)
+        # print("intial shape", x.shape)
         i = 0
         for encoder in self.encoders:
             x = encoder(x)
-            print(f"the {i} encoder shape is {x.shape}")
+            # print(f"the {i} encoder shape is {x.shape}")
             i += 1
             # reverse the encoder outputs to be aligned with the decoder
             encoders_features.insert(0, x)
