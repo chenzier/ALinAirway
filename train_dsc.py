@@ -9,18 +9,21 @@ import argparse
 import numpy as np
 import pickle
 import SimpleITK as sitk
+import yaml
 
 sys.setrecursionlimit(10000)
-sys.path.append("..")
-sys.path.append("/home/wangc/now/pure/ALinAirway/func")  # 根据实际情况调整路径
+# sys.path.append("..")
+# sys.path.append("/home/wangc/now/pure/ALinAirway/func")  # 根据实际情况调整路径
+
 from func.load_dataset import airway_dataset
-from func.model_arch3 import SegAirwayModel
+from func.model_arch_e0_d3 import SegAirwayModel
 from func.loss_func import (
     dice_loss_weights,
     dice_accuracy,
     dice_loss_power_weights,
 )
-from func.model_arch3 import SegAirwayModel
+
+
 from func.model_run import semantic_segment_crop_and_cat
 from func.post_process import post_process, add_broken_parts_to_the_result
 from func.detect_tree import tree_detection
@@ -30,6 +33,20 @@ from func.eval_use_func import (
     get_metrics,
     get_the_skeleton_and_center_nearby_dict,
 )
+
+
+def update_dataset_paths(dataset, old_prefix, new_prefix):
+    for key, value in dataset.items():
+        # 去除指定前缀，并添加新的前缀
+        value["image"] = new_prefix + value["image"].replace(old_prefix, "")
+        value["label"] = new_prefix + value["label"].replace(old_prefix, "")
+    return dataset
+
+
+def load_config(config_path):
+    with open(config_path, "r") as file:
+        config = yaml.safe_load(file)
+    return config
 
 
 def parse_arguments():
@@ -132,7 +149,7 @@ def train_model(
 
             time_consumption = time.time() - start_time
 
-            if ith_batch in [1, 100, len_dataset_loader]:
+            if ith_batch % 100 == 0:
                 logging.info(
                     f"epoch [{ith_epoch + 1}/{max_epoch}]\t"
                     f"batch [{ith_batch}/{len_dataset_loader}]\t"
@@ -156,7 +173,9 @@ def train_model(
     logging.info("Training completed.")
 
 
-def eval_pipeline(load_pkl, test_names, seg_result_path, use_gpu, save_name):
+def eval_pipeline(
+    load_pkl, test_names, seg_result_path, use_gpu, save_name, metrics_save_path
+):
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
     model = SegAirwayModel(in_channels=1, out_channels=2)
     model.to(device)
@@ -254,10 +273,6 @@ def eval_pipeline(load_pkl, test_names, seg_result_path, use_gpu, save_name):
     metrics_al = get_metrics(seg_processeds, label_dict, skeleton_dict)
 
     # 确保文件夹存在，如果不存在则创建它
-    metrics_folder_path = "/home/wangc/now/pure/test_NaviAirway/metrics_folder"
-    os.makedirs(metrics_folder_path, exist_ok=True)
-    # 根据save_name生成metrics_save_path完整路径，后缀为.pkl
-    metrics_save_path = os.path.join(metrics_folder_path, f"{save_name}.pkl")
 
     # 保存到文件
     with open(metrics_save_path, "wb") as file:
@@ -268,14 +283,28 @@ def eval_pipeline(load_pkl, test_names, seg_result_path, use_gpu, save_name):
 
 
 if __name__ == "__main__":
+
     args = parse_arguments()
 
-    # Configure logging
-    ck_dir = "/home/wangc/now/pure/save_checkpoint"  # 模型存储路径
-    log_dir = "/home/wangc/now/pure/save_log"  # 日志存储路径
+    config = load_config("config.yaml")
+    exact09_img_path = config["exact09"]["img_path"]
+    lidc_img_path = config["lidc"]["img_path"]
+    exact09_label_path = config["exact09"]["label_path"]
+    lidc_label_path = config["lidc"]["label_path"]
+
+    # 获取eval_use下的路径
+    ck_dir = config["eval_use"]["ck_dir"]  # 模型存储路径
+    log_dir = config["eval_use"]["log_dir"]  # 日志存储路径
+    metrics_folder_path = config["eval_use"][
+        "metrics_folder_path"
+    ]  # 评估时使用的metrics路径
 
     checkpoint_path = os.path.join(ck_dir, args.save_name + ".pth")
     log_name = os.path.join(log_dir, args.save_name + ".log")
+
+    os.makedirs(metrics_folder_path, exist_ok=True)
+    # 根据save_name生成metrics_save_path完整路径，后缀为.pkl
+    metrics_save_path = os.path.join(metrics_folder_path, f"{args.save_name}.pkl")
 
     logging.basicConfig(
         level=logging.INFO,
@@ -330,6 +359,14 @@ if __name__ == "__main__":
 
     # Load dataset
     dataset_info_org = load_obj(data_info_path)
+    if config["is_change_prefix"]["is_change"]:
+        old_prefix = config["is_change_prefix"]["old_prefix"]
+        new_prefix = config["is_change_prefix"]["new_prefix"]
+        dataset_info_org = update_dataset_paths(
+            dataset_info_org, old_prefix, new_prefix
+        )
+
+    print(dataset_info_org)
     train_dataset_org = airway_dataset(dataset_info_org)
     train_dataset_org.set_para(
         file_format=train_file_format,
@@ -343,6 +380,7 @@ if __name__ == "__main__":
     logging.info(f"Total epochs: {max_epoch}")
     logging.info(f"Length of dataset: {len(dataset_info_org)}")
 
+    torch.set_num_threads(2)
     train_model(
         model,
         optimizer,

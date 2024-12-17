@@ -1,0 +1,14 @@
+exact09:
+  img_path: "/mnt/wangc/EXACT09/EXACT09_3D/train"
+  label_path: "/mnt/wangc/EXACT09/EXACT09_3D/train_label"
+lidc:
+  img_path: "/mnt/wangc/LIDC/image"
+  label_path: "/mnt/wangc/LIDC/label"
+eval_use:
+  ck_dir : "/home/wangc/now/pure/save_checkpoint"
+  log_dir : "/home/wangc/now/pure/save_log"
+  metrics_folder_path : "/home/wangc/now/pure/test_NaviAirway/metrics_folder"
+is_change_prefix:
+  is_change : False
+  old_prefix : "/mnt/wangc/"
+  new_prefix : "/home/wangc/data/"
