@@ -670,3 +670,6 @@ class DCN(object):
         z, y, x = self._coordinate_map_3D(offset, if_offset)
         deformed_feature = self._bilinear_interpolate_3D(input, z, y, x)
         return deformed_feature
+if __name__ == "__main__":
+    # 可以在这里添加一些测试代码，当直接运行该文件时执行，导入时不执行
+    pass
