@@ -286,7 +286,7 @@ if __name__ == "__main__":
 
     args = parse_arguments()
 
-    config = load_config("config.yaml")
+    config = load_config("../config.yaml")
     exact09_img_path = config["exact09"]["img_path"]
     lidc_img_path = config["lidc"]["img_path"]
     exact09_label_path = config["exact09"]["label_path"]
