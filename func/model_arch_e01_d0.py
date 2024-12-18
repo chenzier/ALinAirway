@@ -521,7 +521,7 @@ class SegAirwayModel(nn.Module):
             num_groups=4,
             padding=1,
             stride=1,
-            use_dsc=False,
+            use_dsc=True,
         )
 
         encoder_3 = Encoder(
@@ -653,8 +653,6 @@ class SegAirwayModel(nn.Module):
         return x
 
     def model_info():
-        message = (
-            "本模型为model_arch_e0.py,只在encoder0上加dsc模块,通道数为model_arch的一半"
-        )
-        flag = "dsc"
+        message = "本模型为model_arch_e01_01.py,在encoder0和encoder1上加dsc模块,通道数为model_arch的一半"
+        flag = "navi_airway"
         return message, flag

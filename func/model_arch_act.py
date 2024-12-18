@@ -249,3 +249,8 @@ class SegAirwayModel(nn.Module):
     def forward(self, x):
         x = self.unet_3d(x)
         return x
+
+    def model_info():
+        message = "本模型为model_arch_act.py"
+        flag = "act"
+        return message, flag

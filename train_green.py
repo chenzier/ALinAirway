@@ -333,7 +333,7 @@ if __name__ == "__main__":
     max_epoch = 50
     freq_switch_of_train_mode_high_low_generation = 1
     num_samples_of_each_epoch = 20000
-    batch_size = 4
+    batch_size = 8
     train_file_format = ".nii.gz"
     crop_size = (32, 128, 128)
     windowMin_CT_img_HU = -1000
@@ -344,7 +344,13 @@ if __name__ == "__main__":
     # Init model
     model = SegAirwayModel(in_channels=1, out_channels=2)
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
-
+    model_message, flag = model.info()
+    if flag in config["batch_size_list"].keys():
+        batch_size = config["batch_size_list"][flag]
+    else:
+        batch_size = 8
+    logging.info(f"Batch size: {batch_size}")
+    logging.info(model_message)
     logging.info(f"Device: {device}")
     model.to(device)
 
@@ -408,9 +414,5 @@ if __name__ == "__main__":
     ]
 
     eval_pipeline(
-        checkpoint_path,
-        test_names,
-        "",
-        device,
-        args.save_name,
+        checkpoint_path, test_names, "", device, args.save_name, metrics_save_path
     )

@@ -344,7 +344,13 @@ if __name__ == "__main__":
     # Init model
     model = SegAirwayModel(in_channels=1, out_channels=2)
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
-
+    model_message, flag = model.info()
+    if flag in config["batch_size_list"].keys():
+        batch_size = config["batch_size_list"][flag]
+    else:
+        batch_size = 8
+    logging.info(f"Batch size: {batch_size}")
+    logging.info(model_message)
     logging.info(f"Device: {device}")
     model.to(device)
 
@@ -366,7 +372,6 @@ if __name__ == "__main__":
             dataset_info_org, old_prefix, new_prefix
         )
 
-    print(dataset_info_org)
     train_dataset_org = airway_dataset(dataset_info_org)
     train_dataset_org.set_para(
         file_format=train_file_format,

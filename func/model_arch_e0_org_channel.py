@@ -496,8 +496,8 @@ class SegAirwayModel(nn.Module):
         # Adjusted encoder layers with reduced channels
         encoder_1 = Encoder(
             in_channels=in_channels,
-            middle_channels=8,  # Reduced
-            out_channels=16,  # Reduced
+            middle_channels=16,  # Reduced
+            out_channels=32,  # Reduced
             apply_pooling=False,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -510,9 +510,9 @@ class SegAirwayModel(nn.Module):
         )
 
         encoder_2 = Encoder(
-            in_channels=16,  # Adjusted
-            middle_channels=16,  # Reduced
-            out_channels=32,  # Reduced
+            in_channels=32,  # Adjusted
+            middle_channels=32,  # Reduced
+            out_channels=64,  # Reduced
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -525,9 +525,9 @@ class SegAirwayModel(nn.Module):
         )
 
         encoder_3 = Encoder(
-            in_channels=32,  # Adjusted
-            middle_channels=32,  # Reduced
-            out_channels=64,  # Reduced
+            in_channels=64,  # Adjusted
+            middle_channels=64,  # Reduced
+            out_channels=128,  # Reduced
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -540,9 +540,9 @@ class SegAirwayModel(nn.Module):
         )
 
         encoder_4 = Encoder(
-            in_channels=64,  # Adjusted
-            middle_channels=64,  # Reduced
-            out_channels=128,  # Reduced
+            in_channels=128,  # Adjusted
+            middle_channels=128,  # Reduced
+            out_channels=256,  # Reduced
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -558,11 +558,27 @@ class SegAirwayModel(nn.Module):
 
         # Adjusted decoder layers with reduced channels
         decoder_1 = Decoder(
-            in_channels=128,  # Adjusted
-            upsample_out_channels=128,  # Adjusted
-            conv_in_channels=192,  # Reduced
-            conv_middle_channels=64,  # Reduced
-            out_channels=64,  # Reduced
+            in_channels=256,  # Adjusted
+            upsample_out_channels=256,  # Adjusted
+            conv_in_channels=384,  # Reduced
+            conv_middle_channels=128,  # Reduced
+            out_channels=128,  # Reduced
+            conv_kernel_size=3,
+            conv_layer_order=layer_order,
+            num_groups=8,
+            conv_padding=1,
+            conv_stride=1,
+            deconv_kernel_size=4,
+            deconv_stride=(2, 2, 2),
+            deconv_padding=1,
+            use_dsc=False,
+        )
+        decoder_2 = Decoder(
+            in_channels=128,
+            upsample_out_channels=128,
+            conv_in_channels=192,
+            conv_middle_channels=64,
+            out_channels=64,
             conv_kernel_size=3,
             conv_layer_order=layer_order,
             num_groups=8,
@@ -574,32 +590,15 @@ class SegAirwayModel(nn.Module):
             use_dsc=False,
         )
 
-        decoder_2 = Decoder(
-            in_channels=64,  # Adjusted
-            upsample_out_channels=64,  # Adjusted
-            conv_in_channels=96,  # Reduced
-            conv_middle_channels=32,  # Reduced
-            out_channels=32,  # Reduced
-            conv_kernel_size=3,
-            conv_layer_order=layer_order,
-            num_groups=4,
-            conv_padding=1,
-            conv_stride=1,
-            deconv_kernel_size=4,
-            deconv_stride=(2, 2, 2),
-            deconv_padding=1,
-            use_dsc=False,
-        )
-
         decoder_3 = Decoder(
-            in_channels=32,  # Adjusted
-            upsample_out_channels=32,  # Adjusted
-            conv_in_channels=48,  # Reduced
-            conv_middle_channels=16,  # Reduced
-            out_channels=16,  # Reduced
+            in_channels=64,
+            upsample_out_channels=64,
+            conv_in_channels=96,
+            conv_middle_channels=32,
+            out_channels=32,
             conv_kernel_size=3,
             conv_layer_order=layer_order,
-            num_groups=4,
+            num_groups=8,
             conv_padding=1,
             conv_stride=1,
             deconv_kernel_size=4,
@@ -653,8 +652,6 @@ class SegAirwayModel(nn.Module):
         return x
 
     def model_info():
-        message = (
-            "本模型为model_arch_e0.py,只在encoder0上加dsc模块,通道数为model_arch的一半"
-        )
+        message = "本模型为model_arch_e0_org_channel.py,只在encoder0上加dsc模块,同时通道数和原先一样"
         flag = "dsc"
         return message, flag

@@ -49,7 +49,7 @@ data_dict_org = load_obj(
 data_dict_only_negtive = load_obj(
     "/home/wangc/now/pure/saved_objs/for_128_objs/data_dict_only_negtive"
 )
-num = 0.4
+num = 0.7
 uncertainy_path = "/data/wangc/al_data/test1123/uncertainy/kmeans_NOinit_cluster2__embedding3_1203_1344"
 
 save_path = f"/data/wangc/al_data/test1123/training_info/{os.path.basename(uncertainy_path)}_num{num}"

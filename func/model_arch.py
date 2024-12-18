@@ -566,3 +566,8 @@ class SegAirwayModel(nn.Module):
         x = self.final_activation(x)
         # print("**************************************************")
         return x
+
+    def model_info():
+        message = "本模型为model_arch.py"
+        flag = "navi_airway"
+        return message, flag
