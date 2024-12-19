@@ -1,0 +1,1 @@
+{"epoch": 1, "batch": 146, "loss": 1.7302380800247192, "accuracy": 0.0, "foreground_pixel_percentage": 0.0, "background_pixel_percentage": 1.0, "time": 27.21049475669861, "_timestamp": 1734579233.7110798, "_runtime": 33.50983786582947, "_step": 146, "_wandb": {"runtime": 30}}

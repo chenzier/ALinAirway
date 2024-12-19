@@ -652,7 +652,7 @@ class SegAirwayModel(nn.Module):
         # print("**************************************************")
         return x
 
-    def model_info():
+    def model_info(self):
         message = "本模型为model_arch_e01_01.py,在encoder0和encoder1上加dsc模块,通道数为model_arch的一半"
         flag = "navi_airway"
         return message, flag

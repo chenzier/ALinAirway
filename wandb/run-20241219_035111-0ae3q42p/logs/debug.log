@@ -1,0 +1,41 @@
+2024-12-19 03:51:11,391 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Configure stats pid to 2035442
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Loading settings from /home/wangc/.config/wandb/settings
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Loading settings from /home/wangc/now/pure/ALinAirway/wandb/settings
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train_green_t.py', 'program_abspath': '/home/wangc/now/pure/ALinAirway/train_green_t.py', 'program': 'train_green_t.py'}
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_init.py:_log_setup():521] Logging user logs to /home/wangc/now/pure/ALinAirway/wandb/run-20241219_035111-0ae3q42p/logs/debug.log
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_init.py:_log_setup():522] Logging internal logs to /home/wangc/now/pure/ALinAirway/wandb/run-20241219_035111-0ae3q42p/logs/debug-internal.log
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_init.py:init():561] calling init triggers
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_init.py:init():568] wandb.init called with sweep_config: {}
+config: {'learning_rate': 1e-05, 'max_epoch': 50, 'batch_size': 1}
+2024-12-19 03:51:11,392 INFO    MainThread:2035442 [wandb_init.py:init():611] starting backend
+2024-12-19 03:51:11,393 INFO    MainThread:2035442 [wandb_init.py:init():615] setting up manager
+2024-12-19 03:51:11,396 INFO    MainThread:2035442 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-12-19 03:51:11,398 INFO    MainThread:2035442 [wandb_init.py:init():623] backend started and connected
+2024-12-19 03:51:11,410 INFO    MainThread:2035442 [wandb_init.py:init():715] updated telemetry
+2024-12-19 03:51:11,511 INFO    MainThread:2035442 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2024-12-19 03:51:13,043 INFO    MainThread:2035442 [wandb_run.py:_on_init():2357] communicating current version
+2024-12-19 03:51:14,057 INFO    MainThread:2035442 [wandb_run.py:_on_init():2366] got version response upgrade_message: "wandb version 0.19.1 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-12-19 03:51:14,058 INFO    MainThread:2035442 [wandb_init.py:init():799] starting run threads in backend
+2024-12-19 03:51:14,118 WARNING MainThread:2035442 [wandb_init.py:init():1203] interrupted
+Traceback (most recent call last):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1181, in init
+    run = wi.init()
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 812, in init
+    run_start_result = run_start_handle.wait(timeout=30)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/lib/mailbox.py", line 283, in wait
+    found, abandoned = self._slot._get_and_clear(timeout=wait_timeout)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/lib/mailbox.py", line 130, in _get_and_clear
+    if self._wait(timeout=timeout):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/lib/mailbox.py", line 126, in _wait
+    return self._event.wait(timeout=timeout)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/threading.py", line 558, in wait
+    signaled = self._cond.wait(timeout)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/threading.py", line 306, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+2024-12-19 03:51:23,163 WARNING MsgRouterThr:2035442 [router.py:message_loop():77] message_loop has been closed

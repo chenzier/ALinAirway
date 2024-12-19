@@ -10,20 +10,15 @@ import numpy as np
 import pickle
 import SimpleITK as sitk
 import yaml
-
-sys.setrecursionlimit(10000)
-# sys.path.append("..")
-# sys.path.append("/home/wangc/now/pure/ALinAirway/func")  # 根据实际情况调整路径
+import wandb
+import importlib
 
 from func.load_dataset import airway_dataset
-from func.model_arch_e0_org_channel import SegAirwayModel
 from func.loss_func import (
     dice_loss_weights,
     dice_accuracy,
     dice_loss_power_weights,
 )
-
-
 from func.model_run import semantic_segment_crop_and_cat
 from func.post_process import post_process, add_broken_parts_to_the_result
 from func.detect_tree import tree_detection
@@ -33,6 +28,8 @@ from func.eval_use_func import (
     get_metrics,
     get_the_skeleton_and_center_nearby_dict,
 )
+
+sys.setrecursionlimit(10000)
 
 
 def update_dataset_paths(dataset, old_prefix, new_prefix):
@@ -69,6 +66,9 @@ def parse_arguments():
         type=str,
         default="",
         help='Specify dataset info load address (e.g., "--data_info_path /path/to/load")',
+    )
+    parser.add_argument(
+        "--model", type=str, required=True, help="Model architecture module name"
     )
 
     return parser.parse_args()
@@ -159,6 +159,12 @@ def train_model(
                     f"fore pix {fore_pix_per * 100:.2f}%\t"
                     f"back pix {back_pix_per * 100:.2f}%\t"
                 )
+            wandb.log(
+                {
+                    "loss": loss.item(),
+                    "accuracy": accuracy.item(),
+                }
+            )
 
         del dataset_loader
         gc.collect()
@@ -280,19 +286,29 @@ def eval_pipeline(
         pickle.dump(data_to_save, file)
 
     logging.info("Evaluation done and metrics saved")
+    wandb.log(metrics_al)
 
 
 if __name__ == "__main__":
 
+    # 导入命令行参数
     args = parse_arguments()
 
+    # 导入本次运行模型
+    try:
+        model_module = importlib.import_module(f"func.model_arch_{args.model}")
+        SegAirwayModel = getattr(model_module, "SegAirwayModel")
+    except ModuleNotFoundError:
+        print(f"Error: Model architecture func.model_arch_{args.model} not found.")
+        exit(1)
+
+    # 导入config参数
     config = load_config("../config.yaml")
     exact09_img_path = config["exact09"]["img_path"]
     lidc_img_path = config["lidc"]["img_path"]
     exact09_label_path = config["exact09"]["label_path"]
     lidc_label_path = config["lidc"]["label_path"]
 
-    # 获取eval_use下的路径
     ck_dir = config["eval_use"]["ck_dir"]  # 模型存储路径
     log_dir = config["eval_use"]["log_dir"]  # 日志存储路径
     metrics_folder_path = config["eval_use"][
@@ -302,17 +318,18 @@ if __name__ == "__main__":
     checkpoint_path = os.path.join(ck_dir, args.save_name + ".pth")
     log_name = os.path.join(log_dir, args.save_name + ".log")
 
-    os.makedirs(metrics_folder_path, exist_ok=True)
-    # 根据save_name生成metrics_save_path完整路径，后缀为.pkl
+    os.makedirs(
+        metrics_folder_path, exist_ok=True
+    )  # 根据save_name生成metrics_save_path完整路径，后缀为.pkl
     metrics_save_path = os.path.join(metrics_folder_path, f"{args.save_name}.pkl")
 
+    # 新建info日志
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
         handlers=[logging.FileHandler(log_name), logging.StreamHandler(sys.stdout)],
     )
 
-    # Log all arguments
     logging.info("Script Arguments:")
     for arg, value in vars(args).items():
         logging.info(f"{arg}: {value}")
@@ -333,7 +350,6 @@ if __name__ == "__main__":
     max_epoch = 50
     freq_switch_of_train_mode_high_low_generation = 1
     num_samples_of_each_epoch = 20000
-    batch_size = 6
     train_file_format = ".nii.gz"
     crop_size = (32, 128, 128)
     windowMin_CT_img_HU = -1000
@@ -349,11 +365,21 @@ if __name__ == "__main__":
         batch_size = config["batch_size_list"][flag]
     else:
         batch_size = 8
+    batch_size = 1
     logging.info(f"Batch size: {batch_size}")
     logging.info(model_message)
     logging.info(f"Device: {device}")
     model.to(device)
 
+    wandb.init(
+        project=args.model,
+        config={
+            "learning_rate": learning_rate,
+            "max_epoch": max_epoch,
+            "batch_size": batch_size,
+            # 可以继续添加其他想要记录的超参数
+        },
+    )
     # Load checkpoint if necessary
     if need_resume and os.path.exists(checkpoint_path):
         logging.info(f"Resuming model from {checkpoint_path}")
@@ -413,9 +439,6 @@ if __name__ == "__main__":
     ]
 
     eval_pipeline(
-        checkpoint_path,
-        test_names,
-        "",
-        device,
-        args.save_name,
+        checkpoint_path, test_names, "", device, args.save_name, metrics_save_path
     )
+    wandb.finish()

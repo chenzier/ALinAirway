@@ -652,7 +652,7 @@ class SegAirwayModel(nn.Module):
         # print("**************************************************")
         return x
 
-    def model_info():
+    def model_info(self):
         message = "本模型为model_arch_e0_d3.py,在encoder0和decoder3加入dsc模块,通道降维"
         flag = "dsc"
         return message, flag

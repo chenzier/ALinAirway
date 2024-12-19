@@ -344,7 +344,7 @@ if __name__ == "__main__":
     # Init model
     model = SegAirwayModel(in_channels=1, out_channels=2)
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
-    model_message, flag = model.info()
+    model_message, flag = model.model_info()
     if flag in config["batch_size_list"].keys():
         batch_size = config["batch_size_list"][flag]
     else:

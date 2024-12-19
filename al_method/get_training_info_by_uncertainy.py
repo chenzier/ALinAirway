@@ -52,7 +52,7 @@ data_dict_only_negtive = load_obj(
 num = 0.7
 uncertainy_path = "/data/wangc/al_data/test1123/uncertainy/kmeans_NOinit_cluster2__embedding3_1203_1344"
 
-save_path = f"/data/wangc/al_data/test1123/training_info/{os.path.basename(uncertainy_path)}_num{num}"
+save_path = f"/home/wangc/now/pure/saved_objs/for_128_objs/training_info_1218/{os.path.basename(uncertainy_path)}_num{num}"
 num1, num2, num3 = select_from_uncertainy(
     uncertainy_path, data_dict_org, data_dict_only_negtive, num, save_path=save_path
 )

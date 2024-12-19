@@ -286,7 +286,7 @@ if __name__ == "__main__":
 
     args = parse_arguments()
 
-    config = load_config("config.yaml")
+    config = load_config("../config.yaml")
     exact09_img_path = config["exact09"]["img_path"]
     lidc_img_path = config["lidc"]["img_path"]
     exact09_label_path = config["exact09"]["label_path"]
@@ -344,7 +344,7 @@ if __name__ == "__main__":
     # Init model
     model = SegAirwayModel(in_channels=1, out_channels=2)
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
-    model_message, flag = model.info()
+    model_message, flag = model.model_info()
     if flag in config["batch_size_list"].keys():
         batch_size = config["batch_size_list"][flag]
     else:
@@ -372,7 +372,6 @@ if __name__ == "__main__":
             dataset_info_org, old_prefix, new_prefix
         )
 
-    print(dataset_info_org)
     train_dataset_org = airway_dataset(dataset_info_org)
     train_dataset_org.set_para(
         file_format=train_file_format,

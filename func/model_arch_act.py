@@ -61,7 +61,7 @@ class UNet3D(nn.Module):
 
         self._in_channels = in_channels
         self._out_channels = out_channels
-        self.upsampling4 = nn.Upsample(scale_factor=4)
+        self.upsampling4 = nn.Upsample(scale_factor=2)
         self.upsampling8 = nn.Upsample(scale_factor=8)
         self.pooling = nn.MaxPool3d(kernel_size=(2, 2, 2))
         self.conv1 = nn.Sequential(
@@ -218,19 +218,19 @@ class UNet3D(nn.Module):
         # res5 = self.conv5x1(x)
         # conv5 = conv5 + res5
 
-        x = self.upsampling(conv5)
+        x = self.upsampling4(conv5)
         x = torch.cat([x, conv4], dim=1)
         conv6 = self.conv6(x)
 
-        x = self.upsampling(conv6)
+        x = self.upsampling4(conv6)
         x = torch.cat([x, conv3], dim=1)
         conv7 = self.conv7(x)
 
-        x = self.upsampling(conv7)
+        x = self.upsampling4(conv7)
         x = torch.cat([x, conv2], dim=1)
         conv8 = self.conv8(x)
 
-        x = self.upsampling(conv8)
+        x = self.upsampling4(conv8)
 
         x = torch.cat([x, conv1], dim=1)
         conv9 = self.conv9(x)
@@ -250,7 +250,7 @@ class SegAirwayModel(nn.Module):
         x = self.unet_3d(x)
         return x
 
-    def model_info():
+    def model_info(self):
         message = "本模型为model_arch_act.py"
         flag = "act"
         return message, flag
