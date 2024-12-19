@@ -16,7 +16,7 @@ sys.setrecursionlimit(10000)
 # sys.path.append("/home/wangc/now/pure/ALinAirway/func")  # 根据实际情况调整路径
 
 from func.load_dataset import airway_dataset
-from func.model_arch import SegAirwayModel
+from ALinAirway.func.model_arch_navi_airway import SegAirwayModel
 from func.loss_func import (
     dice_loss_weights,
     dice_accuracy,

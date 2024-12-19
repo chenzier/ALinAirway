@@ -10,7 +10,6 @@ import numpy as np
 import pickle
 import SimpleITK as sitk
 import yaml
-import wandb
 import importlib
 
 from func.load_dataset import airway_dataset
@@ -159,12 +158,6 @@ def train_model(
                     f"fore pix {fore_pix_per * 100:.2f}%\t"
                     f"back pix {back_pix_per * 100:.2f}%\t"
                 )
-            wandb.log(
-                {
-                    "loss": loss.item(),
-                    "accuracy": accuracy.item(),
-                }
-            )
 
         del dataset_loader
         gc.collect()
@@ -289,7 +282,6 @@ def eval_pipeline(
         pickle.dump(data_to_save, file)
 
     logging.info("Evaluation done and metrics saved")
-    wandb.log(metrics_al)
 
 
 if __name__ == "__main__":
@@ -364,29 +356,13 @@ if __name__ == "__main__":
     model = SegAirwayModel(in_channels=1, out_channels=2)
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
     model_message, flag = model.model_info()
-    if flag in config["batch_size_list"].keys():
-        batch_size = config["batch_size_list"][flag]
-    else:
-        batch_size = 8
+
+    batch_size = 2
+
     logging.info(f"Batch size: {batch_size}")
     logging.info(model_message)
     logging.info(f"Device: {device}")
     model.to(device)
-
-    wandb.init(
-        project=args.model,
-        config={
-            "learning_rate": learning_rate,
-            "max_epoch": max_epoch,
-            "batch_size": batch_size,
-            # 可以继续添加其他想要记录的超参数
-        },
-    )
-    # Load checkpoint if necessary
-    if need_resume and os.path.exists(checkpoint_path):
-        logging.info(f"Resuming model from {checkpoint_path}")
-        checkpoint = torch.load(checkpoint_path)
-        model.load_state_dict(checkpoint["model_state_dict"], strict=False)
 
     # Optimizer
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
@@ -412,8 +388,6 @@ if __name__ == "__main__":
 
     logging.info(f"Total epochs: {max_epoch}")
     logging.info(f"Length of dataset: {len(dataset_info_org)}")
-
-    torch.set_num_threads(2)
     train_model(
         model,
         optimizer,
@@ -426,30 +400,3 @@ if __name__ == "__main__":
         model_save_freq,
         checkpoint_path,
     )
-
-    test_names = [
-        "LIDC_IDRI_0066.nii.gz",
-        "LIDC_IDRI_0328.nii.gz",
-        "LIDC_IDRI_0376.nii.gz",
-        "LIDC_IDRI_0441.nii.gz",
-        "EXACT09_CASE13.nii.gz",
-        "LIDC_IDRI_0744.nii.gz",
-        "EXACT09_CASE08.nii.gz",
-        "EXACT09_CASE01.nii.gz",
-        "EXACT09_CASE05.nii.gz",
-        "LIDC_IDRI_1004.nii.gz",
-    ]
-
-    eval_pipeline(
-        model,
-        checkpoint_path,
-        test_names,
-        "",
-        device,
-        metrics_save_path,
-        exact09_img_path,
-        lidc_img_path,
-        exact09_label_path,
-        lidc_label_path,
-    )
-    wandb.finish()
