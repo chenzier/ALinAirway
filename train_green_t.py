@@ -29,7 +29,7 @@ from func.eval_use_func import (
     get_the_skeleton_and_center_nearby_dict,
 )
 
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(100000)
 
 
 def update_dataset_paths(dataset, old_prefix, new_prefix):

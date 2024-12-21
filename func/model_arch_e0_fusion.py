@@ -344,13 +344,13 @@ class Encoder(nn.Module):
 
             x_2x_55 = self.conv2x55(x_2_0)
             x_2y_55 = self.conv2y55(x_2_0)
-            print(
-                "encoder3355",
-                x_2x_33.shape,
-                x_2y_33.shape,
-                x_2x_55.shape,
-                x_2y_55.shape,
-            )
+            # print(
+            #     "encoder3355",
+            #     x_2x_33.shape,
+            #     x_2y_33.shape,
+            #     x_2x_55.shape,
+            #     x_2y_55.shape,
+            # )
             x_2 = torch.cat([x_2x_33, x_2y_33, x_2x_55, x_2y_55], dim=1)
             x = x + self.att(self.conv21(x_2))
         else:
@@ -532,13 +532,13 @@ class Decoder(nn.Module):
 
             x_2x_55 = self.conv2x55(x_2_0)
             x_2y_55 = self.conv2y55(x_2_0)
-            print(
-                "decoder3355",
-                x_2x_33.shape,
-                x_2y_33.shape,
-                x_2x_55.shape,
-                x_2y_55.shape,
-            )
+            # print(
+            #     "decoder3355",
+            #     x_2x_33.shape,
+            #     x_2y_33.shape,
+            #     x_2x_55.shape,
+            #     x_2y_55.shape,
+            # )
             x_2 = torch.cat([x_2x_33, x_2y_33, x_2x_55, x_2y_55], dim=1)
             x = x + self.att(self.conv21(x_2))
         else:

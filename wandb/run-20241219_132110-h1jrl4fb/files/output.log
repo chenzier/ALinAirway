@@ -1,0 +1,19 @@
+2024-12-19 13:21:17,489 - INFO - Total epochs: 50
+2024-12-19 13:21:17,490 - INFO - Length of dataset: 17516
+2024-12-19 13:22:05,061 - INFO - epoch [1/50]	batch [0/1460]	time(sec) 47.22	loss 1.7859	acc 0.25%	fore pix 0.07%	back pix 99.93%	
+2024-12-19 13:26:48,847 - INFO - epoch [1/50]	batch [100/1460]	time(sec) 330.97	loss 1.7349	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-19 13:30:23,525 - INFO - epoch [1/50]	batch [200/1460]	time(sec) 545.64	loss 1.7308	acc 0.04%	fore pix 0.00%	back pix 100.00%	
+Traceback (most recent call last):
+  File "train_green_t.py", line 417, in <module>
+    train_model(
+  File "train_green_t.py", line 148, in train_model
+    optimizer.step()
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/optim/optimizer.py", line 88, in wrapper
+    return func(*args, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/optim/adam.py", line 141, in step
+    F.adam(params_with_grad,
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/optim/_functional.py", line 105, in adam
+    denom = (exp_avg_sq.sqrt() / math.sqrt(bias_correction2)).add_(eps)
+KeyboardInterrupt
