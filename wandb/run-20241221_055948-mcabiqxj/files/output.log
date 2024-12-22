@@ -1,0 +1,1177 @@
+2024-12-21 05:59:54,504 - INFO - Total epochs: 50
+2024-12-21 05:59:54,504 - INFO - Length of dataset: 5004
+2024-12-21 06:00:03,388 - INFO - epoch [1/50]	batch [0/417]	time(sec) 8.56	loss 1.6858	acc 2.73%	fore pix 0.61%	back pix 99.39%	
+2024-12-21 06:03:38,633 - INFO - epoch [1/50]	batch [100/417]	time(sec) 223.75	loss 1.7342	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 06:07:14,100 - INFO - epoch [1/50]	batch [200/417]	time(sec) 439.22	loss 1.7316	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 06:10:49,447 - INFO - epoch [1/50]	batch [300/417]	time(sec) 654.57	loss 1.7325	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 06:14:24,908 - INFO - epoch [1/50]	batch [400/417]	time(sec) 870.03	loss 1.1461	acc 30.59%	fore pix 0.41%	back pix 99.59%	
+2024-12-21 06:14:59,670 - INFO - Epoch 1: Saving model
+2024-12-21 06:15:08,023 - INFO - epoch [2/50]	batch [0/417]	time(sec) 913.15	loss 1.7268	acc 0.17%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 06:18:43,446 - INFO - epoch [2/50]	batch [100/417]	time(sec) 1128.57	loss 1.0625	acc 43.35%	fore pix 0.33%	back pix 99.67%	
+2024-12-21 06:22:18,786 - INFO - epoch [2/50]	batch [200/417]	time(sec) 1343.91	loss 1.7211	acc 0.85%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 06:25:54,114 - INFO - epoch [2/50]	batch [300/417]	time(sec) 1559.24	loss 1.0269	acc 44.66%	fore pix 0.31%	back pix 99.69%	
+2024-12-21 06:29:29,503 - INFO - epoch [2/50]	batch [400/417]	time(sec) 1774.62	loss 0.8774	acc 49.48%	fore pix 0.12%	back pix 99.88%	
+2024-12-21 06:30:04,258 - INFO - Epoch 2: Saving model
+2024-12-21 06:30:11,846 - INFO - epoch [3/50]	batch [0/417]	time(sec) 1816.97	loss 1.7319	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 06:33:47,240 - INFO - epoch [3/50]	batch [100/417]	time(sec) 2032.37	loss 1.7233	acc 0.24%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 06:37:22,644 - INFO - epoch [3/50]	batch [200/417]	time(sec) 2247.77	loss 1.5406	acc 8.44%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 06:40:57,968 - INFO - epoch [3/50]	batch [300/417]	time(sec) 2463.09	loss 1.6266	acc 4.83%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 06:44:33,308 - INFO - epoch [3/50]	batch [400/417]	time(sec) 2678.43	loss 1.7201	acc 0.44%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 06:45:08,053 - INFO - Epoch 3: Saving model
+2024-12-21 06:45:15,202 - INFO - epoch [4/50]	batch [0/417]	time(sec) 2720.33	loss 0.9182	acc 52.82%	fore pix 0.09%	back pix 99.91%	
+2024-12-21 06:48:50,380 - INFO - epoch [4/50]	batch [100/417]	time(sec) 2935.50	loss 1.7275	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 06:52:25,608 - INFO - epoch [4/50]	batch [200/417]	time(sec) 3150.73	loss 1.7168	acc 1.48%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 06:56:00,910 - INFO - epoch [4/50]	batch [300/417]	time(sec) 3366.03	loss 0.8471	acc 77.47%	fore pix 0.34%	back pix 99.66%	
+2024-12-21 06:59:45,707 - INFO - epoch [4/50]	batch [400/417]	time(sec) 3590.83	loss 1.6541	acc 3.60%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 07:00:20,467 - INFO - Epoch 4: Saving model
+2024-12-21 07:00:32,686 - INFO - epoch [5/50]	batch [0/417]	time(sec) 3637.81	loss 1.7278	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 07:04:23,521 - INFO - epoch [5/50]	batch [100/417]	time(sec) 3868.64	loss 1.7299	acc 0.04%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 07:07:58,658 - INFO - epoch [5/50]	batch [200/417]	time(sec) 4083.78	loss 1.6826	acc 2.83%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 07:11:33,656 - INFO - epoch [5/50]	batch [300/417]	time(sec) 4298.78	loss 1.7270	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 07:15:08,636 - INFO - epoch [5/50]	batch [400/417]	time(sec) 4513.76	loss 1.7233	acc 0.41%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 07:15:43,360 - INFO - Epoch 5: Saving model
+2024-12-21 07:15:50,484 - INFO - epoch [6/50]	batch [0/417]	time(sec) 4555.61	loss 1.4924	acc 10.94%	fore pix 0.06%	back pix 99.94%	
+2024-12-21 07:19:25,607 - INFO - epoch [6/50]	batch [100/417]	time(sec) 4770.73	loss 0.8448	acc 70.96%	fore pix 0.30%	back pix 99.70%	
+2024-12-21 07:23:00,850 - INFO - epoch [6/50]	batch [200/417]	time(sec) 4985.97	loss 1.7295	acc 0.08%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 07:26:36,077 - INFO - epoch [6/50]	batch [300/417]	time(sec) 5201.20	loss 1.2328	acc 31.96%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 07:30:11,308 - INFO - epoch [6/50]	batch [400/417]	time(sec) 5416.43	loss 1.0080	acc 63.93%	fore pix 0.40%	back pix 99.60%	
+2024-12-21 07:30:46,067 - INFO - Epoch 6: Saving model
+2024-12-21 07:30:53,169 - INFO - epoch [7/50]	batch [0/417]	time(sec) 5458.29	loss 1.6763	acc 9.17%	fore pix 0.61%	back pix 99.39%	
+2024-12-21 07:34:28,313 - INFO - epoch [7/50]	batch [100/417]	time(sec) 5673.43	loss 1.7079	acc 1.86%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 07:38:03,259 - INFO - epoch [7/50]	batch [200/417]	time(sec) 5888.38	loss 0.9550	acc 45.36%	fore pix 0.08%	back pix 99.92%	
+2024-12-21 07:42:02,232 - INFO - epoch [7/50]	batch [300/417]	time(sec) 6127.36	loss 1.2350	acc 37.36%	fore pix 0.28%	back pix 99.72%	
+2024-12-21 07:45:37,587 - INFO - epoch [7/50]	batch [400/417]	time(sec) 6342.71	loss 1.4536	acc 15.28%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 07:46:12,382 - INFO - Epoch 7: Saving model
+2024-12-21 07:46:29,550 - INFO - epoch [8/50]	batch [0/417]	time(sec) 6394.67	loss 1.7162	acc 1.01%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 07:50:04,921 - INFO - epoch [8/50]	batch [100/417]	time(sec) 6610.05	loss 1.7121	acc 0.98%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 07:53:40,232 - INFO - epoch [8/50]	batch [200/417]	time(sec) 6825.35	loss 1.7307	acc 0.02%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 07:57:15,462 - INFO - epoch [8/50]	batch [300/417]	time(sec) 7040.58	loss 0.8058	acc 77.26%	fore pix 0.32%	back pix 99.68%	
+2024-12-21 08:00:50,764 - INFO - epoch [8/50]	batch [400/417]	time(sec) 7255.88	loss 1.2127	acc 53.69%	fore pix 0.18%	back pix 99.82%	
+2024-12-21 08:01:25,508 - INFO - Epoch 8: Saving model
+2024-12-21 08:01:32,310 - INFO - epoch [9/50]	batch [0/417]	time(sec) 7297.44	loss 1.5035	acc 14.73%	fore pix 0.05%	back pix 99.95%	
+2024-12-21 08:05:07,327 - INFO - epoch [9/50]	batch [100/417]	time(sec) 7512.45	loss 1.7270	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 08:08:42,437 - INFO - epoch [9/50]	batch [200/417]	time(sec) 7727.56	loss 1.1116	acc 50.60%	fore pix 0.20%	back pix 99.80%	
+2024-12-21 08:12:17,488 - INFO - epoch [9/50]	batch [300/417]	time(sec) 7942.61	loss 1.0221	acc 47.47%	fore pix 0.04%	back pix 99.96%	
+2024-12-21 08:15:52,545 - INFO - epoch [9/50]	batch [400/417]	time(sec) 8157.67	loss 1.0544	acc 48.65%	fore pix 0.17%	back pix 99.83%	
+2024-12-21 08:16:27,284 - INFO - Epoch 9: Saving model
+2024-12-21 08:16:34,754 - INFO - epoch [10/50]	batch [0/417]	time(sec) 8199.88	loss 1.7137	acc 1.81%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 08:20:09,960 - INFO - epoch [10/50]	batch [100/417]	time(sec) 8415.08	loss 1.3343	acc 20.32%	fore pix 0.08%	back pix 99.92%	
+2024-12-21 08:23:45,297 - INFO - epoch [10/50]	batch [200/417]	time(sec) 8630.42	loss 0.9667	acc 56.51%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 08:27:20,509 - INFO - epoch [10/50]	batch [300/417]	time(sec) 8845.63	loss 1.4931	acc 13.08%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 08:30:55,699 - INFO - epoch [10/50]	batch [400/417]	time(sec) 9060.82	loss 0.9637	acc 69.41%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 08:31:30,426 - INFO - Epoch 10: Saving model
+2024-12-21 08:31:36,920 - INFO - epoch [11/50]	batch [0/417]	time(sec) 9102.04	loss 1.1215	acc 46.22%	fore pix 0.54%	back pix 99.46%	
+2024-12-21 08:35:12,146 - INFO - epoch [11/50]	batch [100/417]	time(sec) 9317.27	loss 1.5918	acc 16.78%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 08:38:47,373 - INFO - epoch [11/50]	batch [200/417]	time(sec) 9532.50	loss 1.4343	acc 26.08%	fore pix 0.59%	back pix 99.41%	
+2024-12-21 08:42:28,161 - INFO - epoch [11/50]	batch [300/417]	time(sec) 9753.28	loss 1.6222	acc 7.92%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 08:46:03,399 - INFO - epoch [11/50]	batch [400/417]	time(sec) 9968.52	loss 0.7709	acc 90.41%	fore pix 0.12%	back pix 99.88%	
+2024-12-21 08:46:38,167 - INFO - Epoch 11: Saving model
+2024-12-21 08:46:46,055 - INFO - epoch [12/50]	batch [0/417]	time(sec) 10011.18	loss 1.0986	acc 39.85%	fore pix 0.22%	back pix 99.78%	
+2024-12-21 08:50:21,455 - INFO - epoch [12/50]	batch [100/417]	time(sec) 10226.58	loss 0.9900	acc 61.46%	fore pix 0.11%	back pix 99.89%	
+2024-12-21 08:53:56,510 - INFO - epoch [12/50]	batch [200/417]	time(sec) 10441.64	loss 1.7163	acc 1.00%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 08:57:31,524 - INFO - epoch [12/50]	batch [300/417]	time(sec) 10656.65	loss 1.4492	acc 17.48%	fore pix 0.05%	back pix 99.95%	
+2024-12-21 09:01:06,525 - INFO - epoch [12/50]	batch [400/417]	time(sec) 10871.65	loss 0.8452	acc 77.11%	fore pix 0.52%	back pix 99.48%	
+2024-12-21 09:01:41,240 - INFO - Epoch 12: Saving model
+2024-12-21 09:01:48,300 - INFO - epoch [13/50]	batch [0/417]	time(sec) 10913.42	loss 1.0211	acc 63.93%	fore pix 0.36%	back pix 99.64%	
+2024-12-21 09:05:23,417 - INFO - epoch [13/50]	batch [100/417]	time(sec) 11128.54	loss 1.2579	acc 38.07%	fore pix 0.18%	back pix 99.82%	
+2024-12-21 09:08:58,627 - INFO - epoch [13/50]	batch [200/417]	time(sec) 11343.75	loss 1.2843	acc 30.76%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 09:12:33,803 - INFO - epoch [13/50]	batch [300/417]	time(sec) 11558.92	loss 1.1114	acc 58.74%	fore pix 0.22%	back pix 99.78%	
+2024-12-21 09:16:08,899 - INFO - epoch [13/50]	batch [400/417]	time(sec) 11774.02	loss 1.6030	acc 14.69%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 09:16:43,635 - INFO - Epoch 13: Saving model
+2024-12-21 09:16:53,026 - INFO - epoch [14/50]	batch [0/417]	time(sec) 11818.15	loss 1.0535	acc 62.37%	fore pix 0.12%	back pix 99.88%	
+2024-12-21 09:20:28,136 - INFO - epoch [14/50]	batch [100/417]	time(sec) 12033.26	loss 0.8077	acc 78.97%	fore pix 0.32%	back pix 99.68%	
+2024-12-21 09:24:03,286 - INFO - epoch [14/50]	batch [200/417]	time(sec) 12248.41	loss 1.3387	acc 17.76%	fore pix 0.05%	back pix 99.95%	
+2024-12-21 09:27:38,348 - INFO - epoch [14/50]	batch [300/417]	time(sec) 12463.47	loss 1.7298	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 09:31:13,448 - INFO - epoch [14/50]	batch [400/417]	time(sec) 12678.57	loss 0.9236	acc 63.78%	fore pix 0.09%	back pix 99.91%	
+2024-12-21 09:31:48,203 - INFO - Epoch 14: Saving model
+2024-12-21 09:31:57,598 - INFO - epoch [15/50]	batch [0/417]	time(sec) 12722.72	loss 0.8499	acc 70.84%	fore pix 0.16%	back pix 99.84%	
+2024-12-21 09:35:32,806 - INFO - epoch [15/50]	batch [100/417]	time(sec) 12937.93	loss 1.7303	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 09:39:07,998 - INFO - epoch [15/50]	batch [200/417]	time(sec) 13153.12	loss 1.6687	acc 10.10%	fore pix 0.04%	back pix 99.96%	
+2024-12-21 09:42:46,791 - INFO - epoch [15/50]	batch [300/417]	time(sec) 13371.91	loss 0.8732	acc 71.88%	fore pix 0.38%	back pix 99.62%	
+2024-12-21 09:46:21,814 - INFO - epoch [15/50]	batch [400/417]	time(sec) 13586.94	loss 1.0102	acc 42.79%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 09:46:56,515 - INFO - Epoch 15: Saving model
+2024-12-21 09:47:12,450 - INFO - epoch [16/50]	batch [0/417]	time(sec) 13637.57	loss 1.0408	acc 45.98%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 09:50:47,600 - INFO - epoch [16/50]	batch [100/417]	time(sec) 13852.72	loss 1.7183	acc 1.81%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 09:54:22,813 - INFO - epoch [16/50]	batch [200/417]	time(sec) 14067.94	loss 1.7052	acc 3.08%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 09:57:58,007 - INFO - epoch [16/50]	batch [300/417]	time(sec) 14283.13	loss 1.7257	acc 0.33%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 10:01:33,216 - INFO - epoch [16/50]	batch [400/417]	time(sec) 14498.34	loss 0.9857	acc 55.00%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 10:02:08,037 - INFO - Epoch 16: Saving model
+2024-12-21 10:02:15,119 - INFO - epoch [17/50]	batch [0/417]	time(sec) 14540.24	loss 1.5738	acc 16.45%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 10:05:50,495 - INFO - epoch [17/50]	batch [100/417]	time(sec) 14755.62	loss 1.2793	acc 24.41%	fore pix 0.04%	back pix 99.96%	
+2024-12-21 10:09:25,878 - INFO - epoch [17/50]	batch [200/417]	time(sec) 14971.00	loss 1.4156	acc 20.73%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 10:13:01,169 - INFO - epoch [17/50]	batch [300/417]	time(sec) 15186.29	loss 1.1452	acc 26.93%	fore pix 0.08%	back pix 99.92%	
+2024-12-21 10:16:36,565 - INFO - epoch [17/50]	batch [400/417]	time(sec) 15401.69	loss 0.8943	acc 70.50%	fore pix 0.51%	back pix 99.49%	
+2024-12-21 10:17:11,350 - INFO - Epoch 17: Saving model
+2024-12-21 10:17:21,597 - INFO - epoch [18/50]	batch [0/417]	time(sec) 15446.72	loss 1.7290	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 10:20:57,047 - INFO - epoch [18/50]	batch [100/417]	time(sec) 15662.17	loss 0.8226	acc 79.87%	fore pix 0.29%	back pix 99.71%	
+2024-12-21 10:24:32,468 - INFO - epoch [18/50]	batch [200/417]	time(sec) 15877.59	loss 1.7253	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 10:28:07,886 - INFO - epoch [18/50]	batch [300/417]	time(sec) 16093.01	loss 1.6132	acc 6.30%	fore pix 0.06%	back pix 99.94%	
+2024-12-21 10:31:43,225 - INFO - epoch [18/50]	batch [400/417]	time(sec) 16308.35	loss 0.8578	acc 76.23%	fore pix 0.14%	back pix 99.86%	
+2024-12-21 10:32:18,022 - INFO - Epoch 18: Saving model
+2024-12-21 10:32:24,199 - INFO - epoch [19/50]	batch [0/417]	time(sec) 16349.32	loss 0.8144	acc 80.60%	fore pix 0.14%	back pix 99.86%	
+2024-12-21 10:35:59,585 - INFO - epoch [19/50]	batch [100/417]	time(sec) 16564.71	loss 1.2910	acc 30.05%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 10:39:34,985 - INFO - epoch [19/50]	batch [200/417]	time(sec) 16780.11	loss 0.7960	acc 90.43%	fore pix 0.20%	back pix 99.80%	
+2024-12-21 10:43:10,438 - INFO - epoch [19/50]	batch [300/417]	time(sec) 16995.56	loss 1.7282	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 10:46:45,862 - INFO - epoch [19/50]	batch [400/417]	time(sec) 17210.99	loss 0.8451	acc 82.56%	fore pix 0.32%	back pix 99.68%	
+2024-12-21 10:47:20,657 - INFO - Epoch 19: Saving model
+2024-12-21 10:47:33,034 - INFO - epoch [20/50]	batch [0/417]	time(sec) 17258.16	loss 0.8124	acc 79.88%	fore pix 0.14%	back pix 99.86%	
+2024-12-21 10:51:08,461 - INFO - epoch [20/50]	batch [100/417]	time(sec) 17473.58	loss 0.9868	acc 60.71%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 10:54:43,774 - INFO - epoch [20/50]	batch [200/417]	time(sec) 17688.90	loss 1.7297	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 10:58:19,130 - INFO - epoch [20/50]	batch [300/417]	time(sec) 17904.25	loss 1.0784	acc 34.83%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 11:01:54,349 - INFO - epoch [20/50]	batch [400/417]	time(sec) 18119.47	loss 0.8761	acc 67.52%	fore pix 0.08%	back pix 99.92%	
+2024-12-21 11:02:29,079 - INFO - Epoch 20: Saving model
+2024-12-21 11:02:37,045 - INFO - epoch [21/50]	batch [0/417]	time(sec) 18162.17	loss 0.7832	acc 85.00%	fore pix 0.16%	back pix 99.84%	
+2024-12-21 11:06:12,214 - INFO - epoch [21/50]	batch [100/417]	time(sec) 18377.34	loss 1.7173	acc 5.16%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 11:09:47,364 - INFO - epoch [21/50]	batch [200/417]	time(sec) 18592.49	loss 0.8336	acc 78.53%	fore pix 0.20%	back pix 99.80%	
+2024-12-21 11:13:22,506 - INFO - epoch [21/50]	batch [300/417]	time(sec) 18807.63	loss 0.7761	acc 89.66%	fore pix 0.39%	back pix 99.61%	
+2024-12-21 11:16:57,716 - INFO - epoch [21/50]	batch [400/417]	time(sec) 19022.84	loss 1.7132	acc 1.57%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 11:17:32,472 - INFO - Epoch 21: Saving model
+2024-12-21 11:17:40,471 - INFO - epoch [22/50]	batch [0/417]	time(sec) 19065.60	loss 1.4332	acc 22.66%	fore pix 0.06%	back pix 99.94%	
+2024-12-21 11:21:15,713 - INFO - epoch [22/50]	batch [100/417]	time(sec) 19280.84	loss 0.9374	acc 69.25%	fore pix 0.31%	back pix 99.69%	
+2024-12-21 11:24:51,109 - INFO - epoch [22/50]	batch [200/417]	time(sec) 19496.23	loss 0.8954	acc 67.17%	fore pix 0.20%	back pix 99.80%	
+2024-12-21 11:28:26,302 - INFO - epoch [22/50]	batch [300/417]	time(sec) 19711.43	loss 0.8769	acc 75.95%	fore pix 0.21%	back pix 99.79%	
+2024-12-21 11:32:01,655 - INFO - epoch [22/50]	batch [400/417]	time(sec) 19926.78	loss 1.4323	acc 32.02%	fore pix 0.08%	back pix 99.92%	
+2024-12-21 11:32:36,438 - INFO - Epoch 22: Saving model
+2024-12-21 11:32:43,160 - INFO - epoch [23/50]	batch [0/417]	time(sec) 19968.28	loss 1.7256	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 11:36:18,602 - INFO - epoch [23/50]	batch [100/417]	time(sec) 20183.73	loss 1.3611	acc 19.26%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 11:39:54,006 - INFO - epoch [23/50]	batch [200/417]	time(sec) 20399.13	loss 0.8012	acc 89.62%	fore pix 0.25%	back pix 99.75%	
+2024-12-21 11:43:29,412 - INFO - epoch [23/50]	batch [300/417]	time(sec) 20614.53	loss 1.4903	acc 27.50%	fore pix 0.39%	back pix 99.61%	
+2024-12-21 11:47:04,786 - INFO - epoch [23/50]	batch [400/417]	time(sec) 20829.91	loss 0.8446	acc 78.48%	fore pix 0.36%	back pix 99.64%	
+2024-12-21 11:47:39,550 - INFO - Epoch 23: Saving model
+2024-12-21 11:47:46,584 - INFO - epoch [24/50]	batch [0/417]	time(sec) 20871.71	loss 1.1498	acc 39.72%	fore pix 0.12%	back pix 99.88%	
+2024-12-21 11:51:22,116 - INFO - epoch [24/50]	batch [100/417]	time(sec) 21087.24	loss 1.7264	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 11:54:57,461 - INFO - epoch [24/50]	batch [200/417]	time(sec) 21302.58	loss 1.7254	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 11:58:32,933 - INFO - epoch [24/50]	batch [300/417]	time(sec) 21518.05	loss 0.9656	acc 53.85%	fore pix 0.04%	back pix 99.96%	
+2024-12-21 12:02:08,349 - INFO - epoch [24/50]	batch [400/417]	time(sec) 21733.47	loss 1.7301	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 12:02:43,105 - INFO - Epoch 24: Saving model
+2024-12-21 12:02:58,378 - INFO - epoch [25/50]	batch [0/417]	time(sec) 21783.50	loss 1.1202	acc 43.05%	fore pix 0.17%	back pix 99.83%	
+2024-12-21 12:06:33,921 - INFO - epoch [25/50]	batch [100/417]	time(sec) 21999.04	loss 0.7894	acc 88.84%	fore pix 0.13%	back pix 99.87%	
+2024-12-21 12:10:09,413 - INFO - epoch [25/50]	batch [200/417]	time(sec) 22214.54	loss 1.7270	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 12:13:45,744 - INFO - epoch [25/50]	batch [300/417]	time(sec) 22430.87	loss 0.8555	acc 83.15%	fore pix 0.51%	back pix 99.49%	
+2024-12-21 12:17:21,073 - INFO - epoch [25/50]	batch [400/417]	time(sec) 22646.20	loss 1.7236	acc 1.38%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 12:17:55,816 - INFO - Epoch 25: Saving model
+2024-12-21 12:18:03,020 - INFO - epoch [26/50]	batch [0/417]	time(sec) 22688.14	loss 1.7278	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 12:21:38,513 - INFO - epoch [26/50]	batch [100/417]	time(sec) 22903.64	loss 1.2501	acc 33.75%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 12:25:13,960 - INFO - epoch [26/50]	batch [200/417]	time(sec) 23119.08	loss 1.2132	acc 32.32%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 12:28:49,428 - INFO - epoch [26/50]	batch [300/417]	time(sec) 23334.55	loss 1.7303	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 12:32:24,830 - INFO - epoch [26/50]	batch [400/417]	time(sec) 23549.95	loss 0.8979	acc 64.33%	fore pix 0.18%	back pix 99.82%	
+2024-12-21 12:33:10,990 - INFO - Epoch 26: Saving model
+2024-12-21 12:33:26,139 - INFO - epoch [27/50]	batch [0/417]	time(sec) 23611.26	loss 0.8035	acc 87.19%	fore pix 0.38%	back pix 99.62%	
+2024-12-21 12:40:02,530 - INFO - epoch [27/50]	batch [100/417]	time(sec) 24007.65	loss 0.9379	acc 64.08%	fore pix 0.09%	back pix 99.91%	
+2024-12-21 12:48:20,742 - INFO - epoch [27/50]	batch [200/417]	time(sec) 24505.87	loss 1.7299	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 12:58:08,527 - INFO - epoch [27/50]	batch [300/417]	time(sec) 25093.65	loss 1.6431	acc 11.86%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 13:05:42,190 - INFO - epoch [27/50]	batch [400/417]	time(sec) 25547.31	loss 0.8023	acc 84.94%	fore pix 0.27%	back pix 99.73%	
+2024-12-21 13:06:16,925 - INFO - Epoch 27: Saving model
+2024-12-21 13:06:24,105 - INFO - epoch [28/50]	batch [0/417]	time(sec) 25589.23	loss 0.7775	acc 86.70%	fore pix 0.24%	back pix 99.76%	
+2024-12-21 13:10:39,657 - INFO - epoch [28/50]	batch [100/417]	time(sec) 25844.78	loss 1.7041	acc 5.54%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 13:15:08,081 - INFO - epoch [28/50]	batch [200/417]	time(sec) 26113.20	loss 0.9903	acc 58.09%	fore pix 0.20%	back pix 99.80%	
+2024-12-21 13:19:02,781 - INFO - epoch [28/50]	batch [300/417]	time(sec) 26347.91	loss 0.9776	acc 71.12%	fore pix 0.40%	back pix 99.60%	
+2024-12-21 13:23:08,234 - INFO - epoch [28/50]	batch [400/417]	time(sec) 26593.36	loss 0.7776	acc 89.30%	fore pix 0.37%	back pix 99.63%	
+2024-12-21 13:23:43,002 - INFO - Epoch 28: Saving model
+2024-12-21 13:23:52,741 - INFO - epoch [29/50]	batch [0/417]	time(sec) 26637.86	loss 1.0443	acc 52.08%	fore pix 0.11%	back pix 99.89%	
+2024-12-21 13:31:26,935 - INFO - epoch [29/50]	batch [100/417]	time(sec) 27092.06	loss 0.9451	acc 70.64%	fore pix 0.30%	back pix 99.70%	
+2024-12-21 13:37:17,563 - INFO - epoch [29/50]	batch [200/417]	time(sec) 27442.69	loss 1.7269	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 13:40:52,776 - INFO - epoch [29/50]	batch [300/417]	time(sec) 27657.90	loss 1.1318	acc 36.52%	fore pix 0.05%	back pix 99.95%	
+2024-12-21 13:44:28,027 - INFO - epoch [29/50]	batch [400/417]	time(sec) 27873.15	loss 0.7654	acc 92.87%	fore pix 0.25%	back pix 99.75%	
+2024-12-21 13:45:02,782 - INFO - Epoch 29: Saving model
+2024-12-21 13:45:13,512 - INFO - epoch [30/50]	batch [0/417]	time(sec) 27918.64	loss 1.0553	acc 57.08%	fore pix 0.28%	back pix 99.72%	
+2024-12-21 13:48:48,718 - INFO - epoch [30/50]	batch [100/417]	time(sec) 28133.84	loss 0.7880	acc 88.40%	fore pix 0.40%	back pix 99.60%	
+2024-12-21 13:55:39,309 - INFO - epoch [30/50]	batch [200/417]	time(sec) 28544.43	loss 0.8648	acc 73.69%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 13:59:15,006 - INFO - epoch [30/50]	batch [300/417]	time(sec) 28760.13	loss 1.6999	acc 0.97%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 14:03:46,448 - INFO - epoch [30/50]	batch [400/417]	time(sec) 29031.57	loss 0.8502	acc 81.69%	fore pix 0.30%	back pix 99.70%	
+2024-12-21 14:04:21,451 - INFO - Epoch 30: Saving model
+2024-12-21 14:04:42,732 - INFO - epoch [31/50]	batch [0/417]	time(sec) 29087.86	loss 1.6894	acc 9.72%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 14:11:04,641 - INFO - epoch [31/50]	batch [100/417]	time(sec) 29469.77	loss 0.9572	acc 58.26%	fore pix 0.05%	back pix 99.95%	
+2024-12-21 14:14:39,727 - INFO - epoch [31/50]	batch [200/417]	time(sec) 29684.85	loss 1.5682	acc 10.85%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 14:18:21,422 - INFO - epoch [31/50]	batch [300/417]	time(sec) 29906.55	loss 0.7925	acc 86.38%	fore pix 0.18%	back pix 99.82%	
+2024-12-21 14:22:20,961 - INFO - epoch [31/50]	batch [400/417]	time(sec) 30146.09	loss 0.9869	acc 54.97%	fore pix 0.08%	back pix 99.92%	
+2024-12-21 14:22:55,708 - INFO - Epoch 31: Saving model
+2024-12-21 14:23:03,164 - INFO - epoch [32/50]	batch [0/417]	time(sec) 30188.29	loss 0.8182	acc 84.30%	fore pix 0.09%	back pix 99.91%	
+2024-12-21 14:26:38,240 - INFO - epoch [32/50]	batch [100/417]	time(sec) 30403.36	loss 0.7908	acc 87.72%	fore pix 0.71%	back pix 99.29%	
+2024-12-21 14:30:13,234 - INFO - epoch [32/50]	batch [200/417]	time(sec) 30618.36	loss 0.8670	acc 69.31%	fore pix 0.15%	back pix 99.85%	
+2024-12-21 14:33:48,189 - INFO - epoch [32/50]	batch [300/417]	time(sec) 30833.31	loss 0.8606	acc 75.11%	fore pix 0.09%	back pix 99.91%	
+2024-12-21 14:37:23,282 - INFO - epoch [32/50]	batch [400/417]	time(sec) 31048.41	loss 1.6934	acc 11.42%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 14:37:58,008 - INFO - Epoch 32: Saving model
+2024-12-21 14:38:04,439 - INFO - epoch [33/50]	batch [0/417]	time(sec) 31089.56	loss 0.8088	acc 84.23%	fore pix 0.13%	back pix 99.87%	
+2024-12-21 14:41:39,437 - INFO - epoch [33/50]	batch [100/417]	time(sec) 31304.56	loss 0.8099	acc 84.29%	fore pix 0.48%	back pix 99.52%	
+2024-12-21 14:45:14,482 - INFO - epoch [33/50]	batch [200/417]	time(sec) 31519.61	loss 1.7304	acc 0.07%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 14:48:49,537 - INFO - epoch [33/50]	batch [300/417]	time(sec) 31734.66	loss 0.7707	acc 91.99%	fore pix 0.55%	back pix 99.45%	
+2024-12-21 14:52:24,685 - INFO - epoch [33/50]	batch [400/417]	time(sec) 31949.81	loss 1.1040	acc 43.35%	fore pix 0.06%	back pix 99.94%	
+2024-12-21 14:52:59,410 - INFO - Epoch 33: Saving model
+2024-12-21 14:53:06,256 - INFO - epoch [34/50]	batch [0/417]	time(sec) 31991.38	loss 0.8413	acc 75.77%	fore pix 0.28%	back pix 99.72%	
+2024-12-21 14:56:41,357 - INFO - epoch [34/50]	batch [100/417]	time(sec) 32206.48	loss 0.8168	acc 85.85%	fore pix 0.70%	back pix 99.30%	
+2024-12-21 15:00:16,636 - INFO - epoch [34/50]	batch [200/417]	time(sec) 32421.76	loss 1.7262	acc 0.79%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 15:03:51,879 - INFO - epoch [34/50]	batch [300/417]	time(sec) 32637.00	loss 1.6789	acc 4.44%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 15:07:27,151 - INFO - epoch [34/50]	batch [400/417]	time(sec) 32852.27	loss 0.7708	acc 89.78%	fore pix 0.20%	back pix 99.80%	
+2024-12-21 15:08:01,963 - INFO - Epoch 34: Saving model
+2024-12-21 15:08:09,631 - INFO - epoch [35/50]	batch [0/417]	time(sec) 32894.76	loss 1.7118	acc 2.28%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 15:11:44,807 - INFO - epoch [35/50]	batch [100/417]	time(sec) 33109.93	loss 1.1062	acc 57.02%	fore pix 0.27%	back pix 99.73%	
+2024-12-21 15:15:20,037 - INFO - epoch [35/50]	batch [200/417]	time(sec) 33325.16	loss 1.5782	acc 9.17%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 15:18:55,151 - INFO - epoch [35/50]	batch [300/417]	time(sec) 33540.27	loss 1.4923	acc 12.35%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 15:22:30,342 - INFO - epoch [35/50]	batch [400/417]	time(sec) 33755.47	loss 1.0134	acc 64.25%	fore pix 0.04%	back pix 99.96%	
+2024-12-21 15:23:05,119 - INFO - Epoch 35: Saving model
+2024-12-21 15:23:12,469 - INFO - epoch [36/50]	batch [0/417]	time(sec) 33797.59	loss 1.4566	acc 21.66%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 15:26:47,457 - INFO - epoch [36/50]	batch [100/417]	time(sec) 34012.58	loss 1.0671	acc 51.26%	fore pix 0.11%	back pix 99.89%	
+2024-12-21 15:30:22,453 - INFO - epoch [36/50]	batch [200/417]	time(sec) 34227.58	loss 1.5676	acc 18.20%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 15:33:57,493 - INFO - epoch [36/50]	batch [300/417]	time(sec) 34442.62	loss 1.6369	acc 11.48%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 15:37:32,572 - INFO - epoch [36/50]	batch [400/417]	time(sec) 34657.70	loss 1.2281	acc 39.31%	fore pix 0.06%	back pix 99.94%	
+2024-12-21 15:38:07,294 - INFO - Epoch 36: Saving model
+2024-12-21 15:38:13,731 - INFO - epoch [37/50]	batch [0/417]	time(sec) 34698.86	loss 0.8540	acc 75.13%	fore pix 0.38%	back pix 99.62%	
+2024-12-21 15:41:49,053 - INFO - epoch [37/50]	batch [100/417]	time(sec) 34914.18	loss 0.8192	acc 85.94%	fore pix 0.34%	back pix 99.66%	
+2024-12-21 15:45:31,383 - INFO - epoch [37/50]	batch [200/417]	time(sec) 35136.52	loss 0.7867	acc 89.07%	fore pix 0.82%	back pix 99.18%	
+2024-12-21 15:49:10,211 - INFO - epoch [37/50]	batch [300/417]	time(sec) 35355.33	loss 1.7252	acc 2.30%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 15:53:18,275 - INFO - epoch [37/50]	batch [400/417]	time(sec) 35603.40	loss 0.7532	acc 94.44%	fore pix 0.54%	back pix 99.46%	
+2024-12-21 15:53:53,011 - INFO - Epoch 37: Saving model
+2024-12-21 15:53:59,796 - INFO - epoch [38/50]	batch [0/417]	time(sec) 35644.92	loss 0.8157	acc 82.14%	fore pix 0.58%	back pix 99.42%	
+2024-12-21 15:57:34,895 - INFO - epoch [38/50]	batch [100/417]	time(sec) 35860.02	loss 1.6427	acc 11.75%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 16:01:09,980 - INFO - epoch [38/50]	batch [200/417]	time(sec) 36075.10	loss 0.7806	acc 88.26%	fore pix 0.09%	back pix 99.91%	
+2024-12-21 16:04:44,957 - INFO - epoch [38/50]	batch [300/417]	time(sec) 36290.08	loss 0.7640	acc 92.29%	fore pix 0.40%	back pix 99.60%	
+2024-12-21 16:08:19,895 - INFO - epoch [38/50]	batch [400/417]	time(sec) 36505.02	loss 1.7289	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 16:08:54,646 - INFO - Epoch 38: Saving model
+2024-12-21 16:09:02,129 - INFO - epoch [39/50]	batch [0/417]	time(sec) 36547.25	loss 0.8169	acc 83.67%	fore pix 0.23%	back pix 99.77%	
+2024-12-21 16:12:37,088 - INFO - epoch [39/50]	batch [100/417]	time(sec) 36762.21	loss 0.7857	acc 90.81%	fore pix 0.21%	back pix 99.79%	
+2024-12-21 16:16:12,044 - INFO - epoch [39/50]	batch [200/417]	time(sec) 36977.17	loss 1.1295	acc 53.08%	fore pix 0.19%	back pix 99.81%	
+2024-12-21 16:19:46,965 - INFO - epoch [39/50]	batch [300/417]	time(sec) 37192.09	loss 1.2604	acc 51.96%	fore pix 0.13%	back pix 99.87%	
+2024-12-21 16:23:21,897 - INFO - epoch [39/50]	batch [400/417]	time(sec) 37407.02	loss 0.7625	acc 93.62%	fore pix 0.33%	back pix 99.67%	
+2024-12-21 16:23:56,626 - INFO - Epoch 39: Saving model
+2024-12-21 16:24:02,541 - INFO - epoch [40/50]	batch [0/417]	time(sec) 37447.67	loss 1.7259	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 16:27:37,682 - INFO - epoch [40/50]	batch [100/417]	time(sec) 37662.80	loss 1.0544	acc 48.31%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 16:31:12,844 - INFO - epoch [40/50]	batch [200/417]	time(sec) 37877.97	loss 0.8724	acc 83.60%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 16:34:47,990 - INFO - epoch [40/50]	batch [300/417]	time(sec) 38093.11	loss 0.8261	acc 84.60%	fore pix 0.42%	back pix 99.58%	
+2024-12-21 16:38:23,164 - INFO - epoch [40/50]	batch [400/417]	time(sec) 38308.29	loss 0.8611	acc 66.79%	fore pix 0.13%	back pix 99.87%	
+2024-12-21 16:38:57,872 - INFO - Epoch 40: Saving model
+2024-12-21 16:39:04,516 - INFO - epoch [41/50]	batch [0/417]	time(sec) 38349.64	loss 0.7938	acc 86.63%	fore pix 0.43%	back pix 99.57%	
+2024-12-21 16:42:39,603 - INFO - epoch [41/50]	batch [100/417]	time(sec) 38564.73	loss 1.5640	acc 30.81%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 16:46:14,769 - INFO - epoch [41/50]	batch [200/417]	time(sec) 38779.89	loss 0.7674	acc 91.73%	fore pix 0.18%	back pix 99.82%	
+2024-12-21 16:49:49,923 - INFO - epoch [41/50]	batch [300/417]	time(sec) 38995.04	loss 1.1460	acc 25.83%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 16:53:25,090 - INFO - epoch [41/50]	batch [400/417]	time(sec) 39210.22	loss 0.8225	acc 85.12%	fore pix 0.30%	back pix 99.70%	
+2024-12-21 16:53:59,755 - INFO - Epoch 41: Saving model
+2024-12-21 16:54:06,406 - INFO - epoch [42/50]	batch [0/417]	time(sec) 39251.53	loss 1.0019	acc 54.37%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 16:57:41,604 - INFO - epoch [42/50]	batch [100/417]	time(sec) 39466.73	loss 0.7955	acc 89.38%	fore pix 0.31%	back pix 99.69%	
+2024-12-21 17:01:16,776 - INFO - epoch [42/50]	batch [200/417]	time(sec) 39681.90	loss 0.8458	acc 79.71%	fore pix 0.24%	back pix 99.76%	
+2024-12-21 17:04:51,946 - INFO - epoch [42/50]	batch [300/417]	time(sec) 39897.07	loss 0.8947	acc 67.97%	fore pix 0.08%	back pix 99.92%	
+2024-12-21 17:08:27,148 - INFO - epoch [42/50]	batch [400/417]	time(sec) 40112.27	loss 0.9396	acc 53.11%	fore pix 0.06%	back pix 99.94%	
+2024-12-21 17:09:01,826 - INFO - Epoch 42: Saving model
+2024-12-21 17:09:08,248 - INFO - epoch [43/50]	batch [0/417]	time(sec) 40153.38	loss 1.0671	acc 49.72%	fore pix 0.26%	back pix 99.74%	
+2024-12-21 17:12:43,377 - INFO - epoch [43/50]	batch [100/417]	time(sec) 40368.50	loss 0.8775	acc 68.19%	fore pix 0.06%	back pix 99.94%	
+2024-12-21 17:16:18,549 - INFO - epoch [43/50]	batch [200/417]	time(sec) 40583.67	loss 1.7113	acc 2.02%	fore pix 0.03%	back pix 99.97%	
+2024-12-21 17:19:53,717 - INFO - epoch [43/50]	batch [300/417]	time(sec) 40798.84	loss 0.7730	acc 91.66%	fore pix 0.87%	back pix 99.13%	
+2024-12-21 17:23:28,903 - INFO - epoch [43/50]	batch [400/417]	time(sec) 41014.03	loss 0.7890	acc 89.98%	fore pix 0.10%	back pix 99.90%	
+2024-12-21 17:24:03,548 - INFO - Epoch 43: Saving model
+2024-12-21 17:24:09,705 - INFO - epoch [44/50]	batch [0/417]	time(sec) 41054.83	loss 1.2514	acc 39.20%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 17:27:44,886 - INFO - epoch [44/50]	batch [100/417]	time(sec) 41270.01	loss 1.7258	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 17:31:20,063 - INFO - epoch [44/50]	batch [200/417]	time(sec) 41485.19	loss 1.0956	acc 35.18%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 17:34:55,233 - INFO - epoch [44/50]	batch [300/417]	time(sec) 41700.36	loss 1.5229	acc 19.72%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 17:38:30,399 - INFO - epoch [44/50]	batch [400/417]	time(sec) 41915.52	loss 1.7107	acc 2.37%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 17:39:05,055 - INFO - Epoch 44: Saving model
+2024-12-21 17:39:12,133 - INFO - epoch [45/50]	batch [0/417]	time(sec) 41957.26	loss 0.8225	acc 77.99%	fore pix 0.41%	back pix 99.59%	
+2024-12-21 17:42:47,286 - INFO - epoch [45/50]	batch [100/417]	time(sec) 42172.41	loss 1.7270	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 17:46:22,456 - INFO - epoch [45/50]	batch [200/417]	time(sec) 42387.58	loss 1.7260	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 17:49:57,626 - INFO - epoch [45/50]	batch [300/417]	time(sec) 42602.75	loss 0.8838	acc 81.60%	fore pix 0.22%	back pix 99.78%	
+2024-12-21 17:53:32,780 - INFO - epoch [45/50]	batch [400/417]	time(sec) 42817.90	loss 0.7871	acc 84.22%	fore pix 0.24%	back pix 99.76%	
+2024-12-21 17:54:07,426 - INFO - Epoch 45: Saving model
+2024-12-21 17:54:13,320 - INFO - epoch [46/50]	batch [0/417]	time(sec) 42858.44	loss 0.7757	acc 90.20%	fore pix 0.14%	back pix 99.86%	
+2024-12-21 17:57:48,576 - INFO - epoch [46/50]	batch [100/417]	time(sec) 43073.70	loss 0.8214	acc 84.38%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 18:01:23,772 - INFO - epoch [46/50]	batch [200/417]	time(sec) 43288.90	loss 0.9805	acc 49.05%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 18:04:58,944 - INFO - epoch [46/50]	batch [300/417]	time(sec) 43504.07	loss 1.7101	acc 10.15%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 18:08:34,119 - INFO - epoch [46/50]	batch [400/417]	time(sec) 43719.24	loss 1.5816	acc 16.68%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 18:09:08,763 - INFO - Epoch 46: Saving model
+2024-12-21 18:09:16,129 - INFO - epoch [47/50]	batch [0/417]	time(sec) 43761.25	loss 0.8583	acc 72.05%	fore pix 0.29%	back pix 99.71%	
+2024-12-21 18:12:51,300 - INFO - epoch [47/50]	batch [100/417]	time(sec) 43976.42	loss 0.9659	acc 61.23%	fore pix 0.07%	back pix 99.93%	
+2024-12-21 18:16:26,475 - INFO - epoch [47/50]	batch [200/417]	time(sec) 44191.60	loss 1.3824	acc 36.52%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 18:20:01,651 - INFO - epoch [47/50]	batch [300/417]	time(sec) 44406.77	loss 1.6663	acc 1.72%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 18:23:36,823 - INFO - epoch [47/50]	batch [400/417]	time(sec) 44621.95	loss 0.8654	acc 63.69%	fore pix 0.09%	back pix 99.91%	
+2024-12-21 18:24:11,473 - INFO - Epoch 47: Saving model
+2024-12-21 18:24:17,942 - INFO - epoch [48/50]	batch [0/417]	time(sec) 44663.07	loss 0.8181	acc 81.78%	fore pix 0.44%	back pix 99.56%	
+2024-12-21 18:27:53,056 - INFO - epoch [48/50]	batch [100/417]	time(sec) 44878.18	loss 0.8172	acc 78.24%	fore pix 0.17%	back pix 99.83%	
+2024-12-21 18:31:28,174 - INFO - epoch [48/50]	batch [200/417]	time(sec) 45093.30	loss 1.6313	acc 6.14%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 18:35:03,329 - INFO - epoch [48/50]	batch [300/417]	time(sec) 45308.45	loss 0.8482	acc 82.36%	fore pix 0.38%	back pix 99.62%	
+2024-12-21 18:38:38,481 - INFO - epoch [48/50]	batch [400/417]	time(sec) 45523.60	loss 1.7265	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 18:39:13,104 - INFO - Epoch 48: Saving model
+2024-12-21 18:39:19,377 - INFO - epoch [49/50]	batch [0/417]	time(sec) 45564.50	loss 0.8840	acc 72.33%	fore pix 0.17%	back pix 99.83%	
+2024-12-21 18:42:54,639 - INFO - epoch [49/50]	batch [100/417]	time(sec) 45779.76	loss 0.8422	acc 85.93%	fore pix 0.36%	back pix 99.64%	
+2024-12-21 18:46:29,841 - INFO - epoch [49/50]	batch [200/417]	time(sec) 45994.96	loss 0.9564	acc 69.57%	fore pix 0.31%	back pix 99.69%	
+2024-12-21 18:50:05,052 - INFO - epoch [49/50]	batch [300/417]	time(sec) 46210.18	loss 1.7252	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 18:53:40,282 - INFO - epoch [49/50]	batch [400/417]	time(sec) 46425.41	loss 1.7276	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 18:54:14,930 - INFO - Epoch 49: Saving model
+2024-12-21 18:54:21,392 - INFO - epoch [50/50]	batch [0/417]	time(sec) 46466.51	loss 1.1995	acc 32.04%	fore pix 0.02%	back pix 99.98%	
+2024-12-21 18:57:56,640 - INFO - epoch [50/50]	batch [100/417]	time(sec) 46681.77	loss 1.7186	acc 4.99%	fore pix 0.01%	back pix 99.99%	
+2024-12-21 19:01:31,858 - INFO - epoch [50/50]	batch [200/417]	time(sec) 46896.98	loss 1.7294	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 19:05:07,123 - INFO - epoch [50/50]	batch [300/417]	time(sec) 47112.25	loss 0.9511	acc 59.91%	fore pix 0.15%	back pix 99.85%	
+2024-12-21 19:08:42,404 - INFO - epoch [50/50]	batch [400/417]	time(sec) 47327.53	loss 1.7211	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-21 19:09:17,085 - INFO - Epoch 50: Saving model
+2024-12-21 19:09:17,293 - INFO - Model saved at /home/wangc/now/pure/save_checkpoint/kmeans_no_init_cluster_3_embedding_3_1221_1357.pkl_num0.2.pth
+2024-12-21 19:09:17,294 - INFO - Training completed.
+2024-12-21 19:10:05,037 - INFO - Start processing 10 cases
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2024-12-21 19:14:15,620 - INFO - Case 1: Segmentation done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+valid_neighbor_vals: [1154 1175 1177 1188 1240 1340 1345 1374 1393 1404 1562 1615 1621 1700 1891 1909 1930]1902]
+Assign label 2561 to current val's neighbors: [1154 1175 1177 1188 1240 1340 1345 1374 1393 1404 1562 1615 1621 1700
+valid_neighbor_vals: [1126 1167 1168 1174 1196 1296 1319 1362 1405 1426 1447 1563 1596 1748
+Assign label 2561 to current val's neighbors: [1126 1167 1168 1174 1196 1296 1319 1362 1405 1426 1447 1563 1596 1748
+
+
+valid_neighbor_vals: [ 874  909  993  995 1008 1125 1192 1200 1517 1675 1699 1988 2047 2119 2018 2130 2147 2163]2103]
+Assign label 2561 to current val's neighbors: [ 874  909  993  995 1008 1125 1192 1200 1517 1675 1699 1988 2047 2119
+valid_neighbor_vals: [ 842  903  910  948  972 1002 1100 1116 1171 1179 1457 1507 1520 1728
+Assign label 2561 to current val's neighbors: [ 842  903  910  948  972 1002 1100 1116 1171 1179 1457 1507 1520 1728
+valid_neighbor_vals: [ 804  892  908  929  996 1052 1098 1131 1157 1427 1449 1485 1519 2122
+Assign label 2561 to current val's neighbors: [ 804  892  908  929  996 1052 1098 1131 1157 1427 1449 1485 1519 2122
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+number of valid_neighbor_vals: 0ixel val: 26236]0]9]1796]1249 1260]2065]2070]2]37 1062] 969 1078]1109]1129 1147]
+Traceback (most recent call last):
+  File "train_green_t.py", line 445, in <module>
+    eval_pipeline(
+  File "train_green_t.py", line 232, in eval_pipeline
+    ) = tree_detection(seg_processed, search_range=2)
+  File "/home/wangc/now/pure/ALinAirway/func/detect_tree.py", line 8, in tree_detection
+    connection_dict = get_connection_dict(center_dict, nearby_dict)
+  File "/home/wangc/now/pure/ALinAirway/func/detect_tree.py", line 111, in get_connection_dict
+    find_connection(current_label=slice_idxs[0], before_label=0)
+  File "/home/wangc/now/pure/ALinAirway/func/detect_tree.py", line 85, in find_connection
+    if connection_dict[nearby_label]["is_processed"]==False:
+KeyError: -87

@@ -427,6 +427,8 @@ if __name__ == "__main__":
         checkpoint_path,
     )
 
+    if device.type == "cuda":
+        torch.cuda.empty_cache()
     test_names = [
         "LIDC_IDRI_0066.nii.gz",
         "LIDC_IDRI_0328.nii.gz",

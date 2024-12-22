@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "train_green_t.py", line 397, in <module>
+    dataset_info_org = load_obj(data_info_path)
+  File "/home/wangc/now/pure/ALinAirway/func/ulti.py", line 22, in load_obj
+    with open(temp, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '../saved_objs/for_128_objs/training_info_1218/num20_entropy_1221_2028.pkl'

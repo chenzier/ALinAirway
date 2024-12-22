@@ -28,7 +28,7 @@ from func.eval_use_func import (
     get_the_skeleton_and_center_nearby_dict,
 )
 
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(100000)
 
 
 def update_dataset_paths(dataset, old_prefix, new_prefix):
@@ -317,7 +317,7 @@ if __name__ == "__main__":
         metrics_folder_path, exist_ok=True
     )  # 根据save_name生成metrics_save_path完整路径，后缀为.pkl
     metrics_save_path = os.path.join(metrics_folder_path, f"{args.save_name}.pkl")
-
+    # time.sleep(3600 * 7)
     # 新建info日志
     logging.basicConfig(
         level=logging.INFO,
@@ -409,6 +409,8 @@ if __name__ == "__main__":
         model_save_freq,
         checkpoint_path,
     )
+    if device.type == "cuda":
+        torch.cuda.empty_cache()
 
     test_names = [
         "LIDC_IDRI_0066.nii.gz",
