@@ -4,7 +4,6 @@ import torch.nn.functional as F
 import torch
 import numpy as np
 from functools import partial
-from .Dsc_conv import DCN_Conv
 
 
 # for name, module in create_conv(in_channels, out_channels, kernel_size, order, num_groups, padding=padding, stride=stride, dilation=dilation):
@@ -151,35 +150,6 @@ class SingleConv(nn.Sequential):
             self.add_module(name, module)
 
 
-class AttModule(nn.Module):  # SE_Net
-    def __init__(self, channel, mid_channel=8):
-        super(AttModule, self).__init__()
-        # nn.AdaptiveAvgPool3d我们只需要关注输出维度的大小 output_size ，具体的实现过程和参数选择自动帮你确定了。
-        self.avg_pool = nn.AdaptiveAvgPool3d(1)
-        self.fc = nn.Sequential(
-            nn.Linear(channel, mid_channel, bias=False),
-            nn.ReLU(inplace=True),
-            nn.Linear(mid_channel, channel, bias=False),
-            nn.Sigmoid(),
-        )
-
-    def forward(self, x):
-        b, c, _, _, _ = x.size()
-        # print(x.shape)#torch.Size([4, 32, 32, 128, 128])
-        y = self.avg_pool(x).view(b, c)
-        # print(self.avg_pool(x).shape)#torch.Size([4, 32, 1, 1, 1])
-        y = self.fc(y).view(b, c, 1, 1, 1)
-        # print(y.shape,y.expand_as(x).shape)#torch.Size([4, 32, 1, 1, 1]) torch.Size([4, 32, 32, 128, 128])
-        return x * y.expand_as(x)
-
-
-# tensor.expand_as()这个函数就是把一个tensor变成和函数括号内一样形状的tensor，用法与expand（）类似。
-# 差别是expand括号里为size，expand_as括号里为其他tensor。
-# expand()函数可以将张量广播到新的形状，但是切记以下两点：
-# 1. 只能对维度值为1的维度进行扩展，且扩展的Tensor不会分配新的内存，只是原来的基础上创建新的视图并返回；
-# 2. 无需扩展的维度请保持维度值不变。
-
-
 class Encoder(nn.Module):
     """
     A single encoder module consisting of
@@ -221,7 +191,6 @@ class Encoder(nn.Module):
         num_groups=8,  # 几个groups
         padding=1,
         stride=1,
-        use_dsc=False,
     ):
         super(Encoder, self).__init__()
         assert pool_type in ["max", "avg"]
@@ -232,7 +201,7 @@ class Encoder(nn.Module):
                 self.pooling = nn.AvgPool3d(kernel_size=pool_kernel_size)
         else:
             self.pooling = None
-        self.use_dsc = use_dsc
+
         # conv1
         self.conv1 = SingleConv(
             in_channels,
@@ -243,53 +212,8 @@ class Encoder(nn.Module):
             padding=padding,
             stride=stride,
         )
-        if use_dsc:
-            self.conv2x = DCN_Conv(
-                in_ch=middle_channels,
-                out_ch=middle_channels,
-                kernel_size=conv_kernel_size,
-                extend_scope=1.0,
-                morph=0,
-                if_offset=True,
-            )
-            self.conv2y = DCN_Conv(
-                in_ch=middle_channels,
-                out_ch=middle_channels,
-                kernel_size=conv_kernel_size,
-                extend_scope=1.0,
-                morph=1,
-                if_offset=True,
-            )
-            # self.conv2z = DCN_Conv(
-            #     in_ch=middle_channels,
-            #     out_ch=middle_channels,
-            #     kernel_size=conv_kernel_size,
-            #     extend_scope=1.0,
-            #     morph=2,
-            #     if_offset=True,
-            # )
-            # conv3
-            self.conv2 = SingleConv(
-                middle_channels * 2,
-                middle_channels,
-                conv_kernel_size,
-                conv_layer_order,
-                num_groups,
-                padding=padding,
-                stride=stride,
-            )
-        else:
-            self.dilation_conv = SingleConv(
-                middle_channels,
-                middle_channels,
-                (3, 3, 3),
-                conv_layer_order,
-                num_groups,
-                padding=(4, 4, 4),
-                stride=stride,
-                dilation=4,
-            )
-        self.conv3 = SingleConv(
+        # conv2
+        self.conv2 = SingleConv(
             middle_channels,
             out_channels,
             conv_kernel_size,
@@ -298,27 +222,12 @@ class Encoder(nn.Module):
             padding=padding,
             stride=stride,
         )
-        # # 相比前两层padding=(4,4,4)且dilation=4
-        # # We adopted dilated convolutions as they enlarged the feature extraction area without increasing the size of the model.
-        # self.dilation_conv = SingleConv(middle_channels, middle_channels, (3, 3, 3), conv_layer_order,
-        #                                 num_groups, padding=(4, 4, 4), stride=stride, dilation=4)
-
-        self.att = AttModule(channel=middle_channels)  # SEnet
-        # 3代表cat了三个特征图
 
     def forward(self, x):
         if self.pooling is not None:
             x = self.pooling(x)
         x = self.conv1(x)
-        if self.use_dsc:
-            x_2x_0 = self.conv2x(x)
-            x_2y_0 = self.conv2y(x)
-
-            x_2 = torch.cat([x_2x_0, x_2y_0], dim=1)
-            x = x + self.att(self.conv2(x_2))
-        else:
-            x = x + self.att(self.dilation_conv(x))
-        x = self.conv3(x)
+        x = self.conv2(x)
 
         return x
 
@@ -366,11 +275,9 @@ class Decoder(nn.Module):
         deconv_kernel_size=4,
         deconv_stride=(2, 2, 2),
         deconv_padding=1,
-        use_dsc=False,
     ):
         super(Decoder, self).__init__()
         # deconv
-        self.use_dsc = use_dsc
         self.upsample = nn.ConvTranspose3d(
             in_channels,
             upsample_out_channels,
@@ -394,56 +301,8 @@ class Decoder(nn.Module):
             padding=conv_padding,
             stride=conv_stride,
         )
-        if self.use_dsc:
-            self.conv2x = DCN_Conv(
-                in_ch=conv_middle_channels,
-                out_ch=conv_middle_channels,
-                kernel_size=conv_kernel_size,
-                extend_scope=1.0,
-                morph=0,
-                if_offset=True,
-            )
-            self.conv2y = DCN_Conv(
-                in_ch=conv_middle_channels,
-                out_ch=conv_middle_channels,
-                kernel_size=conv_kernel_size,
-                extend_scope=1.0,
-                morph=1,
-                if_offset=True,
-            )
-            # self.conv2z = DCN_Conv(
-            #     in_ch=conv_middle_channels,
-            #     out_ch=conv_middle_channels,
-            #     kernel_size=conv_kernel_size,
-            #     extend_scope=1.0,
-            #     morph=2,
-            #     if_offset=True,
-            # )
-
-            self.conv2 = SingleConv(
-                2 * conv_middle_channels,
-                conv_middle_channels,
-                conv_kernel_size,
-                conv_layer_order,
-                num_groups,
-                padding=conv_padding,
-                stride=conv_stride,
-            )
-
-        else:
-            self.dilation_conv = SingleConv(
-                conv_middle_channels,
-                conv_middle_channels,
-                (3, 3, 3),
-                conv_layer_order,
-                num_groups,
-                padding=(4, 4, 4),
-                stride=conv_stride,
-                dilation=4,
-            )
-        self.att = AttModule(channel=conv_middle_channels)
         # conv2
-        self.conv3 = SingleConv(
+        self.conv2 = SingleConv(
             conv_middle_channels,
             out_channels,
             conv_kernel_size,
@@ -453,8 +312,6 @@ class Decoder(nn.Module):
             stride=conv_stride,
         )
 
-        #
-
     def forward(self, encoder_features, x):
         # print(x.shape)#torch.Size([4, 256, 4, 16, 16])#注意3D图像不再是HxW,而是XYZ，所有这里三个参数都变了
         x = self.upsample(x)
@@ -463,15 +320,7 @@ class Decoder(nn.Module):
 
         x = self.conv1(x)
         # 3dU-Net的concat部分
-        if self.use_dsc:
-            x_2x_0 = self.conv2x(x)
-            x_2y_0 = self.conv2y(x)
-            # x_2z_0 = self.conv2z(x)
-            x_2 = torch.cat([x_2x_0, x_2y_0], dim=1)
-            x = x + self.att(self.conv2(x_2))
-        else:
-            x = x + self.att(self.dilation_conv(x))
-        x = self.conv3(x)
+        x = self.conv2(x)
 
         return x
 
@@ -490,44 +339,60 @@ class Decoder(nn.Module):
 
 
 class SegAirwayModel(nn.Module):
+    """
+    Args:
+        in_channels (int): number of input channels
+        out_channels (int): number of output segmentation masks;
+            Note that that the of out_channels might correspond to either
+            different semantic classes or to different binary segmentation mask.
+            It's up to the user of the class to interpret the out_channels and
+            use the proper loss criterion during training (i.e. CrossEntropyLoss (multi-class)
+            or BCEWithLogitsLoss (two-class) respectively)
+        layer_order (string): determines the order of layers
+            in `SingleConv` module. e.g. 'crg' stands for Conv3d+ReLU+GroupNorm3d.
+            See `SingleConv` for more info
+    """
+
+    # model=SegAirwayModel(in_channels=1, out_channels=2)
+
     def __init__(self, in_channels, out_channels, layer_order="gcr", **kwargs):
         super(SegAirwayModel, self).__init__()
-
-        # Adjusted encoder layers with reduced channels
+        # We simply adapted the down-sampling and up-sampling operations by introducing a new feature extraction module which consists of one dilated convolution, one self-attention block, and two typical convolutional kernels .
+        # Compared with the conventional convolution kernels, the proposed feature extraction module helps to extract features from a larger surrounding area to avoid the interference from
+        # other tubular shapes
+        # create encoder
         encoder_1 = Encoder(
             in_channels=in_channels,
-            middle_channels=8,  # Reduced
-            out_channels=16,  # Reduced
+            middle_channels=16,
+            out_channels=32,
             apply_pooling=False,
             conv_kernel_size=3,
             pool_kernel_size=2,
             pool_type="max",
             conv_layer_order=layer_order,
-            num_groups=4,  # Adjusted for fewer channels
+            num_groups=8,
             padding=1,
             stride=1,
-            use_dsc=True,
         )
 
         encoder_2 = Encoder(
-            in_channels=16,  # Adjusted
-            middle_channels=16,  # Reduced
-            out_channels=32,  # Reduced
+            in_channels=32,
+            middle_channels=32,
+            out_channels=64,
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
             pool_type="max",
             conv_layer_order=layer_order,
-            num_groups=4,
+            num_groups=8,
             padding=1,
             stride=1,
-            use_dsc=True,
         )
 
         encoder_3 = Encoder(
-            in_channels=32,  # Adjusted
-            middle_channels=32,  # Reduced
-            out_channels=64,  # Reduced
+            in_channels=64,
+            middle_channels=64,
+            out_channels=128,
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -536,13 +401,12 @@ class SegAirwayModel(nn.Module):
             num_groups=8,
             padding=1,
             stride=1,
-            use_dsc=False,
         )
 
         encoder_4 = Encoder(
-            in_channels=64,  # Adjusted
-            middle_channels=64,  # Reduced
-            out_channels=128,  # Reduced
+            in_channels=128,
+            middle_channels=128,
+            out_channels=256,
             apply_pooling=True,
             conv_kernel_size=3,
             pool_kernel_size=2,
@@ -551,18 +415,17 @@ class SegAirwayModel(nn.Module):
             num_groups=8,
             padding=1,
             stride=1,
-            use_dsc=False,
         )
 
         self.encoders = nn.ModuleList([encoder_1, encoder_2, encoder_3, encoder_4])
 
-        # Adjusted decoder layers with reduced channels
+        # create decoder 除了通道维都相同
         decoder_1 = Decoder(
-            in_channels=128,  # Adjusted
-            upsample_out_channels=128,  # Adjusted
-            conv_in_channels=192,  # Reduced
-            conv_middle_channels=64,  # Reduced
-            out_channels=64,  # Reduced
+            in_channels=256,
+            upsample_out_channels=256,
+            conv_in_channels=384,
+            conv_middle_channels=128,
+            out_channels=128,
             conv_kernel_size=3,
             conv_layer_order=layer_order,
             num_groups=8,
@@ -571,48 +434,47 @@ class SegAirwayModel(nn.Module):
             deconv_kernel_size=4,
             deconv_stride=(2, 2, 2),
             deconv_padding=1,
-            use_dsc=False,
         )
 
         decoder_2 = Decoder(
-            in_channels=64,  # Adjusted
-            upsample_out_channels=64,  # Adjusted
-            conv_in_channels=96,  # Reduced
-            conv_middle_channels=32,  # Reduced
-            out_channels=32,  # Reduced
+            in_channels=128,
+            upsample_out_channels=128,
+            conv_in_channels=192,
+            conv_middle_channels=64,
+            out_channels=64,
             conv_kernel_size=3,
             conv_layer_order=layer_order,
-            num_groups=4,
+            num_groups=8,
             conv_padding=1,
             conv_stride=1,
             deconv_kernel_size=4,
             deconv_stride=(2, 2, 2),
             deconv_padding=1,
-            use_dsc=False,
         )
 
         decoder_3 = Decoder(
-            in_channels=32,  # Adjusted
-            upsample_out_channels=32,  # Adjusted
-            conv_in_channels=48,  # Reduced
-            conv_middle_channels=16,  # Reduced
-            out_channels=16,  # Reduced
+            in_channels=64,
+            upsample_out_channels=64,
+            conv_in_channels=96,
+            conv_middle_channels=32,
+            out_channels=32,
             conv_kernel_size=3,
             conv_layer_order=layer_order,
-            num_groups=4,
+            num_groups=8,
             conv_padding=1,
             conv_stride=1,
             deconv_kernel_size=4,
             deconv_stride=(2, 2, 2),
             deconv_padding=1,
-            use_dsc=False,
         )
 
         self.decoders = nn.ModuleList([decoder_1, decoder_2, decoder_3])
 
-        # Final 1x1 convolution to match the number of output channels
+        # in the last layer a 1×1 convolution reduces the number of output
+        # channels to the number of labels
+        # 最后还有一个1x1卷积层，用于改变channle数量
         self.final_conv = nn.Conv3d(
-            in_channels=16,  # Adjusted
+            in_channels=32,
             out_channels=out_channels,
             kernel_size=3,
             padding=1,
@@ -620,6 +482,17 @@ class SegAirwayModel(nn.Module):
         )
 
         self.final_activation = nn.Softmax(dim=1)
+
+    def get_embedding(self, x):
+        encoders_features = []
+        # print('intial shape', x.shape)
+        for encoder in self.encoders:
+            x = encoder(x)
+            encoders_features.append(x)
+
+            # reverse the encoder outputs to be aligned with the decoder
+
+        return encoders_features
 
     def forward(self, x):
         # encoder part
@@ -653,6 +526,6 @@ class SegAirwayModel(nn.Module):
         return x
 
     def model_info(self):
-        message = "本模型为model_arch_e01_01.py,在encoder0和encoder1上加dsc模块,通道数为model_arch的一半"
-        flag = "dsc"
+        message = "本模型为model_arch_3d_net.py"
+        flag = "navi_airway"
         return message, flag

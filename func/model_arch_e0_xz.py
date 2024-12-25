@@ -244,6 +244,14 @@ class Encoder(nn.Module):
             stride=stride,
         )
         if use_dsc:
+            # self.conv2x = DCN_Conv(
+            #     in_ch=middle_channels,
+            #     out_ch=middle_channels,
+            #     kernel_size=conv_kernel_size,
+            #     extend_scope=1.0,
+            #     morph=0,
+            #     if_offset=True,
+            # )
             self.conv2x = DCN_Conv(
                 in_ch=middle_channels,
                 out_ch=middle_channels,
@@ -252,22 +260,14 @@ class Encoder(nn.Module):
                 morph=0,
                 if_offset=True,
             )
-            self.conv2y = DCN_Conv(
+            self.conv2z = DCN_Conv(
                 in_ch=middle_channels,
                 out_ch=middle_channels,
                 kernel_size=conv_kernel_size,
                 extend_scope=1.0,
-                morph=1,
+                morph=2,
                 if_offset=True,
             )
-            # self.conv2z = DCN_Conv(
-            #     in_ch=middle_channels,
-            #     out_ch=middle_channels,
-            #     kernel_size=conv_kernel_size,
-            #     extend_scope=1.0,
-            #     morph=2,
-            #     if_offset=True,
-            # )
             # conv3
             self.conv2 = SingleConv(
                 middle_channels * 2,
@@ -311,10 +311,11 @@ class Encoder(nn.Module):
             x = self.pooling(x)
         x = self.conv1(x)
         if self.use_dsc:
+            # x_2x_0 = self.conv2x(x)
             x_2x_0 = self.conv2x(x)
-            x_2y_0 = self.conv2y(x)
+            x_2z_0 = self.conv2z(x)
 
-            x_2 = torch.cat([x_2x_0, x_2y_0], dim=1)
+            x_2 = torch.cat([x_2x_0, x_2z_0], dim=1)
             x = x + self.att(self.conv2(x_2))
         else:
             x = x + self.att(self.dilation_conv(x))
@@ -403,22 +404,22 @@ class Decoder(nn.Module):
                 morph=0,
                 if_offset=True,
             )
-            self.conv2y = DCN_Conv(
-                in_ch=conv_middle_channels,
-                out_ch=conv_middle_channels,
-                kernel_size=conv_kernel_size,
-                extend_scope=1.0,
-                morph=1,
-                if_offset=True,
-            )
-            # self.conv2z = DCN_Conv(
+            # self.conv2y = DCN_Conv(
             #     in_ch=conv_middle_channels,
             #     out_ch=conv_middle_channels,
             #     kernel_size=conv_kernel_size,
             #     extend_scope=1.0,
-            #     morph=2,
+            #     morph=1,
             #     if_offset=True,
             # )
+            self.conv2z = DCN_Conv(
+                in_ch=conv_middle_channels,
+                out_ch=conv_middle_channels,
+                kernel_size=conv_kernel_size,
+                extend_scope=1.0,
+                morph=2,
+                if_offset=True,
+            )
 
             self.conv2 = SingleConv(
                 2 * conv_middle_channels,
@@ -465,9 +466,10 @@ class Decoder(nn.Module):
         # 3dU-Net的concat部分
         if self.use_dsc:
             x_2x_0 = self.conv2x(x)
-            x_2y_0 = self.conv2y(x)
-            # x_2z_0 = self.conv2z(x)
-            x_2 = torch.cat([x_2x_0, x_2y_0], dim=1)
+            # x_2y_0 = self.conv2y(x)
+            x_2z_0 = self.conv2z(x)
+            x_2 = torch.cat([x_2x_0, x_2z_0], dim=1)
+            # x_2 = torch.cat([x_2y_0, x_2z_0], dim=1)
             x = x + self.att(self.conv2(x_2))
         else:
             x = x + self.att(self.dilation_conv(x))
@@ -521,7 +523,7 @@ class SegAirwayModel(nn.Module):
             num_groups=4,
             padding=1,
             stride=1,
-            use_dsc=True,
+            use_dsc=False,
         )
 
         encoder_3 = Encoder(
@@ -653,6 +655,6 @@ class SegAirwayModel(nn.Module):
         return x
 
     def model_info(self):
-        message = "本模型为model_arch_e01_01.py,在encoder0和encoder1上加dsc模块,通道数为model_arch的一半"
+        message = "本模型为model_arch_e0_yz.py,只在encoder0上加dsc模块,通道数为model_arch的一半,同时在xz轴进行dsc"
         flag = "dsc"
         return message, flag

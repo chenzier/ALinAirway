@@ -49,7 +49,7 @@ data_dict_org = load_obj(
 data_dict_only_negtive = load_obj(
     "/home/wangc/now/pure/saved_objs/for_128_objs/data_dict_only_negtive"
 )
-num = 70
+num = 2
 new_num = 0.01 * num
 uncertainy_path = (
     "/data/wangc/al_data/test1123/uncertainy/uncertainy_entropy_1221_1838.pkl"

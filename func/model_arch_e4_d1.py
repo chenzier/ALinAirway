@@ -506,7 +506,7 @@ class SegAirwayModel(nn.Module):
             num_groups=4,  # Adjusted for fewer channels
             padding=1,
             stride=1,
-            use_dsc=True,
+            use_dsc=False,
         )
 
         encoder_2 = Encoder(
@@ -521,7 +521,7 @@ class SegAirwayModel(nn.Module):
             num_groups=4,
             padding=1,
             stride=1,
-            use_dsc=True,
+            use_dsc=False,
         )
 
         encoder_3 = Encoder(
@@ -551,7 +551,7 @@ class SegAirwayModel(nn.Module):
             num_groups=8,
             padding=1,
             stride=1,
-            use_dsc=False,
+            use_dsc=True,
         )
 
         self.encoders = nn.ModuleList([encoder_1, encoder_2, encoder_3, encoder_4])
@@ -571,7 +571,7 @@ class SegAirwayModel(nn.Module):
             deconv_kernel_size=4,
             deconv_stride=(2, 2, 2),
             deconv_padding=1,
-            use_dsc=False,
+            use_dsc=True,
         )
 
         decoder_2 = Decoder(
@@ -653,6 +653,6 @@ class SegAirwayModel(nn.Module):
         return x
 
     def model_info(self):
-        message = "本模型为model_arch_e01_01.py,在encoder0和encoder1上加dsc模块,通道数为model_arch的一半"
+        message = "本模型为model_arch_e4_d1.py,在encoder4和decoder1加入dsc模块,通道降维"
         flag = "dsc"
         return message, flag

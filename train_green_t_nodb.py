@@ -317,7 +317,7 @@ if __name__ == "__main__":
         metrics_folder_path, exist_ok=True
     )  # 根据save_name生成metrics_save_path完整路径，后缀为.pkl
     metrics_save_path = os.path.join(metrics_folder_path, f"{args.save_name}.pkl")
-    # time.sleep(3600 * 7)
+    # time.sleep(3600 * 3)
     # 新建info日志
     logging.basicConfig(
         level=logging.INFO,
