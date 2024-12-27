@@ -4,11 +4,71 @@ import skimage.io as io
 import random
 import h5py
 
+
 from torch.utils.data import Dataset
 from torch import from_numpy as from_numpy
 from torchvision import transforms
 import torch
 import torchio as tio
+class Random3DCrop_np2(object):
+    def __init__(self, output_size):
+        assert isinstance(
+            output_size, (int, tuple)
+        ), "Attention: random 3D crop output size: an int or a tuple (length:3)"
+        if isinstance(output_size, int):
+            self.output_size = (output_size, output_size, output_size)
+        else:
+            assert (
+                len(output_size) == 3
+            ), "Attention: random 3D crop output size: a tuple (length:3)"
+            self.output_size = output_size
+
+    def random_crop_start_point(self, img_3d):
+        """Find a random start point within the foreground."""
+        assert len(img_3d.shape) == 3, "Attention: input must be a 3D image"
+
+        d, h, w = img_3d.shape
+        d_new, h_new, w_new = self.output_size
+
+        # Ensure crop size does not exceed image dimensions
+        d_new = min(d, d_new)
+        h_new = min(h, h_new)
+        w_new = min(w, w_new)
+
+        # Locate all foreground points (value == 1)
+        foreground_points = np.argwhere(img_3d == 1)
+        if foreground_points.size == 0:
+            raise ValueError("No foreground (value == 1) found in the input image.")
+
+        # Randomly select a foreground point
+        center_point = foreground_points[np.random.choice(len(foreground_points))]
+        d_center, h_center, w_center = center_point
+
+        # Calculate valid start ranges to ensure crop fits within image dimensions
+        d_start = max(0, min(d - d_new, d_center - d_new // 2))
+        h_start = max(0, min(h - h_new, h_center - h_new // 2))
+        w_start = max(0, min(w - w_new, w_center - w_new // 2))
+
+        return d_start, h_start, w_start
+
+    def __call__(self, img_3d, start_points=None):
+        img_3d = np.array(img_3d)
+
+        d, h, w = img_3d.shape
+        d_new, h_new, w_new = self.output_size
+
+        if start_points is None:
+            start_points = self.random_crop_start_point(img_3d)
+
+        d_start, h_start, w_start = start_points
+        d_end = min(d_start + d_new, d)
+        h_end = min(h_start + h_new, h)
+        w_end = min(w_start + w_new, w)
+
+        crop = img_3d[d_start:d_end, h_start:h_end, w_start:w_end]
+
+        return crop
+
 
 class Random3DCrop_np(object):
     def __init__(self, output_size):

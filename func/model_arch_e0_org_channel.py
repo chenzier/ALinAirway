@@ -611,7 +611,7 @@ class SegAirwayModel(nn.Module):
 
         # Final 1x1 convolution to match the number of output channels
         self.final_conv = nn.Conv3d(
-            in_channels=16,  # Adjusted
+            in_channels=32,
             out_channels=out_channels,
             kernel_size=3,
             padding=1,

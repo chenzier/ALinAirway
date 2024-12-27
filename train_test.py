@@ -6,12 +6,13 @@ import gc
 import sys
 import logging
 import argparse
+import wandb
 import numpy as np
 import pickle
 import SimpleITK as sitk
 import yaml
 import importlib
-
+from torch.nn.utils import clip_grad_norm_
 from func.load_dataset import airway_dataset
 from func.loss_func import (
     dice_loss_weights,
@@ -135,15 +136,19 @@ def train_model(
             ).to(device)
             img_output = model(img_input)
 
-            loss = dice_loss_weights(
+            loss1 = dice_loss_weights(
                 img_output[:, 0, :, :, :], groundtruth_background, weights
-            ) + dice_loss_power_weights(
+            )
+            loss2 = dice_loss_power_weights(
                 img_output[:, 1, :, :, :], groundtruth_foreground, weights, alpha=2
             )
+            loss = loss1 + loss2
             accuracy = dice_accuracy(img_output[:, 1, :, :, :], groundtruth_foreground)
 
             optimizer.zero_grad()
             loss.backward()
+            # max_grad_norm=1.0
+            clip_grad_norm_(model.parameters(), max_grad_norm=1.0)
             optimizer.step()
 
             time_consumption = time.time() - start_time
@@ -153,10 +158,16 @@ def train_model(
                     f"epoch [{ith_epoch + 1}/{max_epoch}]\t"
                     f"batch [{ith_batch}/{len_dataset_loader}]\t"
                     f"time(sec) {time_consumption:.2f}\t"
-                    f"loss {loss.item():.4f}\t"
+                    f"loss {loss1.item():.4f}, {loss2.item():.4f}\t"
                     f"acc {accuracy.item() * 100:.2f}%\t"
                     f"fore pix {fore_pix_per * 100:.2f}%\t"
                     f"back pix {back_pix_per * 100:.2f}%\t"
+                )
+                wandb.log(
+                    {
+                        "loss": loss.item(),
+                        "accuracy": accuracy.item(),
+                    }
                 )
 
         del dataset_loader
@@ -357,7 +368,7 @@ if __name__ == "__main__":
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
     model_message, flag = model.model_info()
 
-    batch_size = 2
+    batch_size = 8
 
     logging.info(f"Batch size: {batch_size}")
     logging.info(model_message)
@@ -365,7 +376,14 @@ if __name__ == "__main__":
     model.to(device)
 
     # Optimizer
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    learning_rate = 1e-8  # 根据需要调整
+    betas = (0.95, 0.999)  # 或者尝试 (0.9, 0.99) 或 (0.99, 0.999)
+    eps = 1e-8  # 通常不需要调整，除非出现数值不稳定
+
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=learning_rate, betas=betas, eps=eps
+    )
+    # optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
     # Load dataset
     dataset_info_org = load_obj(data_info_path)
@@ -388,6 +406,15 @@ if __name__ == "__main__":
 
     logging.info(f"Total epochs: {max_epoch}")
     logging.info(f"Length of dataset: {len(dataset_info_org)}")
+    wandb.init(
+        project="test",
+        config={
+            "learning_rate": learning_rate,
+            "max_epoch": max_epoch,
+            "batch_size": batch_size,
+            # 可以继续添加其他想要记录的超参数
+        },
+    )
     train_model(
         model,
         optimizer,

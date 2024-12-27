@@ -34,18 +34,15 @@ class DatasetInfo:
         names.sort()
         label_names = os.listdir(niigz_label_path)
         label_names.sort()
-
         # 为数据集生成带有特定前缀的文件名，并去除文件扩展名，通过 np.unique() 去重
         processed_names = []
         for name in names:
-            if tag == "exact09" or "Exact09":
+            if tag == "exact09" or tag == "Exact09":
                 processed_names.append("EXACT09_" + name.split(".")[0])
-            processed_names.append(
-                self.precrop_dataset.split("/")[-1] + "_" + name.split(".")[0]
-            )
+            elif tag == "lidc" or tag == "LIDC":
+                processed_names.append(name.split(".")[0])
         processed_names = np.array(processed_names)
         processed_names = np.unique(processed_names)
-
         self.processed_names = processed_names
 
     def create_data_dict(self):
