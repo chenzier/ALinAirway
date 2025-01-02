@@ -12,13 +12,15 @@ import pickle
 import SimpleITK as sitk
 import yaml
 import importlib
+from torch.cuda.amp import autocast, GradScaler
+from torch.nn import functional as F
 from torch.nn.utils import clip_grad_norm_
 from func.load_dataset import airway_dataset
 from func.loss_func import (
     dice_loss_weights,
     dice_accuracy,
     dice_loss_power_weights,
-    bce_loss,
+    dice_loss,
 )
 from func.model_run import semantic_segment_crop_and_cat
 from func.post_process import post_process, add_broken_parts_to_the_result
@@ -117,6 +119,8 @@ def train_model(
         )
 
         len_dataset_loader = len(dataset_loader)
+        total_loss = 0.0
+        total_accuracy = 0.0
         for ith_batch, batch in enumerate(dataset_loader):
             img_input = batch["image"].float().to(device)
             groundtruth_foreground = batch["label"].float().to(device)
@@ -140,21 +144,22 @@ def train_model(
             loss1 = dice_loss_weights(
                 img_output[:, 0, :, :, :], groundtruth_background, weights
             )
+            # loss1 = dice_loss(img_output[:, 0, :, :, :], groundtruth_background)
             loss2 = dice_loss_power_weights(
                 img_output[:, 1, :, :, :], groundtruth_foreground, weights, alpha=2
             )
+
+            # 使用Softmax函数进行处理，dim=1表示在第二个维度（即类别维度）上进行Softmax操作
+            # softmaxed_per = F.softmax(input_for_softmax, dim=1)
+
+            # # 获取Softmax处理后的对应概率值
+            # softmaxed_fore_pix_per = softmaxed_per[0, 0]
+            # softmaxed_back_pix_per = softmaxed_per[0, 1]
             loss = loss1 + loss2
             accuracy = dice_accuracy(img_output[:, 1, :, :, :], groundtruth_foreground)
-            loss_background = bce_loss(
-                img_output[:, 0, :, :, :], groundtruth_background
-            )
-            loss_foreground = bce_loss(
-                img_output[:, 1, :, :, :], groundtruth_foreground
-            )
 
-            loss1 = loss_background.mean()
-            loss2 = loss_foreground.mean()
-            loss = loss1 + loss2
+            total_loss += loss.item()
+            total_accuracy += accuracy.item()
 
             optimizer.zero_grad()
             loss.backward()
@@ -174,20 +179,17 @@ def train_model(
                     f"fore pix {fore_pix_per * 100:.2f}%\t"
                     f"back pix {back_pix_per * 100:.2f}%\t"
                 )
-            wandb.log(
-                {
-                    "loss": loss.item(),
-                }
-            )
-            wandb.log(
-                {
-                    "accuracy": accuracy.item(),
-                }
-            )
 
         del dataset_loader
         gc.collect()
-
+        average_loss = total_loss / len_dataset_loader
+        average_accuracy = total_accuracy / len_dataset_loader
+        wandb.log(
+            {
+                "loss": average_loss,
+                "accuracy": average_accuracy,
+            }
+        )
         if (ith_epoch + 1) % model_save_freq == 0:
             logging.info(f"Epoch {ith_epoch + 1}: Saving model")
             model.to(torch.device("cpu"))
@@ -198,120 +200,10 @@ def train_model(
     logging.info("Training completed.")
 
 
-def eval_pipeline(
-    model,
-    load_pkl,
-    test_names,
-    seg_result_path,
-    use_gpu,
-    metrics_save_path,
-    exact09_img_path,
-    lidc_img_path,
-    exact09_label_path,
-    lidc_label_path,
-):
-    device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
-
-    model.to(device)
-    checkpoint = torch.load(load_pkl)
-    model.load_state_dict(checkpoint["model_state_dict"])
-    threshold = 0.5
-
-    raw_img_dict = load_many_CT_img(
-        exact09_img_path, lidc_img_path, test_names, dataset_type="image"
-    )
-
-    seg_processeds = []
-    seg_processed_IIs = []
-    logging.info(f"Start processing {len(raw_img_dict.keys())} cases")
-
-    for i, (img_name, raw_img) in enumerate(raw_img_dict.items()):
-        seg_result = semantic_segment_crop_and_cat(
-            raw_img,
-            model,
-            device,
-            crop_cube_size=[32, 128, 128],
-            stride=[16, 64, 64],
-            windowMin=-1000,
-            windowMax=600,
-        )
-        logging.info(f"Case {i + 1}: Segmentation done")
-
-        seg_onehot = np.array(seg_result > threshold, dtype=np.int32)
-        seg_onehot_comb = np.array((seg_onehot) > 0, dtype=np.int32)
-        seg_processed, _ = post_process(seg_onehot_comb, threshold=threshold)
-
-        (
-            seg_slice_label_I,
-            connection_dict_of_seg_I,
-            number_of_branch_I,
-            tree_length_I,
-        ) = tree_detection(seg_processed, search_range=2)
-        logging.info(f"Case {i + 1}: Post-process done")
-
-        seg_processed_II = add_broken_parts_to_the_result(
-            connection_dict_of_seg_I,
-            seg_result,
-            seg_processed,
-            threshold=threshold,
-            search_range=10,
-            delta_threshold=0.05,
-            min_threshold=0.4,
-        )
-
-        (
-            seg_slice_label_II,
-            connection_dict_of_seg_II,
-            number_of_branch_II,
-            tree_length_II,
-        ) = tree_detection(seg_processed_II, search_range=2)
-
-        logging.info(f"Case {i + 1}: Broken parts added and tree detection done")
-        seg_processed_IIs.append(seg_processed)
-        seg_processeds.append(seg_processed)
-
-        if seg_result_path != "":
-            sitk.WriteImage(
-                sitk.GetImageFromArray(seg_processed),
-                os.path.join(seg_result_path, f"{img_name}_segmentation.nii.gz"),
-            )
-            sitk.WriteImage(
-                sitk.GetImageFromArray(seg_processed_II),
-                os.path.join(
-                    seg_result_path, f"{img_name}_segmentation_add_broken_parts.nii.gz"
-                ),
-            )
-
-    logging.info("All cases processed, starting evaluation")
-
-    # 导入test集的label
-    label_dict = load_many_CT_img(
-        exact09_label_path, lidc_label_path, test_names, dataset_type="label"
-    )
-
-    skeleton_dict = {}
-    for i, label in label_dict.items():
-        skeleton_dict[i] = get_the_skeleton_and_center_nearby_dict(
-            label, search_range=2, need_skeletonize_3d=True
-        )
-
-    logging.info("Labels loaded")
-
-    # 计算相应指标
-    metrics_al = get_metrics(seg_processeds, label_dict, skeleton_dict)
-
-    # 确保文件夹存在，如果不存在则创建它
-
-    # 保存到文件
-    with open(metrics_save_path, "wb") as file:
-        data_to_save = {"metrics_al": metrics_al}
-        pickle.dump(data_to_save, file)
-
-    logging.info("Evaluation done and metrics saved")
-
-
 if __name__ == "__main__":
 
+    seed_value = 42
+    torch.manual_seed(seed_value)
     # 导入命令行参数
     args = parse_arguments()
 
@@ -367,8 +259,8 @@ if __name__ == "__main__":
 
     # Configuration
     need_resume = True
-    learning_rate = 1e-3
-    max_epoch = 50
+    learning_rate = 1e-5
+    max_epoch = 100
     freq_switch_of_train_mode_high_low_generation = 1
     num_samples_of_each_epoch = 20000
     train_file_format = ".nii.gz"
@@ -378,6 +270,7 @@ if __name__ == "__main__":
     model_save_freq = 1
     num_workers = 4
 
+    # time.sleep(3600 * 9)
     # Init model
     model = SegAirwayModel(in_channels=1, out_channels=2)
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
@@ -395,7 +288,7 @@ if __name__ == "__main__":
     model.to(device)
 
     # Optimizer
-    learning_rate = 1e-3  # 根据需要调整
+    learning_rate = 1e-5  # 根据需要调整
     # betas = (0.95, 0.999)  # 或者尝试 (0.9, 0.99) 或 (0.99, 0.999)
     # eps = 1e-8  # 通常不需要调整，除非出现数值不稳定
 
@@ -428,6 +321,7 @@ if __name__ == "__main__":
     wandb.init(
         project="test",
         config={
+            "save_name": args.save_name,
             "learning_rate": learning_rate,
             "max_epoch": max_epoch,
             "batch_size": batch_size,
@@ -446,3 +340,4 @@ if __name__ == "__main__":
         model_save_freq,
         checkpoint_path,
     )
+    wandb.finish()

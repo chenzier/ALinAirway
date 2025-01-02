@@ -653,5 +653,5 @@ class SegAirwayModel(nn.Module):
 
     def model_info(self):
         message = "本模型为model_arch_e0_org_channel.py,只在encoder0上加dsc模块,同时通道数和原先一样"
-        flag = "dsc"
+        flag = "dsc_batch4"
         return message, flag

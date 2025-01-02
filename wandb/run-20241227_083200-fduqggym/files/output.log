@@ -1,0 +1,8 @@
+
+2024-12-27 08:32:14,659 - INFO - epoch [1/30]	batch [0/1667]	time(sec) 7.96	loss 0.7877, 0.9987	acc 0.04%	fore pix 0.01%	back pix 99.99%	
+Traceback (most recent call last):
+  File "train_new_loss.py", line 428, in <module>
+    train_model(
+  File "train_new_loss.py", line 168, in train_model
+    "loss": loss.item(),
+KeyboardInterrupt

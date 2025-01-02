@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "train_new_loss.py", line 441, in <module>
+    train_model(
+  File "train_new_loss.py", line 144, in train_model
+    loss1 = dice_loss(
+TypeError: dice_loss() takes 2 positional arguments but 3 were given
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1352, in _clean_up_worker
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/multiprocessing/popen_fork.py", line 44, in wait
+    if not wait([self.sentinel], timeout):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

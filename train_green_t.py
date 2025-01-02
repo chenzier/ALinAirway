@@ -45,7 +45,6 @@ def load_config(config_path):
         config = yaml.safe_load(file)
     return config
 
-
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Argument Parser for your script")
 
@@ -70,10 +69,14 @@ def parse_arguments():
     parser.add_argument(
         "--model", type=str, required=True, help="Model architecture module name"
     )
+    parser.add_argument(
+        "--if_use_wandb",
+        type=bool,
+        default=False,  # 设置默认值为False，即默认不使用wandb
+        help='Specify whether to use wandb (e.g., "--if_use_wandb True")',
+    )
 
     return parser.parse_args()
-
-
 def train_model(
     model,
     optimizer,
@@ -159,18 +162,20 @@ def train_model(
                     f"fore pix {fore_pix_per * 100:.2f}%\t"
                     f"back pix {back_pix_per * 100:.2f}%\t"
                 )
-            wandb.log(
-                {
-                    "loss": loss.item(),
-                    "accuracy": accuracy.item(),
-                }
-            )
+
+            if args.if_use_wandb:
+                wandb.log(
+                    {
+                        "loss": loss.item(),
+                        "accuracy": accuracy.item(),
+                    }
+                )
 
         del dataset_loader
         gc.collect()
 
         if (ith_epoch + 1) % model_save_freq == 0:
-            logging.info(f"Epoch {ith_epoch + 1}: Saving model")
+            logging.info(f"Epoch {ith_epoch + 1}: Saving model for {args.save_name}")
             model.to(torch.device("cpu"))
             torch.save({"model_state_dict": model.state_dict()}, checkpoint_path)
             model.to(device)
@@ -179,122 +184,11 @@ def train_model(
     logging.info("Training completed.")
 
 
-def eval_pipeline(
-    model,
-    load_pkl,
-    test_names,
-    seg_result_path,
-    use_gpu,
-    metrics_save_path,
-    exact09_img_path,
-    lidc_img_path,
-    exact09_label_path,
-    lidc_label_path,
-):
-    device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
-
-    model.to(device)
-    checkpoint = torch.load(load_pkl)
-    model.load_state_dict(checkpoint["model_state_dict"])
-    threshold = 0.5
-
-    raw_img_dict = load_many_CT_img(
-        exact09_img_path, lidc_img_path, test_names, dataset_type="image"
-    )
-
-    seg_processeds = []
-    seg_processed_IIs = []
-    logging.info(f"Start processing {len(raw_img_dict.keys())} cases")
-
-    for i, (img_name, raw_img) in enumerate(raw_img_dict.items()):
-        seg_result = semantic_segment_crop_and_cat(
-            raw_img,
-            model,
-            device,
-            crop_cube_size=[32, 128, 128],
-            stride=[16, 64, 64],
-            windowMin=-1000,
-            windowMax=600,
-        )
-        logging.info(f"Case {i + 1}: Segmentation done")
-
-        seg_onehot = np.array(seg_result > threshold, dtype=np.int32)
-        seg_onehot_comb = np.array((seg_onehot) > 0, dtype=np.int32)
-        seg_processed, _ = post_process(seg_onehot_comb, threshold=threshold)
-
-        (
-            seg_slice_label_I,
-            connection_dict_of_seg_I,
-            number_of_branch_I,
-            tree_length_I,
-        ) = tree_detection(seg_processed, search_range=2)
-        logging.info(f"Case {i + 1}: Post-process done")
-
-        seg_processed_II = add_broken_parts_to_the_result(
-            connection_dict_of_seg_I,
-            seg_result,
-            seg_processed,
-            threshold=threshold,
-            search_range=10,
-            delta_threshold=0.05,
-            min_threshold=0.4,
-        )
-
-        (
-            seg_slice_label_II,
-            connection_dict_of_seg_II,
-            number_of_branch_II,
-            tree_length_II,
-        ) = tree_detection(seg_processed_II, search_range=2)
-
-        logging.info(f"Case {i + 1}: Broken parts added and tree detection done")
-        seg_processed_IIs.append(seg_processed)
-        seg_processeds.append(seg_processed)
-
-        if seg_result_path != "":
-            sitk.WriteImage(
-                sitk.GetImageFromArray(seg_processed),
-                os.path.join(seg_result_path, f"{img_name}_segmentation.nii.gz"),
-            )
-            sitk.WriteImage(
-                sitk.GetImageFromArray(seg_processed_II),
-                os.path.join(
-                    seg_result_path, f"{img_name}_segmentation_add_broken_parts.nii.gz"
-                ),
-            )
-
-    logging.info("All cases processed, starting evaluation")
-
-    # 导入test集的label
-    label_dict = load_many_CT_img(
-        exact09_label_path, lidc_label_path, test_names, dataset_type="label"
-    )
-
-    skeleton_dict = {}
-    for i, label in label_dict.items():
-        skeleton_dict[i] = get_the_skeleton_and_center_nearby_dict(
-            label, search_range=2, need_skeletonize_3d=True
-        )
-
-    logging.info("Labels loaded")
-
-    # 计算相应指标
-    metrics_al = get_metrics(seg_processeds, label_dict, skeleton_dict)
-
-    # 确保文件夹存在，如果不存在则创建它
-
-    # 保存到文件
-    with open(metrics_save_path, "wb") as file:
-        data_to_save = {"metrics_al": metrics_al}
-        pickle.dump(data_to_save, file)
-
-    logging.info("Evaluation done and metrics saved")
-    wandb.log(metrics_al)
-
-
 if __name__ == "__main__":
 
     # 导入命令行参数
+    seed_value = 42
+    torch.manual_seed(seed_value)
     args = parse_arguments()
 
     # 导入本次运行模型
@@ -364,6 +258,7 @@ if __name__ == "__main__":
     model = SegAirwayModel(in_channels=1, out_channels=2)
     device = torch.device(use_gpu if torch.cuda.is_available() else "cpu")
     model_message, flag = model.model_info()
+    print(flag)
     if flag in config["batch_size_list"].keys():
         batch_size = config["batch_size_list"][flag]
     else:
@@ -372,16 +267,17 @@ if __name__ == "__main__":
     logging.info(model_message)
     logging.info(f"Device: {device}")
     model.to(device)
-
-    wandb.init(
-        project=args.model,
-        config={
-            "learning_rate": learning_rate,
-            "max_epoch": max_epoch,
-            "batch_size": batch_size,
-            # 可以继续添加其他想要记录的超参数
-        },
-    )
+    if args.if_use_wandb:
+        wandb.init(
+            project=args.model,
+            config={
+                "save_name": args.save_name,
+                "learning_rate": learning_rate,
+                "max_epoch": max_epoch,
+                "batch_size": batch_size,
+                # 可以继续添加其他想要记录的超参数
+            },
+        )
     # Load checkpoint if necessary
     if need_resume and os.path.exists(checkpoint_path):
         logging.info(f"Resuming model from {checkpoint_path}")
@@ -454,4 +350,5 @@ if __name__ == "__main__":
         exact09_label_path,
         lidc_label_path,
     )
-    wandb.finish()
+    if args.if_use_wandb:
+        wandb.finish()

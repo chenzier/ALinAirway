@@ -726,5 +726,5 @@ class SegAirwayModel(nn.Module):
 
     def model_info(self):
         message = "本模型为model_arch_e0_fusion.py,只在encoder0上加dsc模块,通道数为model_arch的一半,同时进行融合"
-        flag = "dsc"
+        flag = "dsc_fusion"
         return message, flag

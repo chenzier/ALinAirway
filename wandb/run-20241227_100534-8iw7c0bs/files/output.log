@@ -1,0 +1,987 @@
+2024-12-27 10:05:40,676 - INFO - Total epochs: 50
+2024-12-27 10:05:40,677 - INFO - Length of dataset: 5004
+/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/functional.py:568: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/aten/src/ATen/native/TensorShape.cpp:2228.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2024-12-27 10:05:45,546 - INFO - epoch [1/50]	batch [0/1251]	time(sec) 4.80	loss 1.8087	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:07:38,248 - INFO - epoch [1/50]	batch [100/1251]	time(sec) 117.44	loss 1.7399	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:09:31,234 - INFO - epoch [1/50]	batch [200/1251]	time(sec) 230.42	loss 1.7351	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:11:24,234 - INFO - epoch [1/50]	batch [300/1251]	time(sec) 343.42	loss 1.7346	acc 0.03%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 10:13:17,044 - INFO - epoch [1/50]	batch [400/1251]	time(sec) 456.23	loss 1.7324	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:15:09,960 - INFO - epoch [1/50]	batch [500/1251]	time(sec) 569.15	loss 1.7332	acc 0.03%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:17:02,919 - INFO - epoch [1/50]	batch [600/1251]	time(sec) 682.10	loss 1.7332	acc 0.03%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:18:55,990 - INFO - epoch [1/50]	batch [700/1251]	time(sec) 795.18	loss 1.7320	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:20:49,110 - INFO - epoch [1/50]	batch [800/1251]	time(sec) 908.30	loss 1.0999	acc 37.76%	fore pix 0.92%	back pix 99.08%	
+2024-12-27 10:22:42,082 - INFO - epoch [1/50]	batch [900/1251]	time(sec) 1021.27	loss 1.7349	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:24:34,981 - INFO - epoch [1/50]	batch [1000/1251]	time(sec) 1134.17	loss 1.7319	acc 0.04%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 10:26:28,059 - INFO - epoch [1/50]	batch [1100/1251]	time(sec) 1247.25	loss 1.7146	acc 0.65%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 10:28:21,103 - INFO - epoch [1/50]	batch [1200/1251]	time(sec) 1360.29	loss 1.7304	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:29:17,808 - INFO - Epoch 1: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 10:29:20,888 - INFO - epoch [2/50]	batch [0/1251]	time(sec) 1420.08	loss 1.7319	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:31:14,065 - INFO - epoch [2/50]	batch [100/1251]	time(sec) 1533.25	loss 1.7301	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:33:07,117 - INFO - epoch [2/50]	batch [200/1251]	time(sec) 1646.31	loss 1.7039	acc 2.38%	fore pix 0.58%	back pix 99.42%	
+2024-12-27 10:35:00,222 - INFO - epoch [2/50]	batch [300/1251]	time(sec) 1759.41	loss 1.7314	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:36:53,408 - INFO - epoch [2/50]	batch [400/1251]	time(sec) 1872.60	loss 1.7320	acc 0.14%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 10:38:46,438 - INFO - epoch [2/50]	batch [500/1251]	time(sec) 1985.63	loss 1.7069	acc 2.18%	fore pix 0.16%	back pix 99.84%	
+2024-12-27 10:40:39,245 - INFO - epoch [2/50]	batch [600/1251]	time(sec) 2098.43	loss 1.7302	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:42:32,390 - INFO - epoch [2/50]	batch [700/1251]	time(sec) 2211.58	loss 1.7306	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:44:25,714 - INFO - epoch [2/50]	batch [800/1251]	time(sec) 2324.90	loss 1.7118	acc 0.60%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 10:46:19,068 - INFO - epoch [2/50]	batch [900/1251]	time(sec) 2438.26	loss 1.7217	acc 0.43%	fore pix 0.05%	back pix 99.95%	
+2024-12-27 10:48:12,107 - INFO - epoch [2/50]	batch [1000/1251]	time(sec) 2551.30	loss 1.7285	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:50:05,163 - INFO - epoch [2/50]	batch [1100/1251]	time(sec) 2664.35	loss 0.8890	acc 61.42%	fore pix 0.37%	back pix 99.63%	
+2024-12-27 10:51:58,324 - INFO - epoch [2/50]	batch [1200/1251]	time(sec) 2777.51	loss 1.7338	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:52:55,106 - INFO - Epoch 2: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 10:52:58,335 - INFO - epoch [3/50]	batch [0/1251]	time(sec) 2837.52	loss 1.7297	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:54:51,268 - INFO - epoch [3/50]	batch [100/1251]	time(sec) 2950.46	loss 1.7215	acc 0.95%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 10:56:44,431 - INFO - epoch [3/50]	batch [200/1251]	time(sec) 3063.62	loss 1.7325	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:58:37,147 - INFO - epoch [3/50]	batch [300/1251]	time(sec) 3176.34	loss 1.7229	acc 0.51%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 11:00:29,920 - INFO - epoch [3/50]	batch [400/1251]	time(sec) 3289.11	loss 1.1374	acc 39.11%	fore pix 0.58%	back pix 99.42%	
+2024-12-27 11:02:22,493 - INFO - epoch [3/50]	batch [500/1251]	time(sec) 3401.68	loss 1.3902	acc 19.80%	fore pix 0.30%	back pix 99.70%	
+2024-12-27 11:04:15,267 - INFO - epoch [3/50]	batch [600/1251]	time(sec) 3514.46	loss 1.7279	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:06:07,985 - INFO - epoch [3/50]	batch [700/1251]	time(sec) 3627.18	loss 1.7280	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:08:00,850 - INFO - epoch [3/50]	batch [800/1251]	time(sec) 3740.04	loss 1.7304	acc 0.13%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 11:09:53,517 - INFO - epoch [3/50]	batch [900/1251]	time(sec) 3852.71	loss 1.7277	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:11:46,957 - INFO - epoch [3/50]	batch [1000/1251]	time(sec) 3966.15	loss 1.7257	acc 0.06%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:13:39,773 - INFO - epoch [3/50]	batch [1100/1251]	time(sec) 4078.96	loss 1.7318	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:15:32,768 - INFO - epoch [3/50]	batch [1200/1251]	time(sec) 4191.96	loss 1.7332	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:16:29,628 - INFO - Epoch 3: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 11:16:32,545 - INFO - epoch [4/50]	batch [0/1251]	time(sec) 4251.73	loss 1.7301	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:18:25,393 - INFO - epoch [4/50]	batch [100/1251]	time(sec) 4364.58	loss 1.7305	acc 0.27%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 11:20:18,284 - INFO - epoch [4/50]	batch [200/1251]	time(sec) 4477.47	loss 1.7338	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:22:11,047 - INFO - epoch [4/50]	batch [300/1251]	time(sec) 4590.24	loss 1.7319	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:24:03,807 - INFO - epoch [4/50]	batch [400/1251]	time(sec) 4703.00	loss 0.7976	acc 79.09%	fore pix 0.78%	back pix 99.22%	
+2024-12-27 11:25:56,560 - INFO - epoch [4/50]	batch [500/1251]	time(sec) 4815.75	loss 1.7326	acc 0.08%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 11:27:49,470 - INFO - epoch [4/50]	batch [600/1251]	time(sec) 4928.66	loss 1.7323	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:29:42,287 - INFO - epoch [4/50]	batch [700/1251]	time(sec) 5041.48	loss 1.7232	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:31:35,036 - INFO - epoch [4/50]	batch [800/1251]	time(sec) 5154.22	loss 1.6634	acc 2.01%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 11:33:28,101 - INFO - epoch [4/50]	batch [900/1251]	time(sec) 5267.29	loss 1.7328	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:35:21,189 - INFO - epoch [4/50]	batch [1000/1251]	time(sec) 5380.38	loss 1.7277	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:37:14,478 - INFO - epoch [4/50]	batch [1100/1251]	time(sec) 5493.67	loss 1.6096	acc 15.67%	fore pix 0.45%	back pix 99.55%	
+2024-12-27 11:39:07,319 - INFO - epoch [4/50]	batch [1200/1251]	time(sec) 5606.51	loss 1.7255	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:40:04,039 - INFO - Epoch 4: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 11:40:07,791 - INFO - epoch [5/50]	batch [0/1251]	time(sec) 5666.98	loss 1.7252	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:42:00,601 - INFO - epoch [5/50]	batch [100/1251]	time(sec) 5779.79	loss 1.6770	acc 3.80%	fore pix 0.08%	back pix 99.92%	
+2024-12-27 11:43:53,436 - INFO - epoch [5/50]	batch [200/1251]	time(sec) 5892.63	loss 1.7288	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:45:46,122 - INFO - epoch [5/50]	batch [300/1251]	time(sec) 6005.31	loss 1.7339	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:47:38,936 - INFO - epoch [5/50]	batch [400/1251]	time(sec) 6118.13	loss 1.7195	acc 0.74%	fore pix 0.05%	back pix 99.95%	
+2024-12-27 11:49:31,789 - INFO - epoch [5/50]	batch [500/1251]	time(sec) 6230.98	loss 1.6940	acc 5.92%	fore pix 0.19%	back pix 99.81%	
+2024-12-27 11:51:24,693 - INFO - epoch [5/50]	batch [600/1251]	time(sec) 6343.88	loss 1.0454	acc 51.89%	fore pix 0.38%	back pix 99.62%	
+2024-12-27 11:53:17,376 - INFO - epoch [5/50]	batch [700/1251]	time(sec) 6456.57	loss 1.7284	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 11:55:10,203 - INFO - epoch [5/50]	batch [800/1251]	time(sec) 6569.39	loss 1.6385	acc 3.29%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 11:57:02,866 - INFO - epoch [5/50]	batch [900/1251]	time(sec) 6682.05	loss 1.6575	acc 12.83%	fore pix 0.74%	back pix 99.26%	
+2024-12-27 11:58:55,620 - INFO - epoch [5/50]	batch [1000/1251]	time(sec) 6794.81	loss 1.7285	acc 0.05%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 12:00:48,605 - INFO - epoch [5/50]	batch [1100/1251]	time(sec) 6907.79	loss 1.7291	acc 0.25%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 12:02:41,628 - INFO - epoch [5/50]	batch [1200/1251]	time(sec) 7020.82	loss 1.7260	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:03:38,462 - INFO - Epoch 5: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 12:03:42,127 - INFO - epoch [6/50]	batch [0/1251]	time(sec) 7081.32	loss 1.7315	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:05:35,081 - INFO - epoch [6/50]	batch [100/1251]	time(sec) 7194.27	loss 1.7229	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:07:27,787 - INFO - epoch [6/50]	batch [200/1251]	time(sec) 7306.98	loss 1.7313	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:09:20,489 - INFO - epoch [6/50]	batch [300/1251]	time(sec) 7419.68	loss 1.7312	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:11:13,231 - INFO - epoch [6/50]	batch [400/1251]	time(sec) 7532.42	loss 1.7222	acc 0.09%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:13:06,080 - INFO - epoch [6/50]	batch [500/1251]	time(sec) 7645.27	loss 1.7316	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:14:58,841 - INFO - epoch [6/50]	batch [600/1251]	time(sec) 7758.03	loss 1.7167	acc 0.12%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 12:16:51,467 - INFO - epoch [6/50]	batch [700/1251]	time(sec) 7870.66	loss 1.1530	acc 47.97%	fore pix 1.14%	back pix 98.86%	
+2024-12-27 12:18:44,202 - INFO - epoch [6/50]	batch [800/1251]	time(sec) 7983.39	loss 1.7204	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:20:36,870 - INFO - epoch [6/50]	batch [900/1251]	time(sec) 8096.06	loss 1.7302	acc 0.10%	fore pix 0.08%	back pix 99.92%	
+2024-12-27 12:22:29,628 - INFO - epoch [6/50]	batch [1000/1251]	time(sec) 8208.82	loss 0.7794	acc 85.53%	fore pix 0.77%	back pix 99.23%	
+2024-12-27 12:24:22,222 - INFO - epoch [6/50]	batch [1100/1251]	time(sec) 8321.41	loss 1.7249	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:26:14,885 - INFO - epoch [6/50]	batch [1200/1251]	time(sec) 8434.07	loss 1.7053	acc 1.58%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 12:27:11,492 - INFO - Epoch 6: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 12:27:14,937 - INFO - epoch [7/50]	batch [0/1251]	time(sec) 8494.13	loss 1.7286	acc 0.10%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 12:29:07,678 - INFO - epoch [7/50]	batch [100/1251]	time(sec) 8606.87	loss 1.7213	acc 0.05%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:31:00,441 - INFO - epoch [7/50]	batch [200/1251]	time(sec) 8719.63	loss 1.7306	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:32:53,140 - INFO - epoch [7/50]	batch [300/1251]	time(sec) 8832.33	loss 1.7330	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:34:46,056 - INFO - epoch [7/50]	batch [400/1251]	time(sec) 8945.25	loss 1.7224	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:36:38,894 - INFO - epoch [7/50]	batch [500/1251]	time(sec) 9058.08	loss 1.7248	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:38:31,726 - INFO - epoch [7/50]	batch [600/1251]	time(sec) 9170.92	loss 1.7121	acc 0.79%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 12:40:24,515 - INFO - epoch [7/50]	batch [700/1251]	time(sec) 9283.70	loss 1.7336	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:42:17,362 - INFO - epoch [7/50]	batch [800/1251]	time(sec) 9396.55	loss 1.7062	acc 1.84%	fore pix 0.39%	back pix 99.61%	
+2024-12-27 12:44:10,274 - INFO - epoch [7/50]	batch [900/1251]	time(sec) 9509.46	loss 1.3392	acc 33.70%	fore pix 1.29%	back pix 98.71%	
+2024-12-27 12:46:02,981 - INFO - epoch [7/50]	batch [1000/1251]	time(sec) 9622.17	loss 1.7199	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:47:55,793 - INFO - epoch [7/50]	batch [1100/1251]	time(sec) 9734.98	loss 1.6861	acc 6.78%	fore pix 0.23%	back pix 99.77%	
+2024-12-27 12:49:48,494 - INFO - epoch [7/50]	batch [1200/1251]	time(sec) 9847.68	loss 1.3536	acc 13.95%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 12:50:45,298 - INFO - Epoch 7: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 12:50:48,821 - INFO - epoch [8/50]	batch [0/1251]	time(sec) 9908.01	loss 1.7302	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:52:41,655 - INFO - epoch [8/50]	batch [100/1251]	time(sec) 10020.84	loss 1.6056	acc 15.63%	fore pix 0.14%	back pix 99.86%	
+2024-12-27 12:54:34,478 - INFO - epoch [8/50]	batch [200/1251]	time(sec) 10133.67	loss 1.7317	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:56:27,492 - INFO - epoch [8/50]	batch [300/1251]	time(sec) 10246.68	loss 1.7261	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 12:58:20,435 - INFO - epoch [8/50]	batch [400/1251]	time(sec) 10359.62	loss 1.7281	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:00:13,304 - INFO - epoch [8/50]	batch [500/1251]	time(sec) 10472.49	loss 1.7309	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:02:06,380 - INFO - epoch [8/50]	batch [600/1251]	time(sec) 10585.57	loss 1.7278	acc 0.06%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 13:03:59,443 - INFO - epoch [8/50]	batch [700/1251]	time(sec) 10698.63	loss 1.7181	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:05:52,600 - INFO - epoch [8/50]	batch [800/1251]	time(sec) 10811.79	loss 1.7030	acc 2.01%	fore pix 0.10%	back pix 99.90%	
+2024-12-27 13:07:45,492 - INFO - epoch [8/50]	batch [900/1251]	time(sec) 10924.68	loss 1.7234	acc 0.44%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 13:09:38,453 - INFO - epoch [8/50]	batch [1000/1251]	time(sec) 11037.64	loss 1.7195	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:11:31,478 - INFO - epoch [8/50]	batch [1100/1251]	time(sec) 11150.67	loss 1.7322	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:13:24,322 - INFO - epoch [8/50]	batch [1200/1251]	time(sec) 11263.51	loss 1.7147	acc 0.93%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 13:14:21,019 - INFO - Epoch 8: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 13:14:23,873 - INFO - epoch [9/50]	batch [0/1251]	time(sec) 11323.06	loss 1.6766	acc 3.12%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 13:16:16,775 - INFO - epoch [9/50]	batch [100/1251]	time(sec) 11435.96	loss 1.7183	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:18:09,763 - INFO - epoch [9/50]	batch [200/1251]	time(sec) 11548.95	loss 0.8458	acc 64.53%	fore pix 0.09%	back pix 99.91%	
+2024-12-27 13:20:02,599 - INFO - epoch [9/50]	batch [300/1251]	time(sec) 11661.79	loss 1.7036	acc 5.64%	fore pix 0.05%	back pix 99.95%	
+2024-12-27 13:21:55,432 - INFO - epoch [9/50]	batch [400/1251]	time(sec) 11774.62	loss 1.7275	acc 0.06%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:23:48,334 - INFO - epoch [9/50]	batch [500/1251]	time(sec) 11887.52	loss 1.7310	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:25:41,362 - INFO - epoch [9/50]	batch [600/1251]	time(sec) 12000.55	loss 1.7309	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:27:34,357 - INFO - epoch [9/50]	batch [700/1251]	time(sec) 12113.55	loss 1.7283	acc 0.38%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 13:29:27,321 - INFO - epoch [9/50]	batch [800/1251]	time(sec) 12226.51	loss 1.7283	acc 0.20%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 13:31:20,134 - INFO - epoch [9/50]	batch [900/1251]	time(sec) 12339.32	loss 1.7188	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:33:13,094 - INFO - epoch [9/50]	batch [1000/1251]	time(sec) 12452.28	loss 1.7216	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:35:06,265 - INFO - epoch [9/50]	batch [1100/1251]	time(sec) 12565.45	loss 1.2721	acc 38.37%	fore pix 0.81%	back pix 99.19%	
+2024-12-27 13:36:59,311 - INFO - epoch [9/50]	batch [1200/1251]	time(sec) 12678.50	loss 1.7111	acc 0.72%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 13:37:56,017 - INFO - Epoch 9: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 13:37:59,588 - INFO - epoch [10/50]	batch [0/1251]	time(sec) 12738.78	loss 1.7006	acc 2.76%	fore pix 0.65%	back pix 99.35%	
+2024-12-27 13:39:52,476 - INFO - epoch [10/50]	batch [100/1251]	time(sec) 12851.67	loss 1.7177	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:41:45,440 - INFO - epoch [10/50]	batch [200/1251]	time(sec) 12964.63	loss 1.7316	acc 0.03%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:43:38,716 - INFO - epoch [10/50]	batch [300/1251]	time(sec) 13077.91	loss 1.0694	acc 48.54%	fore pix 1.20%	back pix 98.80%	
+2024-12-27 13:45:31,865 - INFO - epoch [10/50]	batch [400/1251]	time(sec) 13191.05	loss 1.7228	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:47:25,163 - INFO - epoch [10/50]	batch [500/1251]	time(sec) 13304.35	loss 1.2741	acc 32.15%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 13:49:18,334 - INFO - epoch [10/50]	batch [600/1251]	time(sec) 13417.52	loss 1.7232	acc 0.51%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 13:51:11,310 - INFO - epoch [10/50]	batch [700/1251]	time(sec) 13530.50	loss 1.7220	acc 0.17%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:53:04,379 - INFO - epoch [10/50]	batch [800/1251]	time(sec) 13643.57	loss 1.7289	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 13:54:57,413 - INFO - epoch [10/50]	batch [900/1251]	time(sec) 13756.60	loss 1.5796	acc 13.39%	fore pix 0.95%	back pix 99.05%	
+2024-12-27 13:56:50,532 - INFO - epoch [10/50]	batch [1000/1251]	time(sec) 13869.72	loss 1.5936	acc 6.64%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 13:58:43,686 - INFO - epoch [10/50]	batch [1100/1251]	time(sec) 13982.88	loss 1.7309	acc 0.18%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 14:00:36,818 - INFO - epoch [10/50]	batch [1200/1251]	time(sec) 14096.01	loss 1.7317	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:01:33,633 - INFO - Epoch 10: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 14:01:36,926 - INFO - epoch [11/50]	batch [0/1251]	time(sec) 14156.12	loss 1.7289	acc 0.02%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:03:30,249 - INFO - epoch [11/50]	batch [100/1251]	time(sec) 14269.44	loss 1.7316	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:05:23,383 - INFO - epoch [11/50]	batch [200/1251]	time(sec) 14382.57	loss 1.6836	acc 4.53%	fore pix 0.11%	back pix 99.89%	
+2024-12-27 14:07:16,409 - INFO - epoch [11/50]	batch [300/1251]	time(sec) 14495.60	loss 1.7222	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:09:09,685 - INFO - epoch [11/50]	batch [400/1251]	time(sec) 14608.87	loss 1.7086	acc 1.69%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 14:11:02,759 - INFO - epoch [11/50]	batch [500/1251]	time(sec) 14721.95	loss 1.7298	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:12:55,832 - INFO - epoch [11/50]	batch [600/1251]	time(sec) 14835.02	loss 1.7317	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:14:48,932 - INFO - epoch [11/50]	batch [700/1251]	time(sec) 14948.12	loss 1.7184	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:16:42,078 - INFO - epoch [11/50]	batch [800/1251]	time(sec) 15061.27	loss 1.3481	acc 19.72%	fore pix 0.25%	back pix 99.75%	
+2024-12-27 14:18:35,191 - INFO - epoch [11/50]	batch [900/1251]	time(sec) 15174.38	loss 1.7308	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:20:28,412 - INFO - epoch [11/50]	batch [1000/1251]	time(sec) 15287.60	loss 1.7264	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:22:21,549 - INFO - epoch [11/50]	batch [1100/1251]	time(sec) 15400.74	loss 1.7180	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:24:14,546 - INFO - epoch [11/50]	batch [1200/1251]	time(sec) 15513.74	loss 1.7115	acc 0.57%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 14:25:11,264 - INFO - Epoch 11: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 14:25:14,449 - INFO - epoch [12/50]	batch [0/1251]	time(sec) 15573.64	loss 1.4777	acc 23.93%	fore pix 0.29%	back pix 99.71%	
+2024-12-27 14:27:07,506 - INFO - epoch [12/50]	batch [100/1251]	time(sec) 15686.70	loss 1.7268	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:29:00,642 - INFO - epoch [12/50]	batch [200/1251]	time(sec) 15799.83	loss 1.7176	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:30:53,559 - INFO - epoch [12/50]	batch [300/1251]	time(sec) 15912.75	loss 1.7186	acc 0.18%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 14:32:46,669 - INFO - epoch [12/50]	batch [400/1251]	time(sec) 16025.86	loss 1.7077	acc 1.03%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 14:34:39,620 - INFO - epoch [12/50]	batch [500/1251]	time(sec) 16138.81	loss 1.7258	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:36:32,607 - INFO - epoch [12/50]	batch [600/1251]	time(sec) 16251.80	loss 1.7157	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:38:25,620 - INFO - epoch [12/50]	batch [700/1251]	time(sec) 16364.81	loss 1.7260	acc 0.27%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:40:18,610 - INFO - epoch [12/50]	batch [800/1251]	time(sec) 16477.80	loss 1.2980	acc 25.30%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 14:42:11,582 - INFO - epoch [12/50]	batch [900/1251]	time(sec) 16590.77	loss 1.7149	acc 1.30%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 14:44:04,740 - INFO - epoch [12/50]	batch [1000/1251]	time(sec) 16703.93	loss 1.7291	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:45:57,909 - INFO - epoch [12/50]	batch [1100/1251]	time(sec) 16817.10	loss 1.7303	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:47:51,130 - INFO - epoch [12/50]	batch [1200/1251]	time(sec) 16930.32	loss 1.7297	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:48:47,883 - INFO - Epoch 12: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 14:48:50,754 - INFO - epoch [13/50]	batch [0/1251]	time(sec) 16989.94	loss 0.7886	acc 85.60%	fore pix 0.39%	back pix 99.61%	
+2024-12-27 14:50:43,853 - INFO - epoch [13/50]	batch [100/1251]	time(sec) 17103.04	loss 1.6071	acc 11.85%	fore pix 0.67%	back pix 99.33%	
+2024-12-27 14:52:36,709 - INFO - epoch [13/50]	batch [200/1251]	time(sec) 17215.90	loss 1.4531	acc 19.75%	fore pix 0.91%	back pix 99.09%	
+2024-12-27 14:54:29,856 - INFO - epoch [13/50]	batch [300/1251]	time(sec) 17329.05	loss 0.8496	acc 79.77%	fore pix 0.91%	back pix 99.09%	
+2024-12-27 14:56:22,853 - INFO - epoch [13/50]	batch [400/1251]	time(sec) 17442.04	loss 1.7143	acc 0.13%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 14:58:15,709 - INFO - epoch [13/50]	batch [500/1251]	time(sec) 17554.90	loss 1.1096	acc 35.33%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 15:00:08,588 - INFO - epoch [13/50]	batch [600/1251]	time(sec) 17667.78	loss 0.9470	acc 55.33%	fore pix 0.38%	back pix 99.62%	
+2024-12-27 15:02:01,350 - INFO - epoch [13/50]	batch [700/1251]	time(sec) 17780.54	loss 1.1324	acc 34.43%	fore pix 0.37%	back pix 99.63%	
+2024-12-27 15:03:54,316 - INFO - epoch [13/50]	batch [800/1251]	time(sec) 17893.50	loss 1.7315	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:05:47,163 - INFO - epoch [13/50]	batch [900/1251]	time(sec) 18006.35	loss 1.6462	acc 9.97%	fore pix 0.10%	back pix 99.90%	
+2024-12-27 15:07:40,092 - INFO - epoch [13/50]	batch [1000/1251]	time(sec) 18119.28	loss 1.7278	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:09:32,842 - INFO - epoch [13/50]	batch [1100/1251]	time(sec) 18232.03	loss 1.7230	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:11:25,864 - INFO - epoch [13/50]	batch [1200/1251]	time(sec) 18345.05	loss 0.8146	acc 73.52%	fore pix 0.39%	back pix 99.61%	
+2024-12-27 15:12:22,626 - INFO - Epoch 13: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 15:12:26,253 - INFO - epoch [14/50]	batch [0/1251]	time(sec) 18405.44	loss 1.7160	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:14:19,072 - INFO - epoch [14/50]	batch [100/1251]	time(sec) 18518.26	loss 1.7173	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:16:12,142 - INFO - epoch [14/50]	batch [200/1251]	time(sec) 18631.33	loss 1.7273	acc 0.02%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 15:18:05,061 - INFO - epoch [14/50]	batch [300/1251]	time(sec) 18744.25	loss 1.7084	acc 4.74%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 15:19:58,092 - INFO - epoch [14/50]	batch [400/1251]	time(sec) 18857.28	loss 1.6572	acc 8.17%	fore pix 0.34%	back pix 99.66%	
+2024-12-27 15:21:51,049 - INFO - epoch [14/50]	batch [500/1251]	time(sec) 18970.24	loss 1.0561	acc 48.53%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 15:23:44,117 - INFO - epoch [14/50]	batch [600/1251]	time(sec) 19083.31	loss 1.7234	acc 0.06%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:25:37,045 - INFO - epoch [14/50]	batch [700/1251]	time(sec) 19196.23	loss 1.7218	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:27:29,995 - INFO - epoch [14/50]	batch [800/1251]	time(sec) 19309.18	loss 1.5097	acc 16.71%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 15:29:23,051 - INFO - epoch [14/50]	batch [900/1251]	time(sec) 19422.24	loss 1.7329	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:31:16,236 - INFO - epoch [14/50]	batch [1000/1251]	time(sec) 19535.43	loss 1.1585	acc 65.81%	fore pix 0.20%	back pix 99.80%	
+2024-12-27 15:33:09,124 - INFO - epoch [14/50]	batch [1100/1251]	time(sec) 19648.31	loss 1.5352	acc 9.70%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 15:35:02,072 - INFO - epoch [14/50]	batch [1200/1251]	time(sec) 19761.26	loss 1.6972	acc 2.40%	fore pix 0.74%	back pix 99.26%	
+2024-12-27 15:35:58,902 - INFO - Epoch 14: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 15:36:02,365 - INFO - epoch [15/50]	batch [0/1251]	time(sec) 19821.55	loss 1.7304	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:37:55,691 - INFO - epoch [15/50]	batch [100/1251]	time(sec) 19934.88	loss 1.7193	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:39:48,560 - INFO - epoch [15/50]	batch [200/1251]	time(sec) 20047.75	loss 1.7314	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:41:41,420 - INFO - epoch [15/50]	batch [300/1251]	time(sec) 20160.61	loss 1.7126	acc 0.05%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 15:43:34,351 - INFO - epoch [15/50]	batch [400/1251]	time(sec) 20273.54	loss 1.3213	acc 23.41%	fore pix 0.40%	back pix 99.60%	
+2024-12-27 15:45:27,409 - INFO - epoch [15/50]	batch [500/1251]	time(sec) 20386.60	loss 1.7202	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:47:20,211 - INFO - epoch [15/50]	batch [600/1251]	time(sec) 20499.40	loss 1.7097	acc 1.62%	fore pix 0.09%	back pix 99.91%	
+2024-12-27 15:49:13,141 - INFO - epoch [15/50]	batch [700/1251]	time(sec) 20612.33	loss 1.2219	acc 38.12%	fore pix 0.50%	back pix 99.50%	
+2024-12-27 15:51:05,941 - INFO - epoch [15/50]	batch [800/1251]	time(sec) 20725.13	loss 1.7302	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:52:58,918 - INFO - epoch [15/50]	batch [900/1251]	time(sec) 20838.11	loss 1.7145	acc 0.43%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:54:51,775 - INFO - epoch [15/50]	batch [1000/1251]	time(sec) 20950.96	loss 1.0443	acc 46.70%	fore pix 0.44%	back pix 99.56%	
+2024-12-27 15:56:44,786 - INFO - epoch [15/50]	batch [1100/1251]	time(sec) 21063.98	loss 1.0934	acc 36.33%	fore pix 0.21%	back pix 99.79%	
+2024-12-27 15:58:37,615 - INFO - epoch [15/50]	batch [1200/1251]	time(sec) 21176.80	loss 1.7257	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 15:59:34,219 - INFO - Epoch 15: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 15:59:37,759 - INFO - epoch [16/50]	batch [0/1251]	time(sec) 21236.95	loss 1.7053	acc 1.51%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 16:01:30,791 - INFO - epoch [16/50]	batch [100/1251]	time(sec) 21349.98	loss 1.7132	acc 0.80%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:03:23,687 - INFO - epoch [16/50]	batch [200/1251]	time(sec) 21462.88	loss 1.3705	acc 43.81%	fore pix 0.13%	back pix 99.87%	
+2024-12-27 16:05:16,582 - INFO - epoch [16/50]	batch [300/1251]	time(sec) 21575.77	loss 1.7255	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:07:09,506 - INFO - epoch [16/50]	batch [400/1251]	time(sec) 21688.70	loss 1.7264	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:09:02,512 - INFO - epoch [16/50]	batch [500/1251]	time(sec) 21801.70	loss 0.8433	acc 75.89%	fore pix 0.43%	back pix 99.57%	
+2024-12-27 16:10:55,497 - INFO - epoch [16/50]	batch [600/1251]	time(sec) 21914.69	loss 1.6755	acc 7.29%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 16:12:48,415 - INFO - epoch [16/50]	batch [700/1251]	time(sec) 22027.60	loss 1.7326	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:14:41,580 - INFO - epoch [16/50]	batch [800/1251]	time(sec) 22140.77	loss 1.7311	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:16:34,579 - INFO - epoch [16/50]	batch [900/1251]	time(sec) 22253.77	loss 1.7184	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:18:27,523 - INFO - epoch [16/50]	batch [1000/1251]	time(sec) 22366.71	loss 1.5347	acc 9.24%	fore pix 0.10%	back pix 99.90%	
+2024-12-27 16:20:20,651 - INFO - epoch [16/50]	batch [1100/1251]	time(sec) 22479.84	loss 1.4011	acc 28.72%	fore pix 0.86%	back pix 99.14%	
+2024-12-27 16:22:13,579 - INFO - epoch [16/50]	batch [1200/1251]	time(sec) 22592.77	loss 0.8236	acc 74.81%	fore pix 0.72%	back pix 99.28%	
+2024-12-27 16:23:10,429 - INFO - Epoch 16: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 16:23:14,293 - INFO - epoch [17/50]	batch [0/1251]	time(sec) 22653.48	loss 1.7290	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:25:07,156 - INFO - epoch [17/50]	batch [100/1251]	time(sec) 22766.35	loss 1.7242	acc 0.04%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:27:00,038 - INFO - epoch [17/50]	batch [200/1251]	time(sec) 22879.23	loss 0.7835	acc 83.80%	fore pix 0.80%	back pix 99.20%	
+2024-12-27 16:28:53,218 - INFO - epoch [17/50]	batch [300/1251]	time(sec) 22992.41	loss 0.7651	acc 93.48%	fore pix 0.16%	back pix 99.84%	
+2024-12-27 16:30:46,117 - INFO - epoch [17/50]	batch [400/1251]	time(sec) 23105.31	loss 0.8079	acc 74.82%	fore pix 0.43%	back pix 99.57%	
+2024-12-27 16:32:39,381 - INFO - epoch [17/50]	batch [500/1251]	time(sec) 23218.57	loss 0.8257	acc 80.99%	fore pix 1.19%	back pix 98.81%	
+2024-12-27 16:34:32,390 - INFO - epoch [17/50]	batch [600/1251]	time(sec) 23331.58	loss 0.9443	acc 51.90%	fore pix 0.61%	back pix 99.39%	
+2024-12-27 16:36:25,459 - INFO - epoch [17/50]	batch [700/1251]	time(sec) 23444.65	loss 1.7137	acc 0.24%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:38:18,580 - INFO - epoch [17/50]	batch [800/1251]	time(sec) 23557.77	loss 1.7283	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:40:11,629 - INFO - epoch [17/50]	batch [900/1251]	time(sec) 23670.82	loss 1.7194	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:42:04,520 - INFO - epoch [17/50]	batch [1000/1251]	time(sec) 23783.71	loss 1.7276	acc 0.01%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 16:43:57,308 - INFO - epoch [17/50]	batch [1100/1251]	time(sec) 23896.50	loss 1.7123	acc 0.06%	fore pix 0.05%	back pix 99.95%	
+2024-12-27 16:45:50,510 - INFO - epoch [17/50]	batch [1200/1251]	time(sec) 24009.70	loss 1.6724	acc 11.87%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 16:46:47,191 - INFO - Epoch 17: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 16:46:50,693 - INFO - epoch [18/50]	batch [0/1251]	time(sec) 24069.88	loss 1.7156	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:48:43,631 - INFO - epoch [18/50]	batch [100/1251]	time(sec) 24182.82	loss 1.7201	acc 0.84%	fore pix 0.33%	back pix 99.67%	
+2024-12-27 16:50:36,668 - INFO - epoch [18/50]	batch [200/1251]	time(sec) 24295.86	loss 0.9014	acc 62.71%	fore pix 0.20%	back pix 99.80%	
+2024-12-27 16:52:29,700 - INFO - epoch [18/50]	batch [300/1251]	time(sec) 24408.89	loss 1.7309	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:54:22,757 - INFO - epoch [18/50]	batch [400/1251]	time(sec) 24521.95	loss 1.7178	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 16:56:15,824 - INFO - epoch [18/50]	batch [500/1251]	time(sec) 24635.01	loss 1.0175	acc 47.07%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 16:58:09,032 - INFO - epoch [18/50]	batch [600/1251]	time(sec) 24748.22	loss 1.7171	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:00:01,975 - INFO - epoch [18/50]	batch [700/1251]	time(sec) 24861.16	loss 1.6550	acc 4.47%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 17:01:55,073 - INFO - epoch [18/50]	batch [800/1251]	time(sec) 24974.26	loss 1.7149	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:03:47,921 - INFO - epoch [18/50]	batch [900/1251]	time(sec) 25087.11	loss 1.0812	acc 38.52%	fore pix 0.85%	back pix 99.15%	
+2024-12-27 17:05:40,818 - INFO - epoch [18/50]	batch [1000/1251]	time(sec) 25200.01	loss 1.7305	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:07:33,757 - INFO - epoch [18/50]	batch [1100/1251]	time(sec) 25312.95	loss 1.7299	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:09:26,891 - INFO - epoch [18/50]	batch [1200/1251]	time(sec) 25426.08	loss 1.2961	acc 26.32%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 17:10:23,611 - INFO - Epoch 18: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 17:10:27,440 - INFO - epoch [19/50]	batch [0/1251]	time(sec) 25486.63	loss 1.7183	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:12:19,934 - INFO - epoch [19/50]	batch [100/1251]	time(sec) 25599.12	loss 1.7286	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:14:12,717 - INFO - epoch [19/50]	batch [200/1251]	time(sec) 25711.91	loss 1.6541	acc 2.84%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 17:16:05,295 - INFO - epoch [19/50]	batch [300/1251]	time(sec) 25824.48	loss 1.4962	acc 24.46%	fore pix 1.02%	back pix 98.98%	
+2024-12-27 17:17:58,097 - INFO - epoch [19/50]	batch [400/1251]	time(sec) 25937.29	loss 1.7255	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:19:50,720 - INFO - epoch [19/50]	batch [500/1251]	time(sec) 26049.91	loss 1.6992	acc 4.18%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 17:21:43,411 - INFO - epoch [19/50]	batch [600/1251]	time(sec) 26162.60	loss 1.7170	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:23:36,181 - INFO - epoch [19/50]	batch [700/1251]	time(sec) 26275.37	loss 1.7211	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:25:28,930 - INFO - epoch [19/50]	batch [800/1251]	time(sec) 26388.12	loss 1.7129	acc 0.31%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 17:27:21,582 - INFO - epoch [19/50]	batch [900/1251]	time(sec) 26500.77	loss 1.7311	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:29:14,244 - INFO - epoch [19/50]	batch [1000/1251]	time(sec) 26613.43	loss 0.8875	acc 68.27%	fore pix 0.44%	back pix 99.56%	
+2024-12-27 17:31:06,992 - INFO - epoch [19/50]	batch [1100/1251]	time(sec) 26726.18	loss 1.7218	acc 0.88%	fore pix 0.18%	back pix 99.82%	
+2024-12-27 17:32:59,689 - INFO - epoch [19/50]	batch [1200/1251]	time(sec) 26838.88	loss 1.7090	acc 0.70%	fore pix 0.21%	back pix 99.79%	
+2024-12-27 17:33:56,461 - INFO - Epoch 19: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 17:33:59,441 - INFO - epoch [20/50]	batch [0/1251]	time(sec) 26898.63	loss 1.7180	acc 0.03%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:35:52,442 - INFO - epoch [20/50]	batch [100/1251]	time(sec) 27011.62	loss 1.7149	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:37:45,366 - INFO - epoch [20/50]	batch [200/1251]	time(sec) 27124.56	loss 1.7319	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:39:38,205 - INFO - epoch [20/50]	batch [300/1251]	time(sec) 27237.39	loss 1.1523	acc 25.53%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 17:41:31,479 - INFO - epoch [20/50]	batch [400/1251]	time(sec) 27350.67	loss 1.1127	acc 45.33%	fore pix 0.16%	back pix 99.84%	
+2024-12-27 17:43:24,113 - INFO - epoch [20/50]	batch [500/1251]	time(sec) 27463.30	loss 0.8540	acc 75.90%	fore pix 1.68%	back pix 98.32%	
+2024-12-27 17:45:17,049 - INFO - epoch [20/50]	batch [600/1251]	time(sec) 27576.24	loss 1.0186	acc 46.95%	fore pix 0.38%	back pix 99.62%	
+2024-12-27 17:47:10,084 - INFO - epoch [20/50]	batch [700/1251]	time(sec) 27689.27	loss 1.6693	acc 7.17%	fore pix 0.82%	back pix 99.18%	
+2024-12-27 17:49:02,943 - INFO - epoch [20/50]	batch [800/1251]	time(sec) 27802.13	loss 1.7319	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:50:56,082 - INFO - epoch [20/50]	batch [900/1251]	time(sec) 27915.27	loss 1.7313	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:52:49,049 - INFO - epoch [20/50]	batch [1000/1251]	time(sec) 28028.24	loss 1.7310	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:54:41,839 - INFO - epoch [20/50]	batch [1100/1251]	time(sec) 28141.03	loss 1.4729	acc 31.84%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 17:56:34,669 - INFO - epoch [20/50]	batch [1200/1251]	time(sec) 28253.86	loss 0.7657	acc 86.97%	fore pix 0.52%	back pix 99.48%	
+2024-12-27 17:57:31,381 - INFO - Epoch 20: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 17:57:35,140 - INFO - epoch [21/50]	batch [0/1251]	time(sec) 28314.33	loss 1.7157	acc 3.66%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 17:59:28,074 - INFO - epoch [21/50]	batch [100/1251]	time(sec) 28427.26	loss 1.6920	acc 8.13%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 18:01:21,255 - INFO - epoch [21/50]	batch [200/1251]	time(sec) 28540.44	loss 1.7113	acc 0.12%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 18:03:14,154 - INFO - epoch [21/50]	batch [300/1251]	time(sec) 28653.34	loss 1.7108	acc 0.37%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 18:05:07,225 - INFO - epoch [21/50]	batch [400/1251]	time(sec) 28766.41	loss 1.7304	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:07:00,200 - INFO - epoch [21/50]	batch [500/1251]	time(sec) 28879.39	loss 1.7148	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:08:53,062 - INFO - epoch [21/50]	batch [600/1251]	time(sec) 28992.25	loss 1.7159	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:10:45,916 - INFO - epoch [21/50]	batch [700/1251]	time(sec) 29105.11	loss 1.7160	acc 0.36%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 18:12:38,811 - INFO - epoch [21/50]	batch [800/1251]	time(sec) 29218.00	loss 1.7245	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:14:31,795 - INFO - epoch [21/50]	batch [900/1251]	time(sec) 29330.98	loss 1.7313	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:16:24,870 - INFO - epoch [21/50]	batch [1000/1251]	time(sec) 29444.06	loss 1.7147	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:18:17,679 - INFO - epoch [21/50]	batch [1100/1251]	time(sec) 29556.87	loss 1.7175	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:20:10,512 - INFO - epoch [21/50]	batch [1200/1251]	time(sec) 29669.70	loss 1.7193	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:21:07,231 - INFO - Epoch 21: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 18:21:10,948 - INFO - epoch [22/50]	batch [0/1251]	time(sec) 29730.14	loss 1.7216	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:23:03,662 - INFO - epoch [22/50]	batch [100/1251]	time(sec) 29842.85	loss 1.7142	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:24:56,523 - INFO - epoch [22/50]	batch [200/1251]	time(sec) 29955.71	loss 1.7145	acc 0.35%	fore pix 0.21%	back pix 99.79%	
+2024-12-27 18:26:49,278 - INFO - epoch [22/50]	batch [300/1251]	time(sec) 30068.47	loss 1.7085	acc 0.46%	fore pix 0.71%	back pix 99.29%	
+2024-12-27 18:28:42,413 - INFO - epoch [22/50]	batch [400/1251]	time(sec) 30181.60	loss 1.7103	acc 0.47%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 18:30:35,319 - INFO - epoch [22/50]	batch [500/1251]	time(sec) 30294.51	loss 1.7191	acc 0.04%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:32:28,138 - INFO - epoch [22/50]	batch [600/1251]	time(sec) 30407.33	loss 1.7106	acc 0.61%	fore pix 0.05%	back pix 99.95%	
+2024-12-27 18:34:21,156 - INFO - epoch [22/50]	batch [700/1251]	time(sec) 30520.35	loss 1.7157	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:36:14,294 - INFO - epoch [22/50]	batch [800/1251]	time(sec) 30633.48	loss 1.7317	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:38:07,170 - INFO - epoch [22/50]	batch [900/1251]	time(sec) 30746.36	loss 1.6918	acc 2.53%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:40:00,001 - INFO - epoch [22/50]	batch [1000/1251]	time(sec) 30859.19	loss 1.7291	acc 0.03%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:41:52,944 - INFO - epoch [22/50]	batch [1100/1251]	time(sec) 30972.13	loss 1.7290	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:43:45,728 - INFO - epoch [22/50]	batch [1200/1251]	time(sec) 31084.92	loss 0.8857	acc 67.82%	fore pix 0.79%	back pix 99.21%	
+2024-12-27 18:44:42,444 - INFO - Epoch 22: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 18:44:45,805 - INFO - epoch [23/50]	batch [0/1251]	time(sec) 31144.99	loss 1.6493	acc 5.95%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 18:46:38,755 - INFO - epoch [23/50]	batch [100/1251]	time(sec) 31257.94	loss 1.6456	acc 8.78%	fore pix 0.75%	back pix 99.25%	
+2024-12-27 18:48:31,630 - INFO - epoch [23/50]	batch [200/1251]	time(sec) 31370.82	loss 1.7164	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:50:24,571 - INFO - epoch [23/50]	batch [300/1251]	time(sec) 31483.76	loss 1.7305	acc 0.05%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 18:52:17,376 - INFO - epoch [23/50]	batch [400/1251]	time(sec) 31596.57	loss 1.7305	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:54:10,261 - INFO - epoch [23/50]	batch [500/1251]	time(sec) 31709.45	loss 1.7267	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:56:03,064 - INFO - epoch [23/50]	batch [600/1251]	time(sec) 31822.25	loss 1.7164	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 18:57:55,769 - INFO - epoch [23/50]	batch [700/1251]	time(sec) 31934.96	loss 1.2328	acc 51.68%	fore pix 0.25%	back pix 99.75%	
+2024-12-27 18:59:48,649 - INFO - epoch [23/50]	batch [800/1251]	time(sec) 32047.84	loss 1.7318	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:01:41,622 - INFO - epoch [23/50]	batch [900/1251]	time(sec) 32160.81	loss 1.7299	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:03:34,880 - INFO - epoch [23/50]	batch [1000/1251]	time(sec) 32274.07	loss 1.7167	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:05:27,827 - INFO - epoch [23/50]	batch [1100/1251]	time(sec) 32387.02	loss 1.7171	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:07:20,985 - INFO - epoch [23/50]	batch [1200/1251]	time(sec) 32500.17	loss 1.7277	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:08:17,670 - INFO - Epoch 23: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 19:08:21,068 - INFO - epoch [24/50]	batch [0/1251]	time(sec) 32560.26	loss 1.6460	acc 9.75%	fore pix 0.11%	back pix 99.89%	
+2024-12-27 19:10:13,948 - INFO - epoch [24/50]	batch [100/1251]	time(sec) 32673.14	loss 1.4722	acc 10.74%	fore pix 0.11%	back pix 99.89%	
+2024-12-27 19:12:06,861 - INFO - epoch [24/50]	batch [200/1251]	time(sec) 32786.05	loss 1.2654	acc 22.23%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:13:59,846 - INFO - epoch [24/50]	batch [300/1251]	time(sec) 32899.04	loss 1.7321	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:15:52,817 - INFO - epoch [24/50]	batch [400/1251]	time(sec) 33012.01	loss 0.9108	acc 67.12%	fore pix 0.80%	back pix 99.20%	
+2024-12-27 19:17:45,618 - INFO - epoch [24/50]	batch [500/1251]	time(sec) 33124.81	loss 1.5360	acc 17.41%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 19:19:38,307 - INFO - epoch [24/50]	batch [600/1251]	time(sec) 33237.50	loss 0.7597	acc 91.59%	fore pix 0.79%	back pix 99.21%	
+2024-12-27 19:21:31,331 - INFO - epoch [24/50]	batch [700/1251]	time(sec) 33350.52	loss 1.7170	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:23:24,218 - INFO - epoch [24/50]	batch [800/1251]	time(sec) 33463.41	loss 1.7262	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:25:17,106 - INFO - epoch [24/50]	batch [900/1251]	time(sec) 33576.30	loss 1.7182	acc 0.95%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 19:27:10,025 - INFO - epoch [24/50]	batch [1000/1251]	time(sec) 33689.21	loss 1.5373	acc 21.70%	fore pix 0.05%	back pix 99.95%	
+2024-12-27 19:29:02,669 - INFO - epoch [24/50]	batch [1100/1251]	time(sec) 33801.86	loss 1.7309	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:30:55,400 - INFO - epoch [24/50]	batch [1200/1251]	time(sec) 33914.59	loss 1.7150	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:31:52,040 - INFO - Epoch 24: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 19:31:55,527 - INFO - epoch [25/50]	batch [0/1251]	time(sec) 33974.72	loss 1.7267	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:33:48,235 - INFO - epoch [25/50]	batch [100/1251]	time(sec) 34087.42	loss 1.7119	acc 0.52%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 19:35:41,097 - INFO - epoch [25/50]	batch [200/1251]	time(sec) 34200.29	loss 0.9705	acc 50.22%	fore pix 0.82%	back pix 99.18%	
+2024-12-27 19:37:33,943 - INFO - epoch [25/50]	batch [300/1251]	time(sec) 34313.13	loss 1.7265	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:39:26,675 - INFO - epoch [25/50]	batch [400/1251]	time(sec) 34425.86	loss 1.7309	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:41:19,494 - INFO - epoch [25/50]	batch [500/1251]	time(sec) 34538.68	loss 1.6813	acc 5.04%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 19:43:12,214 - INFO - epoch [25/50]	batch [600/1251]	time(sec) 34651.40	loss 1.6509	acc 8.66%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 19:45:05,178 - INFO - epoch [25/50]	batch [700/1251]	time(sec) 34764.37	loss 1.6633	acc 12.64%	fore pix 0.22%	back pix 99.78%	
+2024-12-27 19:46:58,020 - INFO - epoch [25/50]	batch [800/1251]	time(sec) 34877.21	loss 1.7167	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:48:50,909 - INFO - epoch [25/50]	batch [900/1251]	time(sec) 34990.10	loss 1.3916	acc 30.54%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 19:50:43,791 - INFO - epoch [25/50]	batch [1000/1251]	time(sec) 35102.98	loss 1.7242	acc 0.10%	fore pix 0.12%	back pix 99.88%	
+2024-12-27 19:52:36,544 - INFO - epoch [25/50]	batch [1100/1251]	time(sec) 35215.73	loss 1.7311	acc 0.02%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 19:54:29,425 - INFO - epoch [25/50]	batch [1200/1251]	time(sec) 35328.61	loss 1.7148	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:55:26,040 - INFO - Epoch 25: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 19:55:30,139 - INFO - epoch [26/50]	batch [0/1251]	time(sec) 35389.33	loss 1.7170	acc 1.64%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 19:57:23,330 - INFO - epoch [26/50]	batch [100/1251]	time(sec) 35502.52	loss 1.7186	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 19:59:16,483 - INFO - epoch [26/50]	batch [200/1251]	time(sec) 35615.67	loss 1.7149	acc 0.01%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 20:01:09,607 - INFO - epoch [26/50]	batch [300/1251]	time(sec) 35728.80	loss 1.7165	acc 0.12%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:03:02,492 - INFO - epoch [26/50]	batch [400/1251]	time(sec) 35841.68	loss 1.7228	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:04:55,372 - INFO - epoch [26/50]	batch [500/1251]	time(sec) 35954.56	loss 1.7299	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:06:48,448 - INFO - epoch [26/50]	batch [600/1251]	time(sec) 36067.64	loss 0.7960	acc 84.07%	fore pix 0.61%	back pix 99.39%	
+2024-12-27 20:08:41,656 - INFO - epoch [26/50]	batch [700/1251]	time(sec) 36180.85	loss 1.6028	acc 19.37%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 20:10:34,519 - INFO - epoch [26/50]	batch [800/1251]	time(sec) 36293.71	loss 1.7154	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:12:27,554 - INFO - epoch [26/50]	batch [900/1251]	time(sec) 36406.74	loss 1.7166	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:14:20,345 - INFO - epoch [26/50]	batch [1000/1251]	time(sec) 36519.53	loss 1.5693	acc 19.09%	fore pix 1.63%	back pix 98.37%	
+2024-12-27 20:16:13,096 - INFO - epoch [26/50]	batch [1100/1251]	time(sec) 36632.29	loss 1.7302	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:18:05,844 - INFO - epoch [26/50]	batch [1200/1251]	time(sec) 36745.03	loss 1.2824	acc 21.05%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 20:19:02,487 - INFO - Epoch 26: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 20:19:05,261 - INFO - epoch [27/50]	batch [0/1251]	time(sec) 36804.45	loss 1.7224	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:20:58,116 - INFO - epoch [27/50]	batch [100/1251]	time(sec) 36917.31	loss 0.8440	acc 73.46%	fore pix 0.27%	back pix 99.73%	
+2024-12-27 20:22:51,127 - INFO - epoch [27/50]	batch [200/1251]	time(sec) 37030.32	loss 1.6882	acc 5.90%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 20:24:44,100 - INFO - epoch [27/50]	batch [300/1251]	time(sec) 37143.29	loss 0.7476	acc 95.76%	fore pix 0.74%	back pix 99.26%	
+2024-12-27 20:26:36,862 - INFO - epoch [27/50]	batch [400/1251]	time(sec) 37256.05	loss 0.9608	acc 57.92%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 20:28:29,853 - INFO - epoch [27/50]	batch [500/1251]	time(sec) 37369.04	loss 1.7142	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:30:22,696 - INFO - epoch [27/50]	batch [600/1251]	time(sec) 37481.89	loss 1.7153	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:32:15,593 - INFO - epoch [27/50]	batch [700/1251]	time(sec) 37594.78	loss 0.8080	acc 78.25%	fore pix 1.57%	back pix 98.43%	
+2024-12-27 20:34:08,352 - INFO - epoch [27/50]	batch [800/1251]	time(sec) 37707.54	loss 1.6658	acc 8.64%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 20:36:01,560 - INFO - epoch [27/50]	batch [900/1251]	time(sec) 37820.75	loss 0.8211	acc 81.26%	fore pix 1.57%	back pix 98.43%	
+2024-12-27 20:37:54,494 - INFO - epoch [27/50]	batch [1000/1251]	time(sec) 37933.68	loss 1.7159	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:39:47,298 - INFO - epoch [27/50]	batch [1100/1251]	time(sec) 38046.49	loss 1.3200	acc 35.55%	fore pix 0.94%	back pix 99.06%	
+2024-12-27 20:41:40,319 - INFO - epoch [27/50]	batch [1200/1251]	time(sec) 38159.51	loss 1.7143	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:42:37,031 - INFO - Epoch 27: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 20:42:39,975 - INFO - epoch [28/50]	batch [0/1251]	time(sec) 38219.16	loss 1.7169	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:44:33,105 - INFO - epoch [28/50]	batch [100/1251]	time(sec) 38332.29	loss 1.7126	acc 0.40%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:46:25,964 - INFO - epoch [28/50]	batch [200/1251]	time(sec) 38445.15	loss 1.5008	acc 13.23%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 20:48:18,933 - INFO - epoch [28/50]	batch [300/1251]	time(sec) 38558.12	loss 1.6708	acc 2.98%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 20:50:11,982 - INFO - epoch [28/50]	batch [400/1251]	time(sec) 38671.17	loss 1.7043	acc 2.35%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 20:52:05,283 - INFO - epoch [28/50]	batch [500/1251]	time(sec) 38784.47	loss 0.7867	acc 87.09%	fore pix 0.40%	back pix 99.60%	
+2024-12-27 20:53:58,130 - INFO - epoch [28/50]	batch [600/1251]	time(sec) 38897.32	loss 1.7210	acc 0.42%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 20:55:51,081 - INFO - epoch [28/50]	batch [700/1251]	time(sec) 39010.27	loss 1.7305	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 20:57:44,187 - INFO - epoch [28/50]	batch [800/1251]	time(sec) 39123.38	loss 1.7208	acc 0.33%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 20:59:37,300 - INFO - epoch [28/50]	batch [900/1251]	time(sec) 39236.49	loss 1.7140	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:01:30,224 - INFO - epoch [28/50]	batch [1000/1251]	time(sec) 39349.41	loss 1.7240	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:03:23,317 - INFO - epoch [28/50]	batch [1100/1251]	time(sec) 39462.51	loss 1.7307	acc 0.07%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:05:16,324 - INFO - epoch [28/50]	batch [1200/1251]	time(sec) 39575.51	loss 1.7251	acc 0.21%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:06:13,209 - INFO - Epoch 28: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 21:06:17,025 - INFO - epoch [29/50]	batch [0/1251]	time(sec) 39636.21	loss 1.7163	acc 1.37%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:08:10,323 - INFO - epoch [29/50]	batch [100/1251]	time(sec) 39749.51	loss 1.6602	acc 10.57%	fore pix 0.38%	back pix 99.62%	
+2024-12-27 21:10:03,354 - INFO - epoch [29/50]	batch [200/1251]	time(sec) 39862.54	loss 1.7173	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:11:56,402 - INFO - epoch [29/50]	batch [300/1251]	time(sec) 39975.59	loss 1.7116	acc 0.03%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 21:13:49,338 - INFO - epoch [29/50]	batch [400/1251]	time(sec) 40088.53	loss 0.8130	acc 86.74%	fore pix 0.19%	back pix 99.81%	
+2024-12-27 21:15:42,741 - INFO - epoch [29/50]	batch [500/1251]	time(sec) 40201.93	loss 1.0156	acc 47.30%	fore pix 0.46%	back pix 99.54%	
+2024-12-27 21:17:36,137 - INFO - epoch [29/50]	batch [600/1251]	time(sec) 40315.33	loss 1.7155	acc 0.41%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 21:19:29,431 - INFO - epoch [29/50]	batch [700/1251]	time(sec) 40428.62	loss 1.7304	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:21:22,551 - INFO - epoch [29/50]	batch [800/1251]	time(sec) 40541.74	loss 1.3411	acc 26.93%	fore pix 0.17%	back pix 99.83%	
+2024-12-27 21:23:15,654 - INFO - epoch [29/50]	batch [900/1251]	time(sec) 40654.84	loss 1.6256	acc 5.33%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 21:25:08,804 - INFO - epoch [29/50]	batch [1000/1251]	time(sec) 40767.99	loss 1.4271	acc 10.04%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 21:27:01,880 - INFO - epoch [29/50]	batch [1100/1251]	time(sec) 40881.07	loss 1.7315	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:28:54,979 - INFO - epoch [29/50]	batch [1200/1251]	time(sec) 40994.17	loss 1.2271	acc 33.84%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 21:29:51,701 - INFO - Epoch 29: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 21:29:54,922 - INFO - epoch [30/50]	batch [0/1251]	time(sec) 41054.11	loss 1.7144	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:31:48,111 - INFO - epoch [30/50]	batch [100/1251]	time(sec) 41167.30	loss 1.7203	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:33:41,009 - INFO - epoch [30/50]	batch [200/1251]	time(sec) 41280.20	loss 1.7095	acc 0.76%	fore pix 0.29%	back pix 99.71%	
+2024-12-27 21:35:34,013 - INFO - epoch [30/50]	batch [300/1251]	time(sec) 41393.20	loss 1.0489	acc 46.06%	fore pix 0.69%	back pix 99.31%	
+2024-12-27 21:37:27,060 - INFO - epoch [30/50]	batch [400/1251]	time(sec) 41506.25	loss 1.0727	acc 27.92%	fore pix 0.05%	back pix 99.95%	
+2024-12-27 21:39:20,130 - INFO - epoch [30/50]	batch [500/1251]	time(sec) 41619.32	loss 0.7516	acc 96.34%	fore pix 0.83%	back pix 99.17%	
+2024-12-27 21:41:13,316 - INFO - epoch [30/50]	batch [600/1251]	time(sec) 41732.51	loss 1.7272	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:43:06,317 - INFO - epoch [30/50]	batch [700/1251]	time(sec) 41845.51	loss 0.7939	acc 81.75%	fore pix 0.59%	back pix 99.41%	
+2024-12-27 21:44:59,319 - INFO - epoch [30/50]	batch [800/1251]	time(sec) 41958.51	loss 1.7179	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:46:52,377 - INFO - epoch [30/50]	batch [900/1251]	time(sec) 42071.57	loss 1.7103	acc 0.00%	fore pix 0.42%	back pix 99.58%	
+2024-12-27 21:48:45,626 - INFO - epoch [30/50]	batch [1000/1251]	time(sec) 42184.82	loss 1.1911	acc 40.44%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 21:50:38,678 - INFO - epoch [30/50]	batch [1100/1251]	time(sec) 42297.87	loss 0.8767	acc 68.40%	fore pix 0.52%	back pix 99.48%	
+2024-12-27 21:52:31,881 - INFO - epoch [30/50]	batch [1200/1251]	time(sec) 42411.07	loss 1.7159	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:53:28,590 - INFO - Epoch 30: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 21:53:32,322 - INFO - epoch [31/50]	batch [0/1251]	time(sec) 42471.51	loss 1.7140	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 21:55:25,277 - INFO - epoch [31/50]	batch [100/1251]	time(sec) 42584.47	loss 1.5244	acc 20.42%	fore pix 0.83%	back pix 99.17%	
+2024-12-27 21:57:18,383 - INFO - epoch [31/50]	batch [200/1251]	time(sec) 42697.57	loss 0.8738	acc 75.82%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 21:59:11,361 - INFO - epoch [31/50]	batch [300/1251]	time(sec) 42810.55	loss 0.8501	acc 68.46%	fore pix 0.70%	back pix 99.30%	
+2024-12-27 22:01:04,400 - INFO - epoch [31/50]	batch [400/1251]	time(sec) 42923.59	loss 1.6618	acc 13.37%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 22:02:57,558 - INFO - epoch [31/50]	batch [500/1251]	time(sec) 43036.75	loss 1.7200	acc 0.11%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:04:50,695 - INFO - epoch [31/50]	batch [600/1251]	time(sec) 43149.88	loss 1.7116	acc 0.01%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 22:06:43,607 - INFO - epoch [31/50]	batch [700/1251]	time(sec) 43262.80	loss 1.7272	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:08:36,897 - INFO - epoch [31/50]	batch [800/1251]	time(sec) 43376.09	loss 1.0575	acc 54.15%	fore pix 1.46%	back pix 98.54%	
+2024-12-27 22:10:29,947 - INFO - epoch [31/50]	batch [900/1251]	time(sec) 43489.14	loss 1.6095	acc 4.21%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 22:12:23,025 - INFO - epoch [31/50]	batch [1000/1251]	time(sec) 43602.21	loss 1.6755	acc 7.12%	fore pix 0.06%	back pix 99.94%	
+2024-12-27 22:14:15,999 - INFO - epoch [31/50]	batch [1100/1251]	time(sec) 43715.19	loss 1.7201	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:16:08,938 - INFO - epoch [31/50]	batch [1200/1251]	time(sec) 43828.13	loss 1.6953	acc 2.85%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 22:17:05,796 - INFO - Epoch 31: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 22:17:09,487 - INFO - epoch [32/50]	batch [0/1251]	time(sec) 43888.68	loss 1.7312	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:19:02,705 - INFO - epoch [32/50]	batch [100/1251]	time(sec) 44001.89	loss 1.7194	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:20:55,933 - INFO - epoch [32/50]	batch [200/1251]	time(sec) 44115.12	loss 0.8273	acc 76.23%	fore pix 0.99%	back pix 99.01%	
+2024-12-27 22:22:49,071 - INFO - epoch [32/50]	batch [300/1251]	time(sec) 44228.26	loss 1.6399	acc 5.56%	fore pix 0.13%	back pix 99.87%	
+2024-12-27 22:24:42,331 - INFO - epoch [32/50]	batch [400/1251]	time(sec) 44341.52	loss 1.7322	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:26:35,325 - INFO - epoch [32/50]	batch [500/1251]	time(sec) 44454.51	loss 1.7316	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:28:28,781 - INFO - epoch [32/50]	batch [600/1251]	time(sec) 44567.97	loss 1.5081	acc 16.40%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 22:30:21,909 - INFO - epoch [32/50]	batch [700/1251]	time(sec) 44681.10	loss 1.4771	acc 25.01%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 22:32:14,945 - INFO - epoch [32/50]	batch [800/1251]	time(sec) 44794.13	loss 1.7081	acc 1.63%	fore pix 0.53%	back pix 99.47%	
+2024-12-27 22:34:08,034 - INFO - epoch [32/50]	batch [900/1251]	time(sec) 44907.22	loss 1.5825	acc 10.39%	fore pix 0.09%	back pix 99.91%	
+2024-12-27 22:36:01,043 - INFO - epoch [32/50]	batch [1000/1251]	time(sec) 45020.23	loss 1.0953	acc 38.60%	fore pix 0.36%	back pix 99.64%	
+2024-12-27 22:37:54,169 - INFO - epoch [32/50]	batch [1100/1251]	time(sec) 45133.36	loss 1.2944	acc 28.83%	fore pix 0.20%	back pix 99.80%	
+2024-12-27 22:39:47,093 - INFO - epoch [32/50]	batch [1200/1251]	time(sec) 45246.28	loss 1.7281	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:40:43,781 - INFO - Epoch 32: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 22:40:47,394 - INFO - epoch [33/50]	batch [0/1251]	time(sec) 45306.58	loss 1.7308	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:42:40,406 - INFO - epoch [33/50]	batch [100/1251]	time(sec) 45419.60	loss 1.7145	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:44:33,323 - INFO - epoch [33/50]	batch [200/1251]	time(sec) 45532.51	loss 1.7292	acc 0.02%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:46:26,596 - INFO - epoch [33/50]	batch [300/1251]	time(sec) 45645.79	loss 1.7279	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:48:19,957 - INFO - epoch [33/50]	batch [400/1251]	time(sec) 45759.15	loss 1.7271	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:50:12,881 - INFO - epoch [33/50]	batch [500/1251]	time(sec) 45872.07	loss 1.7295	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:52:05,896 - INFO - epoch [33/50]	batch [600/1251]	time(sec) 45985.09	loss 1.7208	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 22:53:58,809 - INFO - epoch [33/50]	batch [700/1251]	time(sec) 46098.00	loss 1.5892	acc 21.61%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 22:55:51,874 - INFO - epoch [33/50]	batch [800/1251]	time(sec) 46211.06	loss 1.1943	acc 43.23%	fore pix 0.62%	back pix 99.38%	
+2024-12-27 22:57:44,593 - INFO - epoch [33/50]	batch [900/1251]	time(sec) 46323.78	loss 1.0667	acc 50.89%	fore pix 0.08%	back pix 99.92%	
+2024-12-27 22:59:37,674 - INFO - epoch [33/50]	batch [1000/1251]	time(sec) 46436.86	loss 1.7264	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:01:30,693 - INFO - epoch [33/50]	batch [1100/1251]	time(sec) 46549.88	loss 0.8088	acc 75.69%	fore pix 0.58%	back pix 99.42%	
+2024-12-27 23:03:23,521 - INFO - epoch [33/50]	batch [1200/1251]	time(sec) 46662.71	loss 1.2922	acc 40.40%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 23:04:20,287 - INFO - Epoch 33: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 23:04:23,745 - INFO - epoch [34/50]	batch [0/1251]	time(sec) 46722.93	loss 1.7129	acc 0.04%	fore pix 0.19%	back pix 99.81%	
+2024-12-27 23:06:16,615 - INFO - epoch [34/50]	batch [100/1251]	time(sec) 46835.80	loss 1.5415	acc 8.32%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 23:08:09,602 - INFO - epoch [34/50]	batch [200/1251]	time(sec) 46948.79	loss 1.7171	acc 1.13%	fore pix 0.13%	back pix 99.87%	
+2024-12-27 23:10:02,571 - INFO - epoch [34/50]	batch [300/1251]	time(sec) 47061.76	loss 1.7111	acc 0.24%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 23:11:55,390 - INFO - epoch [34/50]	batch [400/1251]	time(sec) 47174.58	loss 1.1513	acc 41.31%	fore pix 0.12%	back pix 99.88%	
+2024-12-27 23:13:48,249 - INFO - epoch [34/50]	batch [500/1251]	time(sec) 47287.44	loss 1.7149	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:15:41,126 - INFO - epoch [34/50]	batch [600/1251]	time(sec) 47400.32	loss 1.7214	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:17:34,048 - INFO - epoch [34/50]	batch [700/1251]	time(sec) 47513.24	loss 1.7163	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:19:27,044 - INFO - epoch [34/50]	batch [800/1251]	time(sec) 47626.23	loss 1.7097	acc 1.43%	fore pix 0.04%	back pix 99.96%	
+2024-12-27 23:21:20,083 - INFO - epoch [34/50]	batch [900/1251]	time(sec) 47739.27	loss 1.7225	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:23:13,212 - INFO - epoch [34/50]	batch [1000/1251]	time(sec) 47852.40	loss 1.6410	acc 16.22%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 23:25:06,220 - INFO - epoch [34/50]	batch [1100/1251]	time(sec) 47965.41	loss 1.6176	acc 11.19%	fore pix 0.87%	back pix 99.13%	
+2024-12-27 23:26:59,145 - INFO - epoch [34/50]	batch [1200/1251]	time(sec) 48078.33	loss 1.7231	acc 0.03%	fore pix 0.02%	back pix 99.98%	
+2024-12-27 23:27:55,965 - INFO - Epoch 34: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 23:27:58,888 - INFO - epoch [35/50]	batch [0/1251]	time(sec) 48138.08	loss 1.4539	acc 11.71%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 23:29:51,898 - INFO - epoch [35/50]	batch [100/1251]	time(sec) 48251.09	loss 1.1900	acc 50.77%	fore pix 0.99%	back pix 99.01%	
+2024-12-27 23:31:44,724 - INFO - epoch [35/50]	batch [200/1251]	time(sec) 48363.91	loss 1.7117	acc 1.66%	fore pix 0.07%	back pix 99.93%	
+2024-12-27 23:33:37,718 - INFO - epoch [35/50]	batch [300/1251]	time(sec) 48476.91	loss 1.4926	acc 16.58%	fore pix 0.08%	back pix 99.92%	
+2024-12-27 23:35:30,672 - INFO - epoch [35/50]	batch [400/1251]	time(sec) 48589.86	loss 0.8975	acc 73.60%	fore pix 1.33%	back pix 98.67%	
+2024-12-27 23:37:23,783 - INFO - epoch [35/50]	batch [500/1251]	time(sec) 48702.97	loss 0.8467	acc 84.32%	fore pix 1.28%	back pix 98.72%	
+2024-12-27 23:39:16,765 - INFO - epoch [35/50]	batch [600/1251]	time(sec) 48815.96	loss 1.7201	acc 0.05%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:41:09,840 - INFO - epoch [35/50]	batch [700/1251]	time(sec) 48929.03	loss 1.7139	acc 0.17%	fore pix 0.01%	back pix 99.99%	
+2024-12-27 23:43:02,782 - INFO - epoch [35/50]	batch [800/1251]	time(sec) 49041.97	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:44:55,617 - INFO - epoch [35/50]	batch [900/1251]	time(sec) 49154.81	loss 1.6819	acc 2.10%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:46:48,651 - INFO - epoch [35/50]	batch [1000/1251]	time(sec) 49267.84	loss 1.7142	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:48:41,646 - INFO - epoch [35/50]	batch [1100/1251]	time(sec) 49380.84	loss 1.7156	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:50:34,606 - INFO - epoch [35/50]	batch [1200/1251]	time(sec) 49493.80	loss 1.7262	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:51:31,279 - INFO - Epoch 35: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-27 23:51:35,056 - INFO - epoch [36/50]	batch [0/1251]	time(sec) 49554.25	loss 1.7084	acc 0.15%	fore pix 1.23%	back pix 98.77%	
+2024-12-27 23:53:28,069 - INFO - epoch [36/50]	batch [100/1251]	time(sec) 49667.26	loss 1.2371	acc 41.56%	fore pix 0.25%	back pix 99.75%	
+2024-12-27 23:55:21,157 - INFO - epoch [36/50]	batch [200/1251]	time(sec) 49780.35	loss 1.7291	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 23:57:14,226 - INFO - epoch [36/50]	batch [300/1251]	time(sec) 49893.42	loss 0.7655	acc 89.29%	fore pix 0.54%	back pix 99.46%	
+2024-12-27 23:59:07,358 - INFO - epoch [36/50]	batch [400/1251]	time(sec) 50006.55	loss 1.7312	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:01:00,313 - INFO - epoch [36/50]	batch [500/1251]	time(sec) 50119.50	loss 1.7277	acc 0.01%	fore pix 0.06%	back pix 99.94%	
+2024-12-28 00:02:53,153 - INFO - epoch [36/50]	batch [600/1251]	time(sec) 50232.34	loss 1.7314	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:04:46,425 - INFO - epoch [36/50]	batch [700/1251]	time(sec) 50345.61	loss 1.7162	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:06:39,374 - INFO - epoch [36/50]	batch [800/1251]	time(sec) 50458.56	loss 1.7323	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:08:32,529 - INFO - epoch [36/50]	batch [900/1251]	time(sec) 50571.72	loss 1.6223	acc 16.15%	fore pix 0.25%	back pix 99.75%	
+2024-12-28 00:10:25,724 - INFO - epoch [36/50]	batch [1000/1251]	time(sec) 50684.91	loss 1.3574	acc 23.30%	fore pix 0.37%	back pix 99.63%	
+2024-12-28 00:12:18,989 - INFO - epoch [36/50]	batch [1100/1251]	time(sec) 50798.18	loss 1.7310	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:14:12,032 - INFO - epoch [36/50]	batch [1200/1251]	time(sec) 50911.22	loss 1.7226	acc 0.01%	fore pix 0.05%	back pix 99.95%	
+2024-12-28 00:15:09,000 - INFO - Epoch 36: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 00:15:12,346 - INFO - epoch [37/50]	batch [0/1251]	time(sec) 50971.54	loss 1.7138	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:17:05,413 - INFO - epoch [37/50]	batch [100/1251]	time(sec) 51084.60	loss 1.7211	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:18:58,421 - INFO - epoch [37/50]	batch [200/1251]	time(sec) 51197.61	loss 1.6107	acc 11.77%	fore pix 0.71%	back pix 99.29%	
+2024-12-28 00:20:51,275 - INFO - epoch [37/50]	batch [300/1251]	time(sec) 51310.46	loss 1.7172	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:22:44,152 - INFO - epoch [37/50]	batch [400/1251]	time(sec) 51423.34	loss 0.9233	acc 66.08%	fore pix 0.32%	back pix 99.68%	
+2024-12-28 00:24:37,177 - INFO - epoch [37/50]	batch [500/1251]	time(sec) 51536.37	loss 1.0754	acc 44.16%	fore pix 0.71%	back pix 99.29%	
+2024-12-28 00:26:30,087 - INFO - epoch [37/50]	batch [600/1251]	time(sec) 51649.28	loss 1.7266	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:28:22,725 - INFO - epoch [37/50]	batch [700/1251]	time(sec) 51761.91	loss 1.7155	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:30:15,635 - INFO - epoch [37/50]	batch [800/1251]	time(sec) 51874.83	loss 1.7048	acc 1.66%	fore pix 0.08%	back pix 99.92%	
+2024-12-28 00:32:08,656 - INFO - epoch [37/50]	batch [900/1251]	time(sec) 51987.85	loss 0.7855	acc 84.76%	fore pix 0.70%	back pix 99.30%	
+2024-12-28 00:34:01,516 - INFO - epoch [37/50]	batch [1000/1251]	time(sec) 52100.71	loss 1.7234	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:35:54,462 - INFO - epoch [37/50]	batch [1100/1251]	time(sec) 52213.65	loss 1.7266	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:37:47,433 - INFO - epoch [37/50]	batch [1200/1251]	time(sec) 52326.62	loss 1.7181	acc 0.32%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 00:38:44,226 - INFO - Epoch 37: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 00:38:47,804 - INFO - epoch [38/50]	batch [0/1251]	time(sec) 52386.99	loss 1.7141	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:40:40,629 - INFO - epoch [38/50]	batch [100/1251]	time(sec) 52499.82	loss 1.7127	acc 0.01%	fore pix 0.06%	back pix 99.94%	
+2024-12-28 00:42:33,817 - INFO - epoch [38/50]	batch [200/1251]	time(sec) 52613.01	loss 1.7158	acc 0.15%	fore pix 0.08%	back pix 99.92%	
+2024-12-28 00:44:26,647 - INFO - epoch [38/50]	batch [300/1251]	time(sec) 52725.84	loss 0.8801	acc 63.51%	fore pix 0.42%	back pix 99.58%	
+2024-12-28 00:46:19,612 - INFO - epoch [38/50]	batch [400/1251]	time(sec) 52838.80	loss 1.7253	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:48:12,703 - INFO - epoch [38/50]	batch [500/1251]	time(sec) 52951.89	loss 1.5259	acc 21.85%	fore pix 0.55%	back pix 99.45%	
+2024-12-28 00:50:05,746 - INFO - epoch [38/50]	batch [600/1251]	time(sec) 53064.94	loss 1.6969	acc 1.01%	fore pix 0.04%	back pix 99.96%	
+2024-12-28 00:51:58,653 - INFO - epoch [38/50]	batch [700/1251]	time(sec) 53177.84	loss 1.7141	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 00:53:51,514 - INFO - epoch [38/50]	batch [800/1251]	time(sec) 53290.70	loss 0.9240	acc 63.21%	fore pix 0.89%	back pix 99.11%	
+2024-12-28 00:55:44,524 - INFO - epoch [38/50]	batch [900/1251]	time(sec) 53403.71	loss 0.8603	acc 80.15%	fore pix 1.20%	back pix 98.80%	
+2024-12-28 00:57:37,459 - INFO - epoch [38/50]	batch [1000/1251]	time(sec) 53516.65	loss 1.7113	acc 0.22%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 00:59:30,414 - INFO - epoch [38/50]	batch [1100/1251]	time(sec) 53629.60	loss 1.7259	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:01:23,359 - INFO - epoch [38/50]	batch [1200/1251]	time(sec) 53742.55	loss 1.7138	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:02:20,144 - INFO - Epoch 38: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 01:02:23,922 - INFO - epoch [39/50]	batch [0/1251]	time(sec) 53803.11	loss 1.6667	acc 5.94%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 01:04:16,989 - INFO - epoch [39/50]	batch [100/1251]	time(sec) 53916.18	loss 1.7138	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:06:10,065 - INFO - epoch [39/50]	batch [200/1251]	time(sec) 54029.25	loss 1.7160	acc 0.55%	fore pix 0.15%	back pix 99.85%	
+2024-12-28 01:08:03,061 - INFO - epoch [39/50]	batch [300/1251]	time(sec) 54142.25	loss 1.7312	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:09:55,867 - INFO - epoch [39/50]	batch [400/1251]	time(sec) 54255.06	loss 1.6483	acc 2.53%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 01:11:48,931 - INFO - epoch [39/50]	batch [500/1251]	time(sec) 54368.12	loss 1.6990	acc 2.25%	fore pix 0.13%	back pix 99.87%	
+2024-12-28 01:13:41,867 - INFO - epoch [39/50]	batch [600/1251]	time(sec) 54481.06	loss 1.7323	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:15:35,047 - INFO - epoch [39/50]	batch [700/1251]	time(sec) 54594.24	loss 0.8432	acc 76.34%	fore pix 0.43%	back pix 99.57%	
+2024-12-28 01:17:28,095 - INFO - epoch [39/50]	batch [800/1251]	time(sec) 54707.28	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:19:21,019 - INFO - epoch [39/50]	batch [900/1251]	time(sec) 54820.21	loss 1.7141	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:21:13,997 - INFO - epoch [39/50]	batch [1000/1251]	time(sec) 54933.19	loss 1.7200	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:23:07,001 - INFO - epoch [39/50]	batch [1100/1251]	time(sec) 55046.19	loss 1.7165	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:24:59,992 - INFO - epoch [39/50]	batch [1200/1251]	time(sec) 55159.18	loss 1.7100	acc 0.40%	fore pix 0.11%	back pix 99.89%	
+2024-12-28 01:25:56,738 - INFO - Epoch 39: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 01:25:59,940 - INFO - epoch [40/50]	batch [0/1251]	time(sec) 55219.13	loss 1.7143	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:27:52,917 - INFO - epoch [40/50]	batch [100/1251]	time(sec) 55332.11	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:29:45,787 - INFO - epoch [40/50]	batch [200/1251]	time(sec) 55444.98	loss 1.7188	acc 0.01%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 01:31:38,537 - INFO - epoch [40/50]	batch [300/1251]	time(sec) 55557.73	loss 0.9146	acc 59.33%	fore pix 0.61%	back pix 99.39%	
+2024-12-28 01:33:31,544 - INFO - epoch [40/50]	batch [400/1251]	time(sec) 55670.73	loss 1.0501	acc 54.21%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 01:35:25,027 - INFO - epoch [40/50]	batch [500/1251]	time(sec) 55784.22	loss 1.7252	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:37:18,198 - INFO - epoch [40/50]	batch [600/1251]	time(sec) 55897.39	loss 1.6804	acc 5.14%	fore pix 0.75%	back pix 99.25%	
+2024-12-28 01:39:11,236 - INFO - epoch [40/50]	batch [700/1251]	time(sec) 56010.43	loss 1.7232	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:41:04,212 - INFO - epoch [40/50]	batch [800/1251]	time(sec) 56123.40	loss 1.3293	acc 27.75%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 01:42:57,106 - INFO - epoch [40/50]	batch [900/1251]	time(sec) 56236.30	loss 1.7156	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:44:50,154 - INFO - epoch [40/50]	batch [1000/1251]	time(sec) 56349.34	loss 1.7278	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:46:43,015 - INFO - epoch [40/50]	batch [1100/1251]	time(sec) 56462.20	loss 1.7232	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:48:36,014 - INFO - epoch [40/50]	batch [1200/1251]	time(sec) 56575.20	loss 1.5476	acc 8.07%	fore pix 0.06%	back pix 99.94%	
+2024-12-28 01:49:32,722 - INFO - Epoch 40: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 01:49:36,041 - INFO - epoch [41/50]	batch [0/1251]	time(sec) 56635.23	loss 0.7711	acc 90.12%	fore pix 0.44%	back pix 99.56%	
+2024-12-28 01:51:28,878 - INFO - epoch [41/50]	batch [100/1251]	time(sec) 56748.07	loss 1.7006	acc 1.82%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:53:21,909 - INFO - epoch [41/50]	batch [200/1251]	time(sec) 56861.10	loss 1.7149	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:55:14,777 - INFO - epoch [41/50]	batch [300/1251]	time(sec) 56973.97	loss 1.7216	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 01:57:07,764 - INFO - epoch [41/50]	batch [400/1251]	time(sec) 57086.95	loss 1.6891	acc 1.61%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 01:59:00,663 - INFO - epoch [41/50]	batch [500/1251]	time(sec) 57199.85	loss 1.7250	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:00:53,568 - INFO - epoch [41/50]	batch [600/1251]	time(sec) 57312.76	loss 1.7164	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:02:46,493 - INFO - epoch [41/50]	batch [700/1251]	time(sec) 57425.68	loss 1.6438	acc 2.49%	fore pix 0.03%	back pix 99.97%	
+2024-12-28 02:04:39,547 - INFO - epoch [41/50]	batch [800/1251]	time(sec) 57538.74	loss 1.7168	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:06:32,592 - INFO - epoch [41/50]	batch [900/1251]	time(sec) 57651.78	loss 1.7246	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:08:25,629 - INFO - epoch [41/50]	batch [1000/1251]	time(sec) 57764.82	loss 1.2861	acc 22.08%	fore pix 0.06%	back pix 99.94%	
+2024-12-28 02:10:18,482 - INFO - epoch [41/50]	batch [1100/1251]	time(sec) 57877.67	loss 0.7616	acc 91.89%	fore pix 0.78%	back pix 99.22%	
+2024-12-28 02:12:11,389 - INFO - epoch [41/50]	batch [1200/1251]	time(sec) 57990.58	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:13:08,103 - INFO - Epoch 41: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 02:13:11,465 - INFO - epoch [42/50]	batch [0/1251]	time(sec) 58050.65	loss 1.5515	acc 7.38%	fore pix 0.02%	back pix 99.98%	
+2024-12-28 02:15:04,481 - INFO - epoch [42/50]	batch [100/1251]	time(sec) 58163.67	loss 1.7183	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:16:57,357 - INFO - epoch [42/50]	batch [200/1251]	time(sec) 58276.55	loss 1.7293	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:18:50,316 - INFO - epoch [42/50]	batch [300/1251]	time(sec) 58389.51	loss 0.8021	acc 78.73%	fore pix 0.33%	back pix 99.67%	
+2024-12-28 02:20:43,423 - INFO - epoch [42/50]	batch [400/1251]	time(sec) 58502.61	loss 0.7827	acc 85.41%	fore pix 0.25%	back pix 99.75%	
+2024-12-28 02:22:36,600 - INFO - epoch [42/50]	batch [500/1251]	time(sec) 58615.79	loss 0.7676	acc 88.75%	fore pix 0.98%	back pix 99.02%	
+2024-12-28 02:24:29,581 - INFO - epoch [42/50]	batch [600/1251]	time(sec) 58728.77	loss 1.7168	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:26:22,836 - INFO - epoch [42/50]	batch [700/1251]	time(sec) 58842.03	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:28:16,042 - INFO - epoch [42/50]	batch [800/1251]	time(sec) 58955.23	loss 1.7162	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:30:08,855 - INFO - epoch [42/50]	batch [900/1251]	time(sec) 59068.04	loss 1.6947	acc 8.10%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:32:01,689 - INFO - epoch [42/50]	batch [1000/1251]	time(sec) 59180.88	loss 0.9701	acc 50.75%	fore pix 0.39%	back pix 99.61%	
+2024-12-28 02:33:54,416 - INFO - epoch [42/50]	batch [1100/1251]	time(sec) 59293.61	loss 1.4711	acc 15.39%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 02:35:47,519 - INFO - epoch [42/50]	batch [1200/1251]	time(sec) 59406.71	loss 1.7308	acc 0.02%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:36:44,360 - INFO - Epoch 42: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 02:36:47,052 - INFO - epoch [43/50]	batch [0/1251]	time(sec) 59466.24	loss 1.6588	acc 4.62%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 02:38:40,036 - INFO - epoch [43/50]	batch [100/1251]	time(sec) 59579.23	loss 0.8073	acc 79.49%	fore pix 1.07%	back pix 98.93%	
+2024-12-28 02:40:32,965 - INFO - epoch [43/50]	batch [200/1251]	time(sec) 59692.16	loss 1.7143	acc 0.04%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:42:25,761 - INFO - epoch [43/50]	batch [300/1251]	time(sec) 59804.95	loss 1.2780	acc 25.78%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 02:44:18,911 - INFO - epoch [43/50]	batch [400/1251]	time(sec) 59918.10	loss 1.5831	acc 12.80%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 02:46:11,834 - INFO - epoch [43/50]	batch [500/1251]	time(sec) 60031.02	loss 1.7180	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:48:04,849 - INFO - epoch [43/50]	batch [600/1251]	time(sec) 60144.04	loss 1.6053	acc 15.42%	fore pix 1.05%	back pix 98.95%	
+2024-12-28 02:49:57,989 - INFO - epoch [43/50]	batch [700/1251]	time(sec) 60257.18	loss 1.7315	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:51:51,053 - INFO - epoch [43/50]	batch [800/1251]	time(sec) 60370.24	loss 1.7295	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:53:44,137 - INFO - epoch [43/50]	batch [900/1251]	time(sec) 60483.33	loss 1.7108	acc 0.05%	fore pix 0.10%	back pix 99.90%	
+2024-12-28 02:55:37,152 - INFO - epoch [43/50]	batch [1000/1251]	time(sec) 60596.34	loss 1.7309	acc 0.18%	fore pix 0.02%	back pix 99.98%	
+2024-12-28 02:57:30,237 - INFO - epoch [43/50]	batch [1100/1251]	time(sec) 60709.43	loss 1.7221	acc 0.50%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 02:59:23,392 - INFO - epoch [43/50]	batch [1200/1251]	time(sec) 60822.58	loss 1.7307	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:00:20,399 - INFO - Epoch 43: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 03:00:23,516 - INFO - epoch [44/50]	batch [0/1251]	time(sec) 60882.71	loss 1.6592	acc 5.65%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:02:16,689 - INFO - epoch [44/50]	batch [100/1251]	time(sec) 60995.88	loss 1.7256	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:04:09,872 - INFO - epoch [44/50]	batch [200/1251]	time(sec) 61109.06	loss 0.8449	acc 72.12%	fore pix 0.33%	back pix 99.67%	
+2024-12-28 03:06:02,806 - INFO - epoch [44/50]	batch [300/1251]	time(sec) 61222.00	loss 1.7117	acc 0.04%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 03:07:55,660 - INFO - epoch [44/50]	batch [400/1251]	time(sec) 61334.85	loss 1.7148	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:09:48,475 - INFO - epoch [44/50]	batch [500/1251]	time(sec) 61447.66	loss 1.7164	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:11:41,132 - INFO - epoch [44/50]	batch [600/1251]	time(sec) 61560.32	loss 1.7258	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:13:33,771 - INFO - epoch [44/50]	batch [700/1251]	time(sec) 61672.96	loss 1.7128	acc 0.12%	fore pix 0.09%	back pix 99.91%	
+2024-12-28 03:15:26,511 - INFO - epoch [44/50]	batch [800/1251]	time(sec) 61785.70	loss 1.1356	acc 46.82%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 03:17:19,178 - INFO - epoch [44/50]	batch [900/1251]	time(sec) 61898.37	loss 1.5674	acc 18.75%	fore pix 0.03%	back pix 99.97%	
+2024-12-28 03:19:11,990 - INFO - epoch [44/50]	batch [1000/1251]	time(sec) 62011.18	loss 1.2897	acc 23.09%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 03:21:04,805 - INFO - epoch [44/50]	batch [1100/1251]	time(sec) 62123.99	loss 1.7216	acc 0.00%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 03:22:57,668 - INFO - epoch [44/50]	batch [1200/1251]	time(sec) 62236.86	loss 1.7220	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:23:54,305 - INFO - Epoch 44: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 03:23:57,595 - INFO - epoch [45/50]	batch [0/1251]	time(sec) 62296.79	loss 1.0958	acc 42.08%	fore pix 0.15%	back pix 99.85%	
+2024-12-28 03:25:50,326 - INFO - epoch [45/50]	batch [100/1251]	time(sec) 62409.52	loss 0.7864	acc 81.73%	fore pix 0.24%	back pix 99.76%	
+2024-12-28 03:27:43,031 - INFO - epoch [45/50]	batch [200/1251]	time(sec) 62522.22	loss 1.7251	acc 0.02%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:29:35,690 - INFO - epoch [45/50]	batch [300/1251]	time(sec) 62634.88	loss 1.7148	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:31:28,363 - INFO - epoch [45/50]	batch [400/1251]	time(sec) 62747.55	loss 1.7203	acc 0.04%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 03:33:21,040 - INFO - epoch [45/50]	batch [500/1251]	time(sec) 62860.23	loss 1.7216	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:35:14,131 - INFO - epoch [45/50]	batch [600/1251]	time(sec) 62973.32	loss 1.7238	acc 0.46%	fore pix 0.20%	back pix 99.80%	
+2024-12-28 03:37:07,173 - INFO - epoch [45/50]	batch [700/1251]	time(sec) 63086.36	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:39:00,368 - INFO - epoch [45/50]	batch [800/1251]	time(sec) 63199.56	loss 1.7168	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:40:53,727 - INFO - epoch [45/50]	batch [900/1251]	time(sec) 63312.92	loss 1.7273	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:42:46,795 - INFO - epoch [45/50]	batch [1000/1251]	time(sec) 63425.98	loss 1.7141	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:44:39,956 - INFO - epoch [45/50]	batch [1100/1251]	time(sec) 63539.15	loss 0.9863	acc 62.19%	fore pix 0.35%	back pix 99.65%	
+2024-12-28 03:46:32,932 - INFO - epoch [45/50]	batch [1200/1251]	time(sec) 63652.12	loss 1.0029	acc 56.29%	fore pix 0.69%	back pix 99.31%	
+2024-12-28 03:47:29,759 - INFO - Epoch 45: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 03:47:33,365 - INFO - epoch [46/50]	batch [0/1251]	time(sec) 63712.56	loss 1.7126	acc 0.03%	fore pix 0.04%	back pix 99.96%	
+2024-12-28 03:49:26,490 - INFO - epoch [46/50]	batch [100/1251]	time(sec) 63825.68	loss 1.7219	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:51:19,577 - INFO - epoch [46/50]	batch [200/1251]	time(sec) 63938.77	loss 1.7172	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:53:12,697 - INFO - epoch [46/50]	batch [300/1251]	time(sec) 64051.89	loss 1.7290	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 03:55:05,822 - INFO - epoch [46/50]	batch [400/1251]	time(sec) 64165.01	loss 1.0314	acc 49.79%	fore pix 0.14%	back pix 99.86%	
+2024-12-28 03:56:58,985 - INFO - epoch [46/50]	batch [500/1251]	time(sec) 64278.18	loss 0.7967	acc 88.50%	fore pix 0.44%	back pix 99.56%	
+2024-12-28 03:58:52,293 - INFO - epoch [46/50]	batch [600/1251]	time(sec) 64391.48	loss 1.5425	acc 6.16%	fore pix 0.05%	back pix 99.95%	
+2024-12-28 04:00:45,814 - INFO - epoch [46/50]	batch [700/1251]	time(sec) 64505.00	loss 1.7141	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:02:39,273 - INFO - epoch [46/50]	batch [800/1251]	time(sec) 64618.46	loss 1.7093	acc 0.49%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:04:32,829 - INFO - epoch [46/50]	batch [900/1251]	time(sec) 64732.02	loss 1.5361	acc 27.91%	fore pix 0.02%	back pix 99.98%	
+2024-12-28 04:06:26,046 - INFO - epoch [46/50]	batch [1000/1251]	time(sec) 64845.24	loss 1.7271	acc 1.09%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:08:18,976 - INFO - epoch [46/50]	batch [1100/1251]	time(sec) 64958.17	loss 1.7175	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:10:12,163 - INFO - epoch [46/50]	batch [1200/1251]	time(sec) 65071.35	loss 1.7165	acc 0.01%	fore pix 0.04%	back pix 99.96%	
+2024-12-28 04:11:09,102 - INFO - Epoch 46: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 04:11:13,040 - INFO - epoch [47/50]	batch [0/1251]	time(sec) 65132.23	loss 1.7165	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:13:06,355 - INFO - epoch [47/50]	batch [100/1251]	time(sec) 65245.55	loss 1.7016	acc 6.37%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 04:14:59,695 - INFO - epoch [47/50]	batch [200/1251]	time(sec) 65358.88	loss 1.7237	acc 0.41%	fore pix 0.12%	back pix 99.88%	
+2024-12-28 04:16:52,946 - INFO - epoch [47/50]	batch [300/1251]	time(sec) 65472.14	loss 1.7125	acc 0.12%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:18:46,031 - INFO - epoch [47/50]	batch [400/1251]	time(sec) 65585.22	loss 1.2886	acc 18.11%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 04:20:39,421 - INFO - epoch [47/50]	batch [500/1251]	time(sec) 65698.61	loss 1.4940	acc 31.62%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 04:22:32,484 - INFO - epoch [47/50]	batch [600/1251]	time(sec) 65811.67	loss 1.7201	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:24:25,512 - INFO - epoch [47/50]	batch [700/1251]	time(sec) 65924.70	loss 1.0102	acc 55.54%	fore pix 0.14%	back pix 99.86%	
+2024-12-28 04:26:18,636 - INFO - epoch [47/50]	batch [800/1251]	time(sec) 66037.83	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:28:11,387 - INFO - epoch [47/50]	batch [900/1251]	time(sec) 66150.58	loss 1.7204	acc 1.29%	fore pix 0.02%	back pix 99.98%	
+2024-12-28 04:30:04,387 - INFO - epoch [47/50]	batch [1000/1251]	time(sec) 66263.58	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:31:57,259 - INFO - epoch [47/50]	batch [1100/1251]	time(sec) 66376.45	loss 1.7233	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:33:50,268 - INFO - epoch [47/50]	batch [1200/1251]	time(sec) 66489.46	loss 1.7138	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:34:47,195 - INFO - Epoch 47: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 04:34:50,745 - INFO - epoch [48/50]	batch [0/1251]	time(sec) 66549.93	loss 1.7226	acc 0.77%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 04:36:43,954 - INFO - epoch [48/50]	batch [100/1251]	time(sec) 66663.14	loss 1.7071	acc 8.23%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:38:37,164 - INFO - epoch [48/50]	batch [200/1251]	time(sec) 66776.35	loss 1.0672	acc 46.13%	fore pix 0.30%	back pix 99.70%	
+2024-12-28 04:40:30,257 - INFO - epoch [48/50]	batch [300/1251]	time(sec) 66889.45	loss 0.7611	acc 91.91%	fore pix 0.90%	back pix 99.10%	
+2024-12-28 04:42:23,562 - INFO - epoch [48/50]	batch [400/1251]	time(sec) 67002.75	loss 1.7262	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:44:17,441 - INFO - epoch [48/50]	batch [500/1251]	time(sec) 67116.63	loss 1.3024	acc 27.48%	fore pix 0.08%	back pix 99.92%	
+2024-12-28 04:46:11,039 - INFO - epoch [48/50]	batch [600/1251]	time(sec) 67230.23	loss 1.7202	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:48:04,084 - INFO - epoch [48/50]	batch [700/1251]	time(sec) 67343.27	loss 1.7308	acc 0.06%	fore pix 0.01%	back pix 99.99%	
+2024-12-28 04:49:57,219 - INFO - epoch [48/50]	batch [800/1251]	time(sec) 67456.41	loss 1.7103	acc 0.08%	fore pix 0.29%	back pix 99.71%	
+2024-12-28 04:51:50,505 - INFO - epoch [48/50]	batch [900/1251]	time(sec) 67569.69	loss 1.0572	acc 42.24%	fore pix 0.17%	back pix 99.83%	
+2024-12-28 04:53:43,876 - INFO - epoch [48/50]	batch [1000/1251]	time(sec) 67683.06	loss 1.7137	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:55:37,388 - INFO - epoch [48/50]	batch [1100/1251]	time(sec) 67796.58	loss 1.2413	acc 26.13%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 04:57:30,821 - INFO - epoch [48/50]	batch [1200/1251]	time(sec) 67910.01	loss 1.7230	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 04:58:27,966 - INFO - Epoch 48: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 04:58:31,349 - INFO - epoch [49/50]	batch [0/1251]	time(sec) 67970.54	loss 1.7280	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:00:24,979 - INFO - epoch [49/50]	batch [100/1251]	time(sec) 68084.17	loss 0.9966	acc 60.67%	fore pix 0.22%	back pix 99.78%	
+2024-12-28 05:02:18,594 - INFO - epoch [49/50]	batch [200/1251]	time(sec) 68197.78	loss 0.8739	acc 65.88%	fore pix 0.59%	back pix 99.41%	
+2024-12-28 05:04:12,468 - INFO - epoch [49/50]	batch [300/1251]	time(sec) 68311.66	loss 1.7295	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:06:06,077 - INFO - epoch [49/50]	batch [400/1251]	time(sec) 68425.27	loss 1.7224	acc 0.06%	fore pix 0.07%	back pix 99.93%	
+2024-12-28 05:07:59,536 - INFO - epoch [49/50]	batch [500/1251]	time(sec) 68538.73	loss 0.8136	acc 83.19%	fore pix 1.01%	back pix 98.99%	
+2024-12-28 05:09:53,421 - INFO - epoch [49/50]	batch [600/1251]	time(sec) 68652.61	loss 1.7149	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:11:47,309 - INFO - epoch [49/50]	batch [700/1251]	time(sec) 68766.50	loss 1.7140	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:13:41,050 - INFO - epoch [49/50]	batch [800/1251]	time(sec) 68880.24	loss 1.7252	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:15:34,917 - INFO - epoch [49/50]	batch [900/1251]	time(sec) 68994.11	loss 1.7141	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:17:28,587 - INFO - epoch [49/50]	batch [1000/1251]	time(sec) 69107.78	loss 1.7285	acc 0.00%	fore pix 0.04%	back pix 99.96%	
+2024-12-28 05:19:22,348 - INFO - epoch [49/50]	batch [1100/1251]	time(sec) 69221.54	loss 1.7241	acc 0.25%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:21:15,906 - INFO - epoch [49/50]	batch [1200/1251]	time(sec) 69335.10	loss 1.7139	acc 0.15%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:22:13,033 - INFO - Epoch 49: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 05:22:16,262 - INFO - epoch [50/50]	batch [0/1251]	time(sec) 69395.45	loss 1.7139	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:24:09,317 - INFO - epoch [50/50]	batch [100/1251]	time(sec) 69508.51	loss 1.7143	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:26:02,765 - INFO - epoch [50/50]	batch [200/1251]	time(sec) 69621.95	loss 0.9295	acc 60.34%	fore pix 0.86%	back pix 99.14%	
+2024-12-28 05:27:55,864 - INFO - epoch [50/50]	batch [300/1251]	time(sec) 69735.05	loss 1.7163	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:29:49,119 - INFO - epoch [50/50]	batch [400/1251]	time(sec) 69848.31	loss 0.8191	acc 80.42%	fore pix 0.37%	back pix 99.63%	
+2024-12-28 05:31:42,318 - INFO - epoch [50/50]	batch [500/1251]	time(sec) 69961.51	loss 1.7291	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:33:35,353 - INFO - epoch [50/50]	batch [600/1251]	time(sec) 70074.54	loss 0.7566	acc 92.48%	fore pix 0.85%	back pix 99.15%	
+2024-12-28 05:35:28,516 - INFO - epoch [50/50]	batch [700/1251]	time(sec) 70187.71	loss 1.7132	acc 0.01%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:37:21,587 - INFO - epoch [50/50]	batch [800/1251]	time(sec) 70300.78	loss 1.4818	acc 30.77%	fore pix 0.02%	back pix 99.98%	
+2024-12-28 05:39:14,749 - INFO - epoch [50/50]	batch [900/1251]	time(sec) 70413.94	loss 1.7138	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:41:07,891 - INFO - epoch [50/50]	batch [1000/1251]	time(sec) 70527.08	loss 1.7180	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-28 05:43:01,042 - INFO - epoch [50/50]	batch [1100/1251]	time(sec) 70640.23	loss 0.8349	acc 82.18%	fore pix 0.67%	back pix 99.33%	
+2024-12-28 05:44:54,140 - INFO - epoch [50/50]	batch [1200/1251]	time(sec) 70753.33	loss 1.4819	acc 27.60%	fore pix 0.15%	back pix 99.85%	
+2024-12-28 05:45:51,066 - INFO - Epoch 50: Saving model for num20_dsc_e0d3_1227_1804
+2024-12-28 05:45:51,214 - INFO - Model saved at /home/wangc/now/pure/save_checkpoint/num20_dsc_e0d3_1227_1804.pth
+2024-12-28 05:45:51,214 - INFO - Training completed.
+2024-12-28 05:47:05,694 - INFO - Start processing 10 cases
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2024-12-28 05:55:30,794 - INFO - Case 1: Segmentation done
+
+
+
+valid_neighbor_vals: [229 234 238 239 240 241 243 244 245 247 249 256 257 315 317 333 339 340
+Assign label 295 to current val's neighbors: [229 234 238 239 240 241 243 244 245 247 249 256 257 315 317 333 339 340
+
+valid_neighbor_vals: [199 201 202 204 205 206 207 213 322 325 326 327 347 351 354 355 367 368 348 350 356]
+Assign label 295 to current val's neighbors: [199 201 202 204 205 206 207 213 322 325 326 327 347 351 354 355 367 368
+
+valid_neighbor_vals: [148 150 160 161 162 164 167 168 169 170 174 177 179 383 387 389 390 393
+Assign label 295 to current val's neighbors: [148 150 160 161 162 164 167 168 169 170 174 177 179 383 387 389 390 393
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+number of valid_neighbor_vals: 0ixel val: 405[]74]379]651 652 653 654]646 649]640]610 616]525]449]
+Traceback (most recent call last):
+  File "train_green_t.py", line 448, in <module>
+    eval_pipeline(
+  File "train_green_t.py", line 230, in eval_pipeline
+    ) = tree_detection(seg_processed, search_range=2)
+  File "/home/wangc/now/pure/ALinAirway/func/detect_tree.py", line 8, in tree_detection
+    connection_dict = get_connection_dict(center_dict, nearby_dict)
+  File "/home/wangc/now/pure/ALinAirway/func/detect_tree.py", line 111, in get_connection_dict
+    find_connection(current_label=slice_idxs[0], before_label=0)
+  File "/home/wangc/now/pure/ALinAirway/func/detect_tree.py", line 85, in find_connection
+    if connection_dict[nearby_label]["is_processed"]==False:
+KeyError: -5

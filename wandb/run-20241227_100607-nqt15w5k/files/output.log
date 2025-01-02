@@ -1,0 +1,38 @@
+2024-12-27 10:06:13,614 - INFO - Total epochs: 50
+2024-12-27 10:06:13,614 - INFO - Length of dataset: 6041
+/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/functional.py:568: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/aten/src/ATen/native/TensorShape.cpp:2228.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2024-12-27 10:06:19,545 - INFO - epoch [1/50]	batch [0/1511]	time(sec) 5.88	loss 1.7817	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:08:15,027 - INFO - epoch [1/50]	batch [100/1511]	time(sec) 121.34	loss 1.7406	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:10:09,937 - INFO - epoch [1/50]	batch [200/1511]	time(sec) 236.25	loss 1.7363	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:12:05,339 - INFO - epoch [1/50]	batch [300/1511]	time(sec) 351.66	loss 1.7356	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:13:58,811 - INFO - epoch [1/50]	batch [400/1511]	time(sec) 465.13	loss 1.6388	acc 2.37%	fore pix 0.14%	back pix 99.86%	
+2024-12-27 10:15:53,537 - INFO - epoch [1/50]	batch [500/1511]	time(sec) 579.85	loss 1.5384	acc 7.32%	fore pix 0.39%	back pix 99.61%	
+2024-12-27 10:17:48,020 - INFO - epoch [1/50]	batch [600/1511]	time(sec) 694.34	loss 1.6198	acc 3.43%	fore pix 0.13%	back pix 99.87%	
+2024-12-27 10:19:42,591 - INFO - epoch [1/50]	batch [700/1511]	time(sec) 808.91	loss 1.7322	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:21:38,283 - INFO - epoch [1/50]	batch [800/1511]	time(sec) 924.60	loss 1.7316	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:23:31,724 - INFO - epoch [1/50]	batch [900/1511]	time(sec) 1038.04	loss 1.7343	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:25:27,056 - INFO - epoch [1/50]	batch [1000/1511]	time(sec) 1153.37	loss 1.7332	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:27:20,916 - INFO - epoch [1/50]	batch [1100/1511]	time(sec) 1267.23	loss 1.7329	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:29:15,972 - INFO - epoch [1/50]	batch [1200/1511]	time(sec) 1382.29	loss 1.5809	acc 8.92%	fore pix 0.22%	back pix 99.78%	
+2024-12-27 10:31:09,629 - INFO - epoch [1/50]	batch [1300/1511]	time(sec) 1495.95	loss 1.7321	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:33:04,649 - INFO - epoch [1/50]	batch [1400/1511]	time(sec) 1610.97	loss 1.2412	acc 29.56%	fore pix 0.72%	back pix 99.28%	
+2024-12-27 10:35:00,278 - INFO - epoch [1/50]	batch [1500/1511]	time(sec) 1726.60	loss 1.7322	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+2024-12-27 10:35:11,190 - INFO - Epoch 1: Saving model for num20_e0_fusion_1227_1718
+2024-12-27 10:35:15,068 - INFO - epoch [2/50]	batch [0/1511]	time(sec) 1741.39	loss 1.7323	acc 0.19%	fore pix 0.03%	back pix 99.97%	
+2024-12-27 10:37:11,522 - INFO - epoch [2/50]	batch [100/1511]	time(sec) 1857.84	loss 1.6696	acc 6.76%	fore pix 0.39%	back pix 99.61%	
+2024-12-27 10:39:08,495 - INFO - epoch [2/50]	batch [200/1511]	time(sec) 1974.81	loss 1.7343	acc 0.00%	fore pix 0.00%	back pix 100.00%	
+Traceback (most recent call last):
+  File "train_green_t.py", line 420, in <module>
+    train_model(
+  File "train_green_t.py", line 148, in train_model
+    optimizer.step()
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/optim/optimizer.py", line 88, in wrapper
+    return func(*args, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/optim/adam.py", line 141, in step
+    F.adam(params_with_grad,
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/torch/optim/_functional.py", line 105, in adam
+    denom = (exp_avg_sq.sqrt() / math.sqrt(bias_correction2)).add_(eps)
+KeyboardInterrupt

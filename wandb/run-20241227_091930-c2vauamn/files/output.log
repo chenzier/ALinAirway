@@ -1,0 +1,9 @@
+2024-12-27 09:19:36,506 - INFO - Total epochs: 50
+2024-12-27 09:19:36,507 - INFO - Length of dataset: 5004
+2024-12-27 09:19:45,085 - INFO - epoch [1/50]	batch [0/626]	time(sec) 8.35	loss 1.7833	acc 0.12%	fore pix 0.03%	back pix 99.97%	
+Traceback (most recent call last):
+  File "train_green_t.py", line 420, in <module>
+    train_model(
+  File "train_green_t.py", line 164, in train_model
+    "loss": loss.item(),
+KeyboardInterrupt

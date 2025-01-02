@@ -1,0 +1,78 @@
+2024-12-28 15:35:04,730 INFO    StreamThr :2103613 [internal.py:wandb_internal():86] W&B internal server running at pid: 2103613, started at: 2024-12-28 15:35:04.729402
+2024-12-28 15:35:04,734 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: status
+2024-12-28 15:35:04,741 INFO    WriterThread:2103613 [datastore.py:open_for_write():87] open: /home/wangc/now/pure/ALinAirway/wandb/run-20241228_153504-q3ebhbgs/run-q3ebhbgs.wandb
+2024-12-28 15:35:04,742 DEBUG   SenderThread:2103613 [sender.py:send():379] send: header
+2024-12-28 15:35:04,876 DEBUG   SenderThread:2103613 [sender.py:send():379] send: run
+2024-12-28 15:35:09,877 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:14,879 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:19,881 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:24,883 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:29,884 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:34,886 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:39,888 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:44,889 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:49,891 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:54,893 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:35:59,895 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:36:04,897 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:36:08,657 INFO    SenderThread:2103613 [retry.py:__call__():172] Retry attempt failed:
+Traceback (most recent call last):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/connection.py", line 358, in connect
+    self.sock = conn = self._new_conn()
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/connection.py", line 179, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x7efe54720910>, 'Connection to api.wandb.ai timed out. (connect timeout=20)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7efe54720910>, 'Connection to api.wandb.ai timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/lib/retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/internal/internal_api.py", line 369, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/wandb/sdk/lib/gql_request.py", line 58, in execute
+    request = self.session.post(self.url, **post_args)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/requests/sessions.py", line 635, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/wangc/anaconda3/envs/test1/lib/python3.8/site-packages/requests/adapters.py", line 553, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7efe54720910>, 'Connection to api.wandb.ai timed out. (connect timeout=20)'))
+2024-12-28 15:36:09,898 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:36:14,900 DEBUG   HandlerThread:2103613 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-28 15:36:20,754 INFO    MainThread:2103613 [internal.py:handle_exit():76] Internal process exited
